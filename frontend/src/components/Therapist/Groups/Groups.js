@@ -16,11 +16,9 @@ const Groups = () => {
         console.error("There was an error fetching the data!", error);
       });
   }, []);
-
   const toggleHandler = () => {
     setFeedbackToggler(!feedbackToggler);
   };
-  
   
   return (
     <>
