@@ -8,14 +8,10 @@ const Appointment = () => {
 
   useEffect(() => {
     axios
-      .post("https://zummit-chandan.onrender.com/api/admin/appointmentslist", {
-        input: "akib@gmail.com",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwNGRiMTk3Mzk4MTgwNzAwZDZjNCIsImlhdCI6MTcxNzE3NTUxNiwiZXhwIjoxNzE5NzY3NTE2fQ.nT9mK7G3tCQlHfhpFBC-iefz4XkGdBIP8BUNN9tOoUQ",
-      })
+      .get("http://localhost:4000/api/therapist/gettherapistAppointmentLists")
       .then((response) => {
         if (response.data.success) {
-          setAppointmentsList(response.data.adminAppointmentList);
+          setAppointmentsList(response.data.therapistAppointmentData);
         } else {
           console.error("Failed to fetch appointments");
         }
