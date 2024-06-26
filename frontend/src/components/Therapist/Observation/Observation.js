@@ -10,7 +10,7 @@ const Observation = () => {
   useEffect(() => {
     axios.get('https://zummit-chandan.onrender.com/api/therapist/getTherapistObservationLists')
       .then(response => {
-        setData(response.data);
+        setData(response.data.therapistGroupData);
       })
       .catch(error => {
         console.error("There was an error fetching the data!", error);

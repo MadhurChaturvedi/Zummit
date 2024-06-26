@@ -1,75 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+import axios from "axios";
 import Client_Feedback from './Client_Feedback';
+
 const Groups = () => {
   const [feedbackToggler, setFeedbackToggler] = useState(true);
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://zummit-chandan.onrender.com/api/therapist/gettherapistGroupLists')
+      .then(response => {
+        setData(response.data.therapistGroupData);
+      })
+      .catch(error => {
+        console.error("There was an error fetching the data!", error);
+      });
+  }, []);
+
   const toggleHandler = () => {
     setFeedbackToggler(!feedbackToggler);
   };
-  const data = [
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-    {
-      id: "Dr.Jordan Patel",
-      member: "20",
-      session: "10/25",
-      Feedback: "Click Here",
-      date: "02/08/2023",
-    },
-  ];
+  
+  
   return (
     <>
     {feedbackToggler ? (<div className="w-[90%] m-5 ">
