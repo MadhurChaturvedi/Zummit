@@ -20,7 +20,7 @@ const Therapist_SideBar = () => {
   return (
     <div className="leftCont flex ">
       <div className="sidebar w-[18vw] bg-[#00677F]">
-        <Link to="/admindashboard">
+        <Link to="/therapist-dashboard">
           <img
             src={require("../images/logo.png")}
             alt=""

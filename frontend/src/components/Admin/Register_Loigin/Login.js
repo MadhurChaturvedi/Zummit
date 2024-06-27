@@ -96,43 +96,7 @@ const Login = () => {
     }
   };
 
-  const TherapistLogin = async (loginData) => {
-    try {
-      const response = await fetch(
-        "http://localhost:4000/api/therapist/loginTherapist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
 
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-
-      const data = await response.json();
-
-      dispatch(addUser(data));
-      navigate("/therapist-home");
-      console.log(response);
-
-      //reload kee baad bhi data remain constant
-      localStorage.setItem("token", data.token);
-
-      //jaao token leke aao
-      const token = response["Authorization"];
-      if (!token) {
-        throw new Error("Token not found in response headers");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
 
   //token check karo reload kee baad
   const checkForToken = () => {

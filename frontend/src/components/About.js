@@ -15,7 +15,7 @@ const About = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className=" justify-center items-center text-5xl font-bold">
+    <div className="justify-center items-center text-5xl font-bold">
       <div className=" bg-[#0190B1] w-full py-8 xl:px-[169px] md:px-[80px]">
         <div className="p-0 m-0 flex justify-between">
           <div className="p-0 m-0 w-[643px]">
