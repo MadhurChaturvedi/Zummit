@@ -21,12 +21,11 @@ const Therapists = () => {
   const { data, loading, error } = useFetch(url);
 
   useEffect(() => {
-    console.log(data);
     setAllTherapists(data);
   }, [data]);
 
   const user = useSelector((store) => store.user.data);
-
+  
   const handleSearchInput = (event) => {
     if (event.key == "Enter") {
       setSearchInput(event.target.value);

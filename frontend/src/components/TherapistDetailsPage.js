@@ -6,49 +6,41 @@ import Side_Navbar from "./Side_Navbar";
 import { addCouncellor } from "../utils/bookingSlice";
 import { checkToken } from "../utils/checkToken";
 import LoginReq_pop from "./PopUps/LoginReq_pop";
-import useFetch from "../utils/fetchData";
-import VerifyClient from "../utils/verifyClient";
 import axios from "axios";
 
 function TherapistDetailsPage() {
   const [showPopUp, setShowPopUp] = useState(false);
   const [noResultError, setNoResultError] = useState({ error: false, status: null });
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
 
   const therapistDetails = useSelector((state) => state.booking.selectedCouncellor);
+  const user = useSelector((state) => state.user.data)
 
   useEffect(() => {
     const fetchDataAndAuthorize = async () => {
       try {
-        setLoading(true);
-
-        // Authorize client
-        const { error, userData } = await VerifyClient();
-        if (error) {
-          setLoading(false);
-          return;
-        } else if (userData._id) {
-          setUser(userData);
-        }
+        setLoading(true); //start displaying loader
 
         // Fetch therapist details
-        await axios.get(`https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails/${id}`).then((res) => {
+        await axios.get(`https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails/find/${id}`).then((res) => {
+
           if(res.data._id){
             dispatch(addCouncellor(res.data));
           }
         }).catch((err) => {
-          if(err.response.status === 400 || 500){
+          console.log(err)
+          if(err.response.status === 404 || 500){
             setNoResultError({ error: true, status: err.response.status})
           }
         });
-        setLoading(false);
+        setLoading(false); //stop displaying loader
       } catch (error) {
-        setLoading(false);
-        console.error("Error during fetch and authorize:", error);
+        setNoResultError({ error: true, status: error})
+        setLoading(false); //stop displaying loader
+        console.error("Error during fetch", error);
       }
     };
 
@@ -78,7 +70,7 @@ function TherapistDetailsPage() {
     }
     <div className={user._id ? "flex" : "flex justify-center"}>
       {
-        user._id && user.role == "client" && <Side_Navbar />
+        (user._id && user.role === "client") && <Side_Navbar />
       }
       <div className="flex-col ml-[2vw] ">
         {/* search bar element */}

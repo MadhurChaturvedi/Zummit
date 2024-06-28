@@ -46,7 +46,7 @@ router.get("/verifyClient", VerifyClient_ByToken);
 router.get("/upcomingGroups", upcomingGroups);
 
 router.get("/booking/getAvailableSlotsByTherapist/:id", getIndividualBooking);
-router.get("/booking/getTherapistDetails/:id", getTherapistById);
+router.get("/booking/getTherapistDetails/find/:id", getTherapistById);
 router.get("/booking/getTherapistDetails", getAllTherapists);
 router.get("/booking/getPatientDetails/:id", getPatientById);
 router.get("/booking/getPatientDetails", getAllPatients);
