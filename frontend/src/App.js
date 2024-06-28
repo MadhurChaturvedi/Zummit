@@ -195,7 +195,7 @@ const routes = [
   { path: "/userdashboard", element: <UserDashboard /> },
   { path: "/bookingPage", element: <BookingPage /> },
   { path: "/TherapistDetailsPage/:id", element: <TherapistDetailsPage /> },
-  { path: "/BookTherapistPage/:id", element: <BookTherapistPage /> },
+  { path: "/BookTherapistPage", element: <BookTherapistPage /> },
   { path: "/ShowBookingDetailsPage", element: <ShowBookingDetailsPage /> },
   { path: "/admin-dashboard", element: <AdminDashboard /> },
   { path: "/admin-appointments", element: <Admin_Appointments /> },

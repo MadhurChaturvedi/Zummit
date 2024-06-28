@@ -1,40 +1,50 @@
 import React, { useEffect, useState } from "react";
 import Side_Navbar from "./Side_Navbar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
+import VerifyClient from "../utils/verifyClient";
+import { addUser } from "../utils/userSlice";
 
 function BookTherapistPage() {
-
-  //get user data from redux state
-  const user = useSelector((state) => state.user.data);
-
-  //get therapist id from params
-  const { id } = useParams;
-
-  // const [TherapistData, setTherapistData] = useState({});
-  // const therapistData = useSelector((state) => state.booking.selectedCouncellor)
-
-  // setTherapistData(therapistData)
-  //verify user
-
-  // //get therapist data 
-  // function GetTherapistData(){
-
-  // }
-
-  // //useEffect to run at the time of loading and everytime id changes in params
-  // useEffect(() => {
-  //   GetTherapistData()
-  // }, [id])
-
+  const [IsAuthorized, setIsAuthorized] = useState(true);
+  const [Loading, setLoading] = useState(false);
   const [Selected_session_Mode, setSelect_session_mode] = useState("video");
 
+  const dispatch = useDispatch();
+  
   const slotsCount = 3;
-
   const [CurrentDate, setCurrentDate] = useState(new Date());
   const [CurrentSlots, setCurrentSlots] = useState([]);
   const [CurrentFirstSlot, setCurrentFirstSlot] = useState(new Date());
   const [SelectedSlot, setSelectedSlot] = useState(new Date());
+
+  //verify user
+  async function authorizeClient(){
+    setLoading(true);
+    const { error, data } = await VerifyClient();
+    if(error){  
+      setIsAuthorized(false)
+    } else {
+      if(data.client.id){
+        dispatch(addUser())
+      } else {
+        setIsAuthorized(false)
+      }
+    }
+    setLoading(false);
+  }
+
+  //get therapist data 
+  async function GetTherapistData(){
+    // Your implementation here
+  }
+
+  //useEffect to run at the time of loading and every time id changes in params
+  useEffect(() => {
+    authorizeClient();
+    GetTherapistData();
+  }, []);
+
   useEffect(() => {
     (async function () {
       await setCurrentSlots(loadSlots(slotsCount, CurrentFirstSlot));
@@ -85,21 +95,15 @@ function BookTherapistPage() {
   }
 
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
+  if(Loading){
+    return (<div>Loading</div>)
+  }
+
+  if(!IsAuthorized){
+    return (<div>Not authorized</div>)
+  }
 
   return (<>
     <div className="flex gap-[50px] bg-[#F2FCFF]">

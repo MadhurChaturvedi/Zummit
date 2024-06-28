@@ -8,7 +8,6 @@ const app = express();
 const userRoute = require("./routes/userRoute");
 const adminRoute = require("./routes/adminRoute");
 
-const bookingRoute = require("../backend/routes/userRoute");
 const therapistRoute = require("./routes/therapistRoute");
 const bodyParser = require('body-parser');
 
@@ -47,7 +46,6 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/therapist", therapistRoute);
-app.use("/booking-details", bookingRoute);
 
 //connect to the database
 const dbConnect = require("./config/database");

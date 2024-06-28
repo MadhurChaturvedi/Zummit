@@ -1,54 +1,81 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
-import Side_Navbar from "./Side_Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { addCouncellor } from "../utils/bookingSlice";
 import { useNavigate } from "react-router-dom";
+import Side_Navbar from "./Side_Navbar";
+import { addCouncellor } from "../utils/bookingSlice";
+import { checkToken } from "../utils/checkToken";
+import LoginReq_pop from "./PopUps/LoginReq_pop";
+import useFetch from "../utils/fetchData";
+import VerifyClient from "../utils/verifyClient";
+import axios from "axios";
 
 function TherapistDetailsPage() {
-
-  const therapist_details = useSelector((state) => state.booking.selectedCouncellor)
-  const user = useSelector((state) => state.user.data)
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [noResultError, setNoResultError] = useState({ error: false, status: null });
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams;
+  const { id } = useParams();
 
-  async function getCouncellorData() {
-    //get data from API
-    await axios.get(`/api/booking/getTherapistDetails/${id}`, {
-      withCredentials: true,
-    }).then((data) => {
-      console.log(data)
-      //add fetched data in redux state if data is available
-      if (data) {
-        dispatch(addCouncellor(data))
-      } else {
-        return (
-          <>
-            <h1>404 Not Found...</h1>
-          </>
-        )
-      }
-    }).catch((err) => console.log(err))
-  }
+  const therapistDetails = useSelector((state) => state.booking.selectedCouncellor);
 
   useEffect(() => {
-    getCouncellorData()
-  }, [id, dispatch]);
+    const fetchDataAndAuthorize = async () => {
+      try {
+        setLoading(true);
 
-  function handle_booking_click(e) {
-    e.preventDefault();
+        // Authorize client
+        const { error, userData } = await VerifyClient();
+        if (error) {
+          setLoading(false);
+          return;
+        } else if (userData._id) {
+          setUser(userData);
+        }
 
-    if (user._id) {
-      console.log(user);
-      navigate("/BookTherapistPage/1") //therapist _id will be used instead of 1
-    } else {
-      alert("Please Login to book session !")
-    }
+        // Fetch therapist details
+        await axios.get(`https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails/${id}`).then((res) => {
+          if(res.data._id){
+            dispatch(addCouncellor(res.data));
+          }
+        }).catch((err) => {
+          if(err.response.status === 400 || 500){
+            setNoResultError({ error: true, status: err.response.status})
+          }
+        });
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.error("Error during fetch and authorize:", error);
+      }
+    };
+
+    fetchDataAndAuthorize();
+  }, [dispatch, id]);
+
+  if (loading) {
+    return (<div>Loading...</div>);
   }
+
+  if (noResultError.error) {
+    return (<div>No result</div>);
+  }
+
+  const handleBookingClick = (e) => {
+    e.preventDefault();
+    if (!checkToken()) {
+      setShowPopUp(true);
+    } else {
+      navigate("/BookTherapistPage");
+    }
+  };
+
   return (<>
+    {
+      showPopUp && <LoginReq_pop setShowPopUp={setShowPopUp} />
+    }
     <div className={user._id ? "flex" : "flex justify-center"}>
       {
         user._id && user.role == "client" && <Side_Navbar />
@@ -85,7 +112,7 @@ function TherapistDetailsPage() {
         </div>
         {/* Therapist name */}
         <div className=" flex text-2xl mb-8font-medium leading-9 max-w-[416px] text-slate-950 mt-[2vh] mb-[2vh] ">
-          Therapists/Dr. Sundhari Prakhashan
+          Therapists/{therapistDetails.name}
         </div>
         {/* Therapist details card */}
         <div className="flex flex-col justify-center max-w-[983px]">
@@ -106,7 +133,7 @@ function TherapistDetailsPage() {
                     <div className="flex flex-col ml-5 w-[64%] max-md:ml-0 max-md:w-full">
                       <div className="flex flex-col mt-7 text-xl font-medium max-md:mt-10">
                         <div className="text-3xl font-semibold text-black">
-                          Dr. Sundhari Prakhashan
+                        {therapistDetails.name}
                         </div>
                         <div className="flex gap-5 justify-between mt-8">
                           <div className="text-black">Experience</div>
@@ -166,7 +193,7 @@ function TherapistDetailsPage() {
                       className="shrink-0 w-8 aspect-square"
                     />
                   </div>
-                  <Link onClick={handle_booking_click}>
+                  <Link onClick={handleBookingClick}>
                     <div className="justify-center px-10 py-4 mt-11 text-xl font-medium text-black bg-cyan-600 rounded max-md:px-5 max-md:mt-10">
                       Book a Session
                     </div>

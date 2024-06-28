@@ -154,10 +154,38 @@ const upcomingGroups = asyncHandler(async (req, res)=> {
   }
 });
 
+const VerifyClient_ByToken = asyncHandler(async (req, res) => {
+  try{
+    const authToken = req.cookies.token
+    if(!authToken){
+      return res.status(401).json({ error: "Unauthorized user"})
+    }
+
+    const { id } = jwt.verify(authToken, process.env.JWT_SECRET)
+
+    const client = await User.findOne({ _id : id})
+
+    if(!client._id){
+      return res.status(401).json({ error: "Invalid token"})
+    }
+
+    const { _id, name, role } = client
+
+    return res.status(200).json({
+      client: { _id, name, role },
+      success: true,
+      message: "User authorized"
+    })
+  }catch(err){
+    return res.status(500).json({ message: "Internal server error" })
+  }
+})
+
 module.exports = {
   registerUser,
   loginUser,
   logout,
   getUser,
   upcomingGroups,
+  VerifyClient_ByToken
 };

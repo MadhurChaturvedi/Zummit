@@ -9,8 +9,8 @@ const getTherapistById = async (req, res) => {
     if (!therapist) {
       return res.status(404).json({ error: "Therapist not found" });
     }
-    const { name, input, role } = therapist;
-    return res.json({ name, input, role });
+    const {_id, name, role } = therapist;
+    return res.status(200).json({_id, name, role });
   } catch (err) {
     res
       .status(500)

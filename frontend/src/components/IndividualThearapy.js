@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
+import { checkToken } from "../utils/checkToken";
 
 const IndividualThearapy = () => {
   return (
@@ -33,12 +35,13 @@ const IndividualThearapy = () => {
           </p>
         </div>
         <div className="bookAppointment-individualTherapy gap-2.5 flex justify-center items-end h-[90px]">
+          <Link to={checkToken("token") ? "/bookingPage" : "/therapist"}>
           <button
-            type="submit"
             className="bg-[#4DB3CB] text-[28px] rounded gap-2.5 text-[#FDFEF1] w-[270px] h-[58px]"
           >
             Book Appointment
           </button>
+          </Link>
         </div>
       </div>
     </>
