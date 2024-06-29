@@ -251,12 +251,12 @@ const Login = () => {
           )}
           <div className="w-[50%] flex flex-col gap-5 shadow-lg rounded-lg  bg-white p-5">
             <p className="text-center text-3xl font-medium">Login</p>
-            <div className="font-bold text-xl">
-              <p>Client</p>
+            <div className="font-semibold text-2xl">
+              <p>Admin</p>
             </div>
 
             {!showSection ? (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col font-medium text-lg gap-3">
                 {!signUp && (
                   <input
                     className="bg-cyan-100  p-2 w-[100%]  outline-none rounded-lg"
@@ -296,9 +296,9 @@ const Login = () => {
                 <p className="m-0 p-0 text-red-600"> {error} </p>
                 <button
                   onClick={handleSubmission}
-                  className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 text-base"
+                  className="w-[40%] rounded-lg bg-yellow p-2 text-green-500"
                 >
-                  {!signUp ? "Login" : "Send OTP"}
+                  {signUp ? "Login" : "Send OTP"}
                 </button>
                 <Link to={"/admin-register"}>
                   <p className="text-cyan-500 cursor-pointer">SignUp</p>

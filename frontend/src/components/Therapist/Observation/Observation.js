@@ -10,7 +10,7 @@ const Observation = () => {
   useEffect(() => {
     axios.get('https://zummit-chandan.onrender.com/api/therapist/getTherapistObservationLists')
       .then(response => {
-        setData(response.data);
+        setData(response.data.therapistObservationData);
       })
       .catch(error => {
         console.error("There was an error fetching the data!", error);
@@ -23,6 +23,12 @@ const Observation = () => {
 
   const toggleHandler = () => {
     setAddNew(!addNew);
+  };
+
+
+   const formatDate = (dateString) => {
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    return new Date(dateString).toLocaleDateString("en-GB", options);
   };
 
   return (
@@ -135,9 +141,9 @@ const Observation = () => {
                         />
                       </svg>
 
-                      <h1>{item.name}</h1>
+                      <h1>{item.title}</h1>
                     </div>
-                    <h1>{item.date}</h1>
+                    <h1>{formatDate(item.dateModified)}</h1>
                   </div>
                 ))}
               </div>

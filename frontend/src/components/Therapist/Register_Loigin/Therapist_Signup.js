@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //main component toh yaha hey
-const SignUp = () => {
+const Therapist_SignUp = () => {
   const dispatch = useDispatch();
   const [signUp, setSignUp] = useState(true);
   const [role, setRole] = useState("Client");
@@ -289,7 +289,7 @@ const SignUp = () => {
           <div className="w-[50%] flex flex-col gap-5 shadow-lg rounded-lg  bg-white p-5">
             <p className="text-center text-3xl font-medium">SignUp</p>
             <div className="font-semibold text-2xl">
-              <p>Admin</p>
+              <p>Therapist</p>
             </div>
             <div className="flex flex-col font-medium text-lg gap-3">
               <input
@@ -323,11 +323,11 @@ const SignUp = () => {
               <p className="m-0 p-0 text-red-600"> {error} </p>
               <button
                 onClick={handleSubmission}
-                className="w-[40%] rounded-lg bg-yellow p-2 text-green-500"
+                className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
               >
                 {signUp ? "SignUp" : "Send OTP"}
               </button>
-              <Link to={"/admin-login"}>
+              <Link to={"/therapist-login"}>
                 <p
                   onClick={handleClick}
                   className="text-cyan-500 cursor-pointer"
@@ -370,4 +370,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Therapist_SignUp;

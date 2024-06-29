@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
 //main component toh yaha hey
 const Register__Login = () => {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const Register__Login = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [OTP, setOTP] = useState("");
   const [otpVerify, setOtpVerify] = useState("");
-  const [showGif,setShowGif]=useState(true);
+  const [showGif, setShowGif] = useState(true);
   const navigate = useNavigate();
 
   const registerUser = async (userData) => {
@@ -29,7 +28,7 @@ const Register__Login = () => {
       alert("OTP verification failed");
       return;
     }
-   
+
     try {
       const response = await fetch(
         "https://zummit-chandan.onrender.com/api/users/register",
@@ -39,7 +38,7 @@ const Register__Login = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(userData),
-          credentials: 'include', // Changed from 'true' to 'include' for clarity
+          credentials: "include", // Changed from 'true' to 'include' for clarity
           withCredentials: true,
         }
       );
@@ -71,9 +70,8 @@ const Register__Login = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(loginData),
-          credentials: 'include', // Changed from 'true' to 'include' for clarity
+          credentials: "include", // Changed from 'true' to 'include' for clarity
           withCredentials: true,
-          
         }
       );
 
@@ -82,7 +80,7 @@ const Register__Login = () => {
       }
 
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       dispatch(addUser(data.newUser));
       navigate("/userdashboard");
       console.log(response);
@@ -91,7 +89,7 @@ const Register__Login = () => {
       const token = data.Authorization;
       if (!token) {
         throw new Error("Token not found in response headers");
-      }else if(token){
+      } else if (token) {
         localStorage.setItem("token", data.token);
       }
     } catch (error) {
@@ -109,9 +107,8 @@ const Register__Login = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(loginData),
-          credentials: 'include', // Changed from 'true' to 'include' for clarity
+          credentials: "include", // Changed from 'true' to 'include' for clarity
           withCredentials: true,
-          
         }
       );
 
@@ -169,7 +166,6 @@ const Register__Login = () => {
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
-    
   };
 
   const handlePasswordChange = (e) => {
@@ -224,8 +220,8 @@ const Register__Login = () => {
     }
   };
 
-  const handleSubmit = async(e) => {
-    if(e) await e.preventDefault();
+  const handleSubmit = async (e) => {
+    if (e) await e.preventDefault();
 
     if (input.trim() === "") {
       setError("Input cannot be empty");
@@ -265,20 +261,22 @@ const Register__Login = () => {
   //gif animation ka play once logic
   const gifRef = useRef(null);
   useEffect(() => {
-     const gifDuration = 3500; 
-     const timer = setTimeout(() => {
-       if (gifRef.current) {
-         gifRef.current.style.display = "none";
-       }
-       setShowGif(false);
-     }, gifDuration);
-     return () => clearTimeout(timer);
+    const gifDuration = 3500;
+    const timer = setTimeout(() => {
+      if (gifRef.current) {
+        gifRef.current.style.display = "none";
+      }
+      setShowGif(false);
+    }, gifDuration);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
       <form
-        onSubmit={async(e)=>{await handleSubmit(e)}}
+        onSubmit={async (e) => {
+          await handleSubmit(e);
+        }}
         className="flex justify-center mx-28 ml-48 my-16 items-center w-full"
       >
         {/* Left Container */}
@@ -292,28 +290,12 @@ const Register__Login = () => {
             <p className="text-center text-3xl font-medium">
               {signUp ? "Login" : "Signup"}
             </p>
-                <div className="flex justify-around gap-10 cursor-pointer">
-                  <p
-                    onClick={handleClient}
-                    className={role === "Client" ? "active" : "inactive"}
-                  >
-                    Client
-                  </p>
-                  {
-                    signUp && (
-                      <p
-                    onClick={handleTherapist}
-                    className={role === "Therapist" ? "active" : "inactive"}
-                  >
-                    Therapist
-                  </p>
-                    )
-                  }
-                  
-                </div>
+            <div className="text-2xl font-semibold">
+              <p>Client</p>
+            </div>
 
             {!showSection ? (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col font-medium text-lg gap-3">
                 {!signUp && (
                   <input
                     className="bg-cyan-100  p-2 w-[100%]  outline-none rounded-lg"
@@ -353,7 +335,7 @@ const Register__Login = () => {
                 <p className="m-0 p-0 text-red-600"> {error} </p>
                 <button
                   onClick={handleSubmission}
-                  className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 text-base"
+                  className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
                 >
                   {signUp ? "Login" : "Send OTP"}
                 </button>
@@ -361,9 +343,7 @@ const Register__Login = () => {
                   onClick={handleClick}
                   className="text-cyan-500 cursor-pointer"
                 >
-                  {signUp
-                    ? "Signup "
-                    : "Already Registered ? Login Now"}
+                  {signUp ? "Signup " : "Already Registered ? Login Now"}
                 </p>
                 {signUp ? (
                   <Link to="/forgot-password">
@@ -404,24 +384,23 @@ const Register__Login = () => {
           </div>
         </div>
         {/* Right Container */}
-     <div className="w-[50%]">
-     <div className="bg-cyan-600 rounded-lg w-[306px] flex items-center mr">
-      {showGif ? (
-        <img
-          src={require(`./images/aroundwithin-speed.gif`)}
-          alt=""
-          className="w-full rounded-md"
-        />
-      ) : (
-        <img
-          loading="lazy"
-          srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&"
-          className="w-full rounded-md"
-        />
-      )}
-    </div>
-     </div>
-        
+        <div className="w-[50%]">
+          <div className="bg-cyan-600 rounded-lg w-[306px] flex items-center mr">
+            {showGif ? (
+              <img
+                src={require(`./images/aroundwithin-speed.gif`)}
+                alt=""
+                className="w-full rounded-md"
+              />
+            ) : (
+              <img
+                loading="lazy"
+                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/097017b6221225ba91654ced9fdf666cd0fa2e4d4c5218e043ea12cb8afdf043?apiKey=8587097ed3a94b279b125430c3e068a6&"
+                className="w-full rounded-md"
+              />
+            )}
+          </div>
+        </div>
       </form>
     </>
   );

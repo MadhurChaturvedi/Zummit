@@ -42,6 +42,8 @@ import Therapist_Responses from "./components/Therapist/Responses/Therapist_Resp
 import Therapist_Transactions from "./components/Therapist/Transactions/Therapist_Transactions";
 import Therapist_Profile from "./components/Therapist/Profile/Therapist_Profile";
 import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
+import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Login";
+import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -174,6 +176,23 @@ const routes = [
   },
 
   {
+    path: "/therapist-login",
+    element: (
+      <WithHeaderAndFooter>
+        <Therapist_Login />
+      </WithHeaderAndFooter>
+    ),
+  },
+  {
+    path: "/therapist-register",
+    element: (
+      <WithHeaderAndFooter>
+        <Therapist_SignUp />
+      </WithHeaderAndFooter>
+    ),
+  },
+
+  {
     path: "/admin-login",
     element: (
       <WithHeaderAndFooter>
@@ -216,6 +235,8 @@ const routes = [
   { path: "/therapist-responses", element: <Therapist_Responses /> },
   { path: "/therapist-transactions", element: <Therapist_Transactions /> },
   { path: "/therapist-profile", element: <Therapist_Profile /> },
+  { path: "/therapist-login", element: <Therapist_Login /> },
+  { path: "/therapist-register", element: <Therapist_SignUp /> },
   { path: "/admin-login", element: <Login /> },
   { path: "/admin-register", element: <SignUp /> },
 ];
