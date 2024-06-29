@@ -8,7 +8,7 @@ const Appointment = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/therapist/gettherapistAppointmentLists")
+      .get("https://zummit-chandan.onrender.com/api/therapist/gettherapistAppointmentLists")
       .then((response) => {
         if (response.data.success) {
           setAppointmentsList(response.data.therapistAppointmentData);
