@@ -3,7 +3,11 @@ import { addUser } from "../../../utils/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Input from "@material-ui/core/Input";
 //main component toh yaha hey
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -20,6 +24,22 @@ const SignUp = () => {
   const [otpVerify, setOtpVerify] = useState("");
   const [showGif, setShowGif] = useState(true);
   const navigate = useNavigate();
+
+  const [values, setValues] = React.useState({
+    password: "",
+    showPassword: false,
+  });
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const registerUser = async (userData) => {
     console.log(userData);
@@ -306,21 +326,33 @@ const SignUp = () => {
                 onChange={handleInputChange}
                 placeholder="Email or Phone Number"
               />
-              <input
+              {/* <input
                 className="bg-cyan-100  p-2 w-[100%]  outline-none rounded-lg"
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
-              />
-              <input
-                className="bg-cyan-100  p-2 w-[100%]  outline-none rounded-lg"
-                type="password"
-                value={reEnterPassword}
-                onChange={handleReEnterPassword}
-                placeholder="Re-Enter Passowrd"
+              /> */}
+              <Input
+                type={values.showPassword ? "text" : "password"}
+                onChange={handlePasswordChange}
+                className="bg-cyan-100  w-[100%] hover:outline-none hover:border-none border-none px-2 outline-none mb-0  rounded-lg"
+                value={password}
+                placeholder="Enter Password"
+                endAdornment={
+                  <nputAdornment position="end">
+                    <IconButton onClick={handleClickShowPassword}>
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </nputAdornment>
+                }
               />
               <p className="m-0 p-0 text-red-600"> {error} </p>
+              <input
+                className="w-[90%] mt-0 py-2 file:mr-5 focus:outline-none rounded-xl  file:rounded-lg file:text-base file:border-none file:font-semibold file:bg-yellow file:text-green-500 file:px-4 file:py-2"
+                type="file"
+                // onChange={(e) => setImageFile(e.target.files[0])}
+              />
               <button
                 onClick={handleSubmission}
                 className="w-[40%] rounded-lg bg-yellow p-2 text-green-500"

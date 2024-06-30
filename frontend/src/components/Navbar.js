@@ -70,13 +70,6 @@ function Navbar() {
             </Link>
           ))}
           {user.data._id == undefined && (
-            <Link to={"/login"}>
-              {/* <button
-                className="justify-center self-stretch px-4 py-2 text-[18px] text-black font-bold bg-yellow rounded-lg transition ease-in-out duration-500 hover:scale-105"
-                tabIndex="0"
-              >
-                Login/Signup
-              </button> */}
               <div className="group inline-block">
                 <button
                   aria-haspopup="true"
@@ -118,7 +111,6 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-            </Link>
           )}
           {user.data._id != undefined && (
             <button
