@@ -323,9 +323,10 @@ const Therapist_SignUp = () => {
               <p className="m-0 p-0 text-red-600"> {error} </p>
               <button
                 onClick={handleSubmission}
-                className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
-              >
+                className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 ">
+            
                 {signUp ? "SignUp" : "Send OTP"}
+
               </button>
               <Link to={"/therapist-login"}>
                 <p

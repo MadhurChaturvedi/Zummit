@@ -290,9 +290,13 @@ const Register__Login = () => {
             <p className="text-center text-3xl font-medium">
               {signUp ? "Login" : "Signup"}
             </p>
+
+        
+
             <div className="text-2xl font-semibold">
               <p>Client</p>
             </div>
+
 
             {!showSection ? (
               <div className="flex flex-col font-medium text-lg gap-3">
@@ -337,7 +341,7 @@ const Register__Login = () => {
                   onClick={handleSubmission}
                   className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
                 >
-                  {signUp ? "Login" : "Send OTP"}
+                  {!signUp ? "Login" : "Send OTP"}
                 </button>
                 <p
                   onClick={handleClick}
