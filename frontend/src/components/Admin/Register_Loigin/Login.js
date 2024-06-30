@@ -107,10 +107,7 @@ const Login = () => {
     }
   };
 
-  //re-render kee baad call karo
-  // useEffect(() => {
-  //   checkForToken();
-  // }, []);
+
 
   const handleClick = () => {
     setSignUp(!signUp);
@@ -301,11 +298,11 @@ const Login = () => {
                   {signUp ? "Login" : "Send OTP"}
                 </button>
                 <Link to={"/admin-register"}>
-                  <p className="text-cyan-500 cursor-pointer">SignUp</p>
+                  <p className="text-cyan-500 text-base cursor-pointer">SignUp</p>
                 </Link>
                 {signUp ? (
                   <Link to="/forgot-password">
-                    <p className="text-cyan-500 cursor-pointer mt-[-10px]">
+                    <p className="text-cyan-500 text-base cursor-pointer mt-[-10px]">
                       Forgot Password?
                     </p>
                   </Link>

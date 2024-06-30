@@ -144,10 +144,7 @@ const Register__Login = () => {
     }
   };
 
-  //re-render kee baad call karo
-  // useEffect(() => {
-  //   checkForToken();
-  // }, []);
+
 
   const handleClick = () => {
     setSignUp(!signUp);
@@ -290,14 +287,9 @@ const Register__Login = () => {
             <p className="text-center text-3xl font-medium">
               {signUp ? "Login" : "Signup"}
             </p>
-
-        
-
             <div className="text-2xl font-semibold">
               <p>Client</p>
             </div>
-
-
             {!showSection ? (
               <div className="flex flex-col font-medium text-lg gap-3">
                 {!signUp && (
@@ -345,13 +337,13 @@ const Register__Login = () => {
                 </button>
                 <p
                   onClick={handleClick}
-                  className="text-cyan-500 cursor-pointer"
+                  className="text-cyan-500 text-base cursor-pointer"
                 >
                   {signUp ? "Signup " : "Already Registered ? Login Now"}
                 </p>
                 {signUp ? (
                   <Link to="/forgot-password">
-                    <p className="text-cyan-500 cursor-pointer mt-[-10px]">
+                    <p className="text-cyan-500 text-base cursor-pointer mt-[-10px]">
                       Forgot Password?
                     </p>
                   </Link>

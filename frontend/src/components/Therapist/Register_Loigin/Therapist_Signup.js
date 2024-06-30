@@ -324,21 +324,19 @@ const Therapist_SignUp = () => {
               <button
                 onClick={handleSubmission}
                 className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 ">
-            
                 {signUp ? "SignUp" : "Send OTP"}
-
               </button>
               <Link to={"/therapist-login"}>
                 <p
                   onClick={handleClick}
-                  className="text-cyan-500 cursor-pointer"
+                  className="text-cyan-500 text-base cursor-pointer"
                 >
                   Already Registered ? Login Now
                 </p>
               </Link>
               {signUp ? (
                 <Link to="/forgot-password">
-                  <p className="text-cyan-500 cursor-pointer mt-[-10px]">
+                  <p className="text-cyan-500 text-base cursor-pointer mt-[-10px]">
                     Forgot Password?
                   </p>
                 </Link>
