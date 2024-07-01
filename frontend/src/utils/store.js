@@ -1,7 +1,7 @@
 import { configureStore} from "@reduxjs/toolkit";
-import userSlice from "./userSlice";
-import bookingSlice from "./bookingSlice";
-import adminSlice from "./adminSlice";
+import userSlice from "./Slices/userSlice";
+import bookingSlice from "./Slices/bookingSlice";
+import adminSlice from "./Slices/adminSlice";
 
 // const persistConfig = {
 //     key: 'store',

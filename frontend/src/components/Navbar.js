@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { removeUser } from "../utils/userSlice";
+import { removeUser } from "../utils/Slices/userSlice";
 //import axios from "axios";
 //axios.defaults.headers.post["Content-Type"] = "application/json";
 //axios.defaults.headers.patch["Content-Type"] = "application/json";

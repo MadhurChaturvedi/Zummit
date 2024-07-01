@@ -1,6 +1,6 @@
 import * as React from "react";
-import Therapists from "./Therapists";
-import Side_Navbar from "./Side_Navbar";
+import Therapists from "../Therapists";
+import Side_Navbar from "../Side_Navbar";
 function BookingPage() {
     return (<>
     <div className="flex">

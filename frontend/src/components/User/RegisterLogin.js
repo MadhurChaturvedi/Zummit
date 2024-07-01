@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { addUser } from "../utils/userSlice";
+import { addUser } from "../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -328,7 +328,7 @@ const Register__Login = () => {
           <div className="bg-cyan-600 rounded-lg w-[306px] flex items-center mr">
             {showGif ? (
               <img
-                src={require(`./images/aroundwithin-speed.gif`)}
+                src={require(`../../../src/components/images/aroundwithin-speed.gif`)}
                 alt=""
                 className="w-full rounded-md"
               />

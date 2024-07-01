@@ -6,7 +6,7 @@ import GroupTherapyImg1 from './images/group_therapy_img1.jpg'
 import GroupTherapyImg2 from './images/group_therapy_img2.jpg'
 import GroupTherapyImg3 from './images/group_therapy_img3.jpg'
 import { useDispatch, useSelector } from "react-redux";
-import { addGroup } from '../utils/bookingSlice'
+import { addGroup } from '../utils/Slices/bookingSlice'
 import { Link, useParams } from 'react-router-dom';
 import axios from "axios";
 

@@ -3,7 +3,7 @@ import axios from "axios";
 async function VerifyClient() {
   let error = false;
   let userData;
-  const token = localStorage.get("token");
+  const token = localStorage.getItem("token");
 
   await axios
     .get("https://zummit-chandan.onrender.com/api/users/verifyClient", {

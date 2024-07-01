@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from 'react-router-dom';
-import Side_Navbar from "./Side_Navbar";
+import Side_Navbar from "../Side_Navbar";
 function ShowBookingDetailsPage() {
     return (<>
     <div className="flex">
