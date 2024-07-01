@@ -34,8 +34,8 @@ function Side_Navbar() {
             <button className={`pl-4 ${isActive('/') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
               Billings
             </button>
-            <button className={`pl-4 ${isActive('/resources') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
-              <Link to="/resources" >Resources</Link>
+            <button className={`pl-4 ${isActive('/userdashboard-resources') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
+              <Link to="/userdashboard-resources" >Resources</Link>
             </button>
             <button className={`pl-4 ${isActive('/FAQs') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
               <Link to="/FAQs" >FAQ</Link>

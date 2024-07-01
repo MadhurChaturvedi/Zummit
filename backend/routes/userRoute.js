@@ -57,7 +57,7 @@ router.post("/Supportgroup", createSupportGroupSession);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/logout", logout);
-router.get("/getUser", protect, getUser);
+router.get("/getUser", getUser);
 router.get("/verifyClient", VerifyClient_ByToken);
 router.get("/upcomingGroups", upCommingGroups);
 

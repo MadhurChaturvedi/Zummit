@@ -131,16 +131,31 @@ const logout = asyncHandler(async (req, res) => {
   });
 });
 
-const getUser = (req, res) => {
-  if (token) {
-    const user = User.findBy(body.input);
-    res.status(200).json({
-      success: true,
-      data: user,
-      msg: "user found",
-    });
+const getUser = asyncHandler(async (req, res) => {
+  const { userToken } = req.body;
+    if (!userToken) {
+        return res.status(401).json({ error: "Unauthorized user" });
+    }
+    try {
+      const decoded = jwt.verify(userToken, process.env.JWT_SECRET);
+      const userId = decoded.id;
+      console.log(decoded);
+      const user = await User.findById(userId).select('-password');
+
+      if (!user) {
+          return res.status(404).json({ error: "User not found" });
+      }
+
+      res.status(200).json({
+          success: true,
+          data: user,
+          message: "User retrieved successfully",
+      });
+  } catch (error) {
+      console.error(`Error verifying user by token: ${error.message}`);
+      res.status(500).json({ message: "Internal server error" });
   }
-};
+});
 
 const VerifyClient_ByToken = asyncHandler(async (req, res) => {
   try {
