@@ -4,8 +4,7 @@ import axios from "axios";
 const Transactions = () => {
   const [transactions, setTransactions] = useState([])
   useEffect(() => {
-    axios
-    .get('https://zummit-chandan.onrender.com/api/therapist/gettherapistTransactionLists')
+    axios.get('https://zummit-chandan.onrender.com/api/therapist/gettherapistTransactionLists')
       .then((response) => { 
         if (response.data.success) {
           setTransactions(response.data.therapistTransactionData);
@@ -19,6 +18,7 @@ const Transactions = () => {
   }, []);
   const cancelledStyle = { color: "#B00202" };
   const completedStyle = { color: "#02B04A" };
+  console.log(transactions);
 
   const getStyle = (report) => {
     switch (report) {
