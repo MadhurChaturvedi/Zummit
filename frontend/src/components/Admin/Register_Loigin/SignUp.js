@@ -351,7 +351,7 @@ const SignUp = () => {
               </div>
               <p className="m-0 p-0 text-red-600"> {error} </p>
               <input
-                className="w-[90%] py-2 file:mr-5 focus:outline-none rounded-xl  file:rounded-lg file:text-base file:border-none file:font-semibold file:bg-yellow file:text-green-500 file:px-4 file:py-2"
+                className="w-[90%] file:cursor-pointer py-2 file:mr-5 focus:outline-none rounded-xl  file:rounded-lg file:text-base file:border-none file:font-semibold file:bg-yellow file:text-green-500 file:px-4 file:py-2"
                 type="file"/>
               <button
                 onClick={handleSubmission}

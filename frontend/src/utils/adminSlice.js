@@ -2,15 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const adminSlice = createSlice({
   name: "admin",
-  initialState:{
-    Admin:null,
+  initialState: {
+    Admin: null,
   },
   reducers: {
     addAdmin: (state, action) => {
-      state.Admin= action.payload;
+      state.Admin = action.payload;
     },
     removeAdmin: (state, action) => {
-      state.Admin=null;
+      state.Admin = null;
     },
   },
 });
