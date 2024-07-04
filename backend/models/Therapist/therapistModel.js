@@ -8,9 +8,9 @@ const therapistSchema = new mongoose.Schema(
     },
     professional_title: {
       type: String,
-      required: true,
+      // required: true,
     },
-    email: {
+    input: {
       type: String,
       required: true,
       unique: true,
@@ -71,6 +71,10 @@ const therapistSchema = new mongoose.Schema(
     admin: {
       type: String,
     },
+    loginCount: {
+      type : Number,
+      default : 0
+    }
   },
   {
     timestamps: true,
