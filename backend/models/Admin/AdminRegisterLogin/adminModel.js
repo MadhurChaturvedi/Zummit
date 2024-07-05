@@ -26,7 +26,6 @@ const adminLoginRegisterSchema = new mongoose.Schema(
         },
         imageUrl:{
           type:String,
-          required:true
       },
        
     },
