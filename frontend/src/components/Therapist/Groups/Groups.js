@@ -83,9 +83,11 @@ const Groups = () => {
         </div>
         {data.map((item) => (
           <div className="flex gap-4 w-full p-2 pr-20 text-lg rounded-lg">
-            <h1 className="w-[14rem]">{item.id}</h1>
-            <h1 className="w-[10rem]">{item.member}</h1>
+            <h1 className="w-[14rem]">{item.GroupName}</h1>
+            <h1 className="w-[10rem]">{item.Members}</h1>
             <h1 className="w-[14rem]">{item.session}</h1>
+            <h1 className="w-[14rem]">{item.Feedback}</h1>
+            <h1 className="w-[14rem]">{item.lastSession}</h1>
             <h1 onClick={toggleHandler} className="cursor-pointer w-[14rem]">{item.Feedback}</h1>
             <h1>{item.date}</h1>
           </div>
