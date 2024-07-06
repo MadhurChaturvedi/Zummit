@@ -17,7 +17,6 @@ import GroupTherapyDetail from "./components/GroupTherapyDetail";
 import RegisterLogin from "./components/User/RegisterLogin";
 import BookingPage from "./components/User/BookingPage";
 import ForgotPassword from "./components/ForgotPassword";
-
 import TherapistDetailsPage from "./components/User/TherapistDetailsPage";
 import BookTherapistPage from "./components/User/BookTherapistPage";
 import ShowBookingDetailsPage from "./components/User/ShowBookingDetailsPage";
@@ -44,6 +43,7 @@ import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
 import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Login";
 import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
 import UserDashboard from "./components/UserDashboard";
+import UserResources from "./components/UserResources"
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -212,6 +212,7 @@ const routes = [
     path: "/",
   },
   { path: "/userdashboard", element: <UserDashboard /> },
+  { path: "/userdashboard-resources", element: <UserResources /> },
   { path: "/bookingPage", element: <BookingPage /> },
   { path: "/TherapistDetailsPage/:id", element: <TherapistDetailsPage /> },
   { path: "/BookTherapistPage", element: <BookTherapistPage /> },

@@ -1,6 +1,6 @@
 import React, { useState,useRef } from "react";
 import { Link } from "react-router-dom";
-import Resume from "../Privacy/AroundWithin - Privacy and Confidentiality Policy.pdf";
+import CancellationPolicy from "./CancellationPolicy";
 const Section = ({ title, description, isVisible, toggleVisibility }) => {
 
   return (
@@ -61,6 +61,10 @@ const Section = ({ title, description, isVisible, toggleVisibility }) => {
 
 const FAQs = () => {
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showCancellationPrivacy, setShowCancellationPrivacy] = useState(false);
+  const toggleCancellationPrivacy = ()=>{
+    setShowCancellationPrivacy(!showCancellationPrivacy)
+  }
   const togglePrivacyPopup = () => {
     setShowPrivacy(!showPrivacy);
   };
@@ -259,7 +263,9 @@ const FAQs = () => {
           />
           <Section
             title={"How do I cancel or modify my subscription to AroundWithin?"}
-            description={"Please go through our cancellation policy."}
+            description={<>
+            "Please go through our <span onClick={toggleCancellationPrivacy} className="text-[blue] cursor-pointer">cancellation policy</span>."
+            </>}
             isVisible={sectionConfig.showCareers9}
             toggleVisibility={() => toggleVisibility("showCareers9")}
           />
@@ -289,13 +295,16 @@ const FAQs = () => {
           />
         </div>
       </div>
+      {showCancellationPrivacy && (
+        <CancellationPolicy toggleCancellationPrivacy={toggleCancellationPrivacy}/>
+      )}
       {showPrivacy && (
         <div className="background-overlay">
           <div className="fixed inset-0 flex items-center justify-center z-50  ">
             <div className="privacy-popup ">
                 <div className="privacy-popup-header">
                   <i
-                    className="fa-regular fa-circle-xmark privacy-popup-close-icon h-10 cursor-pointer font-bold  text-5xl"
+                    className="privacy-popup-close-icon h-10 cursor-pointer font-bold  text-5xl"
                     onClick={togglePrivacyPopup}
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>

@@ -14,7 +14,7 @@ const Shimmer = () => {
 
       <div className="w-[90%] mt-5 m-5">
         {/* Header */}
-        <div className="flex gap-10  justify-between rounded-md ">
+        <div className="flex gap-10 justify-between rounded-md ">
           <div className="flex justify-between w-[60%]">
             <a className="relative w-[60%] h-40 block overflow-hidden">
               <span id="loader-element"></span>
