@@ -7,11 +7,12 @@ const { groupsDetails, CreategroupsDetails } = require("../controllers/Admin/gro
 const { reviewsList, createReviewsList, deleteReview } = require("../controllers/Admin/reviews");
 const { therapistsDetails, createtherapistsDetails } = require("../controllers/Admin/therapistsDetails");
 const { transactions, createtransactions } = require("../controllers/Admin/transactions");
-const { registerAdmin, loginAdmin } = require("../controllers/Admin/adminController/register_Login");
+const { registerAdmin, loginAdmin, getAdmin } = require("../controllers/Admin/adminController/register_Login");
 const { resources, createResource, updateResource } = require("../controllers/Admin/resourcesList");
 const { protect, admin } = require("../middleware/authorizationMiddleware");
 const { createTherapist } = require("../controllers/Admin/therapistCredentials/createCredentials");
-const { createAdminVideo, deleteAdminVideo } = require("../controllers/Admin/adminVideoController")
+const { createAdminVideo, deleteAdminVideo } = require("../controllers/Admin/adminVideoController");
+
 
 const router = express.Router();
 
@@ -43,6 +44,7 @@ router.route("/deleteReview").post(deleteReview);
 
 
 //get API's
+router.route("/getAdmin").get(getAdmin);
 router.route("/adminDashboard").get(adminDashboard);
 router.route("/appointmentslist").post(appointmentsList);
 router.route("/clienlist").post(clientsList);

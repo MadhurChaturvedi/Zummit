@@ -1,14 +1,15 @@
 import * as React from "react";
-import Therapists from "../Therapists";
+import Therapists from "../HomePage/Our_Therapist";
 import Side_Navbar from "../Side_Navbar";
 function BookingPage() {
-    return (<>
-    <div className="flex">
+  return (
+    <>
+      <div className="flex">
         <Side_Navbar />
         <Therapists />
-    </div>
-       
-    </>)
+      </div>
+    </>
+  );
 }
 
-export default BookingPage
+export default BookingPage;

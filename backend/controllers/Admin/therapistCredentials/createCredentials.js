@@ -97,36 +97,9 @@ const logoutTherapist = asyncHandler(async (req, res) => {
   });
 });
 
-const getTherapist = asyncHandler(async (req, res) => {
-  const token = req.cookies.token;
-
-  if (!token) {
-    return res
-      .status(401)
-      .json({ success: false, msg: "No token provided, authorization denied" });
-  }
-
-  try {
-    const therapist = await Therapist.find({}).select("-password");
-    if (!therapist) {
-      return res
-        .status(404)
-        .json({ success: false, msg: "Therapists not found" });
-    }
-
-    res.status(200).json({
-      success: true,
-      data: therapist,
-      msg: "Therapists found"
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Server error" });
-  }
-});
 
 module.exports = {
   createTherapist,
   logoutTherapist,
-  getTherapist,
+
 };

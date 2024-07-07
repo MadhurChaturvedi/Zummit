@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/HomePage/Navbar";
 import "./App.css";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import About from "./components/About";
-import Services from "./components/Services";
-import Therapists from "./components/Therapists";
+import Footer from "./components/HomePage/Footer";
+import Home from "./components/HomePage/Home";
+
+import Services from "./components/HomePage/Services";
+import Our_Therapist from "./components/HomePage/Our_Therapist";
 import Resources from "./components/Resources";
-import FAQ from "./components/FAQ";
-import IndividualTherapy from "./components/IndividualThearapy";
-import GroupTherapy from "./components/GroupTherapy";
-import SupportTherapy from "./components/SupportTherapy";
-import ContactSection from "./components/ContactSection";
-import GroupTherapyDetail from "./components/GroupTherapyDetail";
+import FAQ from "./components/HomePage/FAQ";
+import IndividualTherapy from "./components/HomePage/IndividualThearapy";
+import GroupTherapy from "./components/HomePage/GroupTherapy";
+import SupportTherapy from "./components/HomePage/SupportTherapy";
+import ContactSection from "./components/HomePage/ContactSection";
+import GroupTherapyDetail from "./components/HomePage/GroupTherapyDetail";
 import RegisterLogin from "./components/User/RegisterLogin";
 import BookingPage from "./components/User/BookingPage";
 import ForgotPassword from "./components/ForgotPassword";
@@ -43,7 +43,13 @@ import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
 import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Login";
 import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
 import UserDashboard from "./components/UserDashboard";
-import UserResources from "./components/UserResources"
+import UserResources from "./components/User/UserResources";
+
+import { useDispatch } from "react-redux";
+import { addUser } from "./utils/Slices/userSlice";
+import { addTherapist } from "./utils/Slices/therapistSlice";
+import { addAdmin } from "./utils/Slices/adminSlice";
+import About from "./components/HomePage/About";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -128,7 +134,7 @@ const routes = [
         path: "",
         element: (
           <WithHeaderAndFooter>
-            <Therapists />
+            <Our_Therapist />
           </WithHeaderAndFooter>
         ),
       },
@@ -253,6 +259,64 @@ function renderRoutes(routes) {
 }
 
 function App() {
+  const dispatch = useDispatch();
+  const userToken = localStorage.getItem("userToken");
+  const therapistToken = localStorage.getItem("therapistToken");
+  const adminToken = localStorage.getItem("adminToken");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [user, therapist, admin] = await Promise.all([
+          fetch("https://zummit-chandan.onrender.com/api/users/getUser", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${userToken}`
+            },
+        
+            credentials: "include",
+           
+          }),
+          fetch(
+            "https://zummit-chandan.onrender.com/api/therapist/getTherapist",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${therapistToken}`
+              },
+              
+              credentials: "include",
+              
+            }
+          ),
+          fetch("https://zummit-chandan.onrender.com/api/admin/getAdmin", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${adminToken}`
+            },
+           
+            credentials: "include",
+            
+          }), 
+        ]);
+
+        const userInfo = await user.json();
+        const therapistInfo = await therapist.json();
+        const adminInfo = await admin.json();
+
+        dispatch(addUser(userInfo));
+        dispatch(addTherapist(therapistInfo));
+        dispatch(addAdmin(adminInfo));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <Router>
       <Routes>{renderRoutes(routes)}</Routes>

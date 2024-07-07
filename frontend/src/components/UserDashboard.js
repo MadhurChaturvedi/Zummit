@@ -122,15 +122,15 @@ function UserDashboard() {
           </div>
           <div className="flex flex-col items-center justify-between">
             <div>
-            <p className="text-[14px] shadow-md bg-[#F7F131] rounded-[8px] px-[8px] py-[4px]">
-              {notification}
-            </p>
+              <p className="text-[14px] shadow-md bg-[#F7F131] rounded-[8px] px-[8px] py-[4px]">
+                {notification}
+              </p>
             </div>
             <div>
-            <button className="px-[16px] py-[8px] rounded text-[#0190B1] border-2 border-[#0190B1]">
-              {buttonText}
-            </button>
-          </div>
+              <button className="px-[16px] py-[8px] rounded text-[#0190B1] border-2 border-[#0190B1]">
+                {buttonText}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -145,8 +145,8 @@ function UserDashboard() {
   return (
     <>
       <div className="flex">
-      {/* Left Container */}
-          <Side_Navbar />
+        {/* Left Container */}
+        <Side_Navbar />
 
         {/* Main Container */}
         <div className="mainContainer bg-[#f2fcff] pl-[22px] w-[82vw]">
@@ -197,7 +197,7 @@ function UserDashboard() {
             </div>
           </div>
         </div>
-        </div>
+      </div>
     </>
   );
 }

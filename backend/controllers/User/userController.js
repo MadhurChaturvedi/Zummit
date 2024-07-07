@@ -132,7 +132,8 @@ const logout = asyncHandler(async (req, res) => {
 });
 
 const getUser = asyncHandler(async (req, res) => {
-  const { userToken } = req.body;
+  const authHeader = req.headers['authorization'];
+    const userToken = authHeader && authHeader.split(' ')[1];
     if (!userToken) {
         return res.status(401).json({ error: "Unauthorized user" });
     }

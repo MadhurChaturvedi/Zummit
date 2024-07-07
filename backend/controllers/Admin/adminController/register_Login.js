@@ -156,7 +156,36 @@ const loginAdmin = asyncHandler(async (req, res) => {
   }
 });
 
+const getAdmin = asyncHandler(async (req, res) => {
+  const authHeader = req.headers['authorization'];
+  const adminToken = authHeader && authHeader.split(' ')[1];
+    if (!adminToken) {
+        return res.status(401).json({ error: "Unauthorized Admin" });
+    }
+    try {
+      const decoded = jwt.verify(adminToken, process.env.JWT_SECRET);
+      const adminId = decoded.id;
+    
+      const admin = await AdminLoginRegister.findById(adminId).select('-password');
+
+      if (!admin) {
+          return res.status(404).json({ error: "Admin not found" });
+      }
+
+      res.status(200).json({
+          success: true,
+          data: user,
+          message: "Admin retrieved successfully",
+      });
+  } catch (error) {
+      console.error(`Error verifying Admin by token: ${error.message}`);
+      res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
 module.exports = {
   registerAdmin,
   loginAdmin,
+  getAdmin
 };

@@ -27,9 +27,6 @@ const SignUp = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
-
-
-
   const registerAdmin = async (userData) => {
     console.log(userData);
     // Check if OTP and verifyOTP are equal
@@ -304,7 +301,7 @@ const SignUp = () => {
                   type={isPasswordVisible ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="Enter Your Password"
                   className="w-[90%] p-2 bg-cyan-100 rounded-md outline-none"
                 />
                 <span
@@ -349,10 +346,23 @@ const SignUp = () => {
                   )}
                 </span>
               </div>
+              <div className="flex rounded-md items-center bg-cyan-100">
+                <input
+                  type={isPasswordVisible ? "text" : "password"}
+                  value={reEnterPassword}
+                  onChange={(e) => setReEnterPassword(e.target.value)}
+                  placeholder="Re-Enter Your Password"
+                  className="w-[90%] p-2 bg-cyan-100 rounded-md outline-none"
+                />
+                <span
+                  onClick={togglePasswordVisibility}
+                  className="password-toggle-icon"
+                ></span>
+              </div>
               <p className="m-0 p-0 text-red-600"> {error} </p>
-              <input
+              {/* <input
                 className="w-[90%] file:cursor-pointer py-2 file:mr-5 focus:outline-none rounded-xl  file:rounded-lg file:text-base file:border-none file:font-semibold file:bg-yellow file:text-green-500 file:px-4 file:py-2"
-                type="file"/>
+                type="file"/> */}
               <button
                 onClick={handleSubmission}
                 className="w-[40%] rounded-lg bg-yellow p-2 text-green-500"
