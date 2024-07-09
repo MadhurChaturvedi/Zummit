@@ -5,6 +5,7 @@ import { checkToken } from "../../utils/Hooks/checkToken.js";
 import LoginReq_pop from "../PopUps/LoginReq_pop.js";
 import { addCouncellor } from "../../utils/Slices/bookingSlice.js";
 import useFetch from "../../utils/Hooks/fetchData.js";
+import SearchContainer from "../User/SearchContainer.js"
 
 const Our_Therapist = () => {
   const [allTherapists, setAllTherapists] = useState([]);
@@ -32,10 +33,20 @@ const Our_Therapist = () => {
     }
   };
 
+  function handleView(therapistID) {
+    sessionStorage.setItem("selectedCouncellor", therapistID)
+    if (!checkToken("token")) {
+      navigate(`/therapist/${therapistID}`)
+    } else {
+      navigate(`/TherapistDetailsPage/${therapistID}`)
+    }
+  }
+
   function handleBook(therapistID) {
     if (!checkToken("token")) {
       setShowPopUp(true);
     } else {
+      sessionStorage.setItem("selectedCouncellor", therapistID)
       dispatch(addCouncellor(therapistID));
       navigate("/BookTherapistPage");
     }
@@ -113,121 +124,89 @@ const Our_Therapist = () => {
   ];
   return (
     <React.Fragment>
-      {ShowPopUp && <LoginReq_pop setShowPopUp={setShowPopUp} />}
-      <div className="m-0 p-0">
-        <div className="px-[194px] m-0 pb-[68px]">
-          <div className="h-[120px] m-0 pt-[33px]">
-            <div className="p-0 m-0 flex justify-center">
-              <div class="relative  h-[57px]">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                  <svg
-                    class="w-4 h-4 text-gray-500 "
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="search"
-                  id="default-search"
-                  class="block w-[743px] p-4 ps-10 text-sm rounded-lg bg-[#EFF7FF] border border-[#B4F0FF] outline-none"
-                  placeholder="Search "
-                  required
-                  onKeyDown={handleSearchInput}
-                />
-              </div>
-            </div>
-          </div>
-          <div className=" flex text-2xl mb-8font-medium leading-9 max-w-[416px] text-slate-950 mb-[2vh] ">
-            Therapists
-          </div>
-          <div className="grid grid-cols-1 xlg:grid-cols-2 m-0 p-0  gap-x-[27px] gap-y-[32px]">
-            {allTherapists.map((therapist, index) => {
-              return (
-                <div
-                  className=" h-[288px] border border-[#1d96b4] rounded-md"
-                  key={therapist.name + index}
-                >
-                  <div className="h-[209px]  m-0 p-[24px] pb-[19px] bg-[#0190B1] rounded-t-md">
-                    <div className="m-0 p-0 h-full flex gap-[12px]">
-                      <div className="m-0 p-0 h-full xlg:w-[0] xlg2:w-[100px] sm:w-[129px] w-[0px] ">
-                        <img
-                          src={require(`../images/${therapists_info[0].profile_image}`)}
-                          alt={therapist.name}
-                          className="object-contain w-full rounded-md"
-                        />
-                      </div>
-                      <div className="m-0 p-0 ">
-                        <p className="therapist-page__name 2xl:text-[28px] xl:text-[24px] lg:text-[22px] sm:text-[18px]">
-                          {therapist.name}
-                        </p>
-                        <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-[8px] sm:text-[14px]">
-                          I have experience over {therapists_info[0].experience}{" "}
-                          years
-                        </p>
-                        <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px] sm:text-[14px] lg:mt-[5px] sm:mt-[2px] flex flex-row gap-1">
-                          Expertise:
-                          {therapists_info[0].expertise.map((expertise) => {
-                            return <span>{expertise}</span>;
-                          })}
-                        </p>
-                        <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px] sm:text-[14px] lg:mt-[5px] sm:mt-[2px]">
-                          {" "}
-                          <span>Starts@ {therapists_info[0].charge}</span> for
-                          one session
-                        </p>
-                        <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px]  sm:text-[14px] lg:mt-[5px] sm:mt-[2px] flex flex-row gap-1">
-                          Languages:{" "}
-                          {therapists_info[0].languages.map((language) => {
-                            return <span>{language}</span>;
-                          })}
-                        </p>
-                      </div>
+    {ShowPopUp && <LoginReq_pop setShowPopUp={setShowPopUp} />}
+    <div>
+      <div className="px-10">
+        <SearchContainer />
+        <div className="text-2xl mb-5 font-medium">
+          Therapists
+        </div>
+        <div className="flex flex-wrap gap-10">
+          {allTherapists.map((therapist, index) => {
+            return (
+              <div
+                className="w-[45%] border border-[#1d96b4] rounded-md"
+                key={therapist.name + index}
+              >
+                <div className="h-[209px] m-0 p-[24px] pb-[19px] bg-[#0190B1] rounded-t-md">
+                  <div className="flex gap-10">
+                    <div>
+                      <img
+                        src={require(`../images/${therapists_info[0].profile_image}`)}
+                        alt={therapist.name}
+                        className="w-32 rounded-md"
+                      />
+                    </div>
+                    <div className="m-0 p-0 ">
+                      <p className="therapist-page__name 2xl:text-[28px] xl:text-[24px] lg:text-[22px] sm:text-[18px]">
+                        {therapist.name}
+                      </p>
+                      <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-[8px] sm:text-[14px]">
+                        I have experience over {therapists_info[0].experience}{" "}
+                        years
+                      </p>
+                      <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px] sm:text-[14px] lg:mt-[5px] sm:mt-[2px] flex flex-row gap-1">
+                        Expertise:
+                        {therapists_info[0].expertise.map((expertise) => {
+                          return <span>{expertise}</span>;
+                        })}
+                      </p>
+                      <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px] sm:text-[14px] lg:mt-[5px] sm:mt-[2px]">
+                        {" "}
+                        <span>Starts@ {therapists_info[0].charge}</span> for
+                        one session
+                      </p>
+                      <p className="therapist-page__desc lg:text-[14px] xl:text-[14px] mt-0 xl:mt-[8px]  sm:text-[14px] lg:mt-[5px] sm:mt-[2px] flex flex-row gap-1">
+                        Languages:{" "}
+                        {therapists_info[0].languages.map((language) => {
+                          return <span>{language}</span>;
+                        })}
+                      </p>
                     </div>
                   </div>
+                </div>
 
-                  <div className="m-0 p-0 h-[77px]  rounded-b-md bg-[#EFF7FF] grid xl:grid-cols-[0.6fr_0.6fr_1fr_0.8fr] 2xl:grid-cols-[0.8fr_0.8fr_1fr_0.8fr] sm:grid-cols-[1fr_1fr]">
-                    <div id="dummy"></div>
-                    <div id="dummy"></div>
-                    <div className="xl:mt-4 sm:mt-2 sm:ms-4">
-                      <Link
-                        to={
-                          user._id == undefined
-                            ? `/therapist/${therapist._id}`
-                            : `/TherapistDetailsPage/${therapist._id}`
-                        }
-                        target="_top"
-                      >
-                        <button class="bg-transparent  text-[#0190B1] font-semibold py-2 px-4 border border-[#0190B1] rounded">
-                          View Profile
-                        </button>
-                      </Link>
-                    </div>
-                    <div className="xl:mt-4 sm:mt-2 sm:ms-4">
-                      <button
-                        class="bg-[#0190B1] text-white font-semibold py-2 px-4 rounded"
-                        onClick={() => handleBook(therapist._id)}
-                      >
-                        Book Appointment
+                <div className="flex justify-between rounded-b-md bg-[#EFF7FF] p-4">
+                  <div>
+                    <Link
+                      to={
+                        user._id == undefined
+                          ? `/therapist/${therapist._id}`
+                          : `/TherapistDetailsPage/${therapist._id}`
+                      }
+                      target="_top"
+                    >
+                      <button class="bg-transparent  text-[#0190B1] font-semibold py-2 px-4 border border-[#0190B1] rounded">
+                        View Profile
                       </button>
-                    </div>
+                    </Link>
+                  </div>
+                  <div>
+                    <button
+                      class="bg-[#0190B1] text-white font-semibold py-2 px-4 rounded"
+                      onClick={() => handleBook(therapist._id)}
+                    >
+                      Book Appointment
+                    </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </React.Fragment>
+    </div>
+  </React.Fragment>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addCouncellor } from "../../../utils/Slices/bookingSlice";
 import { checkToken } from "../../../utils/Hooks/checkToken";
@@ -9,29 +9,31 @@ import axios from "axios";
 import UserSidebar from "../UserSidebar";
 
 function TherapistDetailsPage() {
+
   const [showPopUp, setShowPopUp] = useState(false);
   const [noResultError, setNoResultError] = useState({ error: false, status: null });
-  const [loading, setLoading] = useState(true);
+  const [CouncellorData, setCouncellorData] = useState(null);
+  const [loading, setLoading] = useState(true);  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const therapistDetails = useSelector((state) => state.booking.selectedCouncellor);
-  const user = useSelector((state) => state.user.data)
+  const user = localStorage.getItem("userID")
 
   useEffect(() => {
-    const fetchDataAndAuthorize = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true); //start displaying loader
 
         // Fetch therapist details
         await axios.get(`https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails/find/${id}`).then((res) => {
-
-          if(res.data._id){
-            dispatch(addCouncellor(res.data));
+          if(res.data.name){
+            dispatch(addCouncellor({ _id: id }))
+            setCouncellorData(res.data);
+          }else{
+            setNoResultError({ error: true })
           }
         }).catch((err) => {
-          console.log(err)
           if(err.response.status === 404 || 500){
             setNoResultError({ error: true, status: err.response.status})
           }
@@ -44,7 +46,7 @@ function TherapistDetailsPage() {
       }
     };
 
-    fetchDataAndAuthorize();
+    fetchData();
   }, [dispatch, id]);
 
   if (loading) {
@@ -57,7 +59,7 @@ function TherapistDetailsPage() {
 
   const handleBookingClick = (e) => {
     e.preventDefault();
-    if (!checkToken()) {
+    if (!checkToken("token")) {
       setShowPopUp(true);
     } else {
       navigate("/BookTherapistPage");
@@ -68,17 +70,17 @@ function TherapistDetailsPage() {
     {
       showPopUp && <LoginReq_pop setShowPopUp={setShowPopUp} />
     }
-    <div className={user._id ? "flex" : "flex justify-center"}>
+    <div className={user ? "flex" : "flex justify-center"}>
       {
-        (user._id && user.role === "client") && <UserSidebar />
+        user && <UserSidebar />
       }
       <div className="flex-col ml-[2vw] ">
         {/* search bar element */}
         <div className="flex justify-center mt-[4vh]">
-          <div class="relative  h-[57px]">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <div className="relative  h-[57px]">
+            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
-                class="w-4 h-4 text-gray-500 "
+                className="w-4 h-4 text-gray-500 "
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -86,9 +88,9 @@ function TherapistDetailsPage() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
@@ -96,7 +98,7 @@ function TherapistDetailsPage() {
             <input
               type="search"
               id="default-search"
-              class="block w-[743px] p-4 ps-10 text-sm rounded-lg bg-[#EFF7FF] border border-[#B4F0FF] outline-none"
+              className="block w-[743px] p-4 ps-10 text-sm rounded-lg bg-[#EFF7FF] border border-[#B4F0FF] outline-none"
               placeholder="Search "
               required
             />
@@ -104,7 +106,7 @@ function TherapistDetailsPage() {
         </div>
         {/* Therapist name */}
         <div className=" flex text-2xl mb-8font-medium leading-9 max-w-[416px] text-slate-950 mt-[2vh] mb-[2vh] ">
-          Therapists/{therapistDetails.name}
+          Therapists/{CouncellorData && CouncellorData.name}
         </div>
         {/* Therapist details card */}
         <div className="flex flex-col justify-center max-w-[983px]">
@@ -117,6 +119,7 @@ function TherapistDetailsPage() {
 
                     <div className="flex flex-col w-[36%] max-md:ml-0 max-md:w-full">
                       <img
+                        alt="doctor profile"
                         loading="lazy"
                         srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/9eff4a30a60078ee6faa48a221b86524e94b6d9a9e98bc57984a01f47e712c9c?apiKey=8587097ed3a94b279b125430c3e068a6&"
                         className="grow w-full aspect-[0.91] max-md:mt-3"
@@ -125,7 +128,7 @@ function TherapistDetailsPage() {
                     <div className="flex flex-col ml-5 w-[64%] max-md:ml-0 max-md:w-full">
                       <div className="flex flex-col mt-7 text-xl font-medium max-md:mt-10">
                         <div className="text-3xl font-semibold text-black">
-                        {therapistDetails.name}
+                        {CouncellorData && CouncellorData.name}
                         </div>
                         <div className="flex gap-5 justify-between mt-8">
                           <div className="text-black">Experience</div>
@@ -160,26 +163,31 @@ function TherapistDetailsPage() {
                   </div>
                   <div className="flex gap-1 pr-11 mt-3 max-md:pr-5">
                     <img
+                      alt="rating"
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8f639d8b423b8b5577cc25beee786211b4d0ce50f405ef2e07fddf6cc0a79f9?apiKey=8587097ed3a94b279b125430c3e068a6&"
                       className="shrink-0 w-8 aspect-square"
                     />
                     <img
+                      alt="rating"
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8f639d8b423b8b5577cc25beee786211b4d0ce50f405ef2e07fddf6cc0a79f9?apiKey=8587097ed3a94b279b125430c3e068a6&"
                       className="shrink-0 w-8 aspect-square"
                     />
                     <img
+                      alt="rating"
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8f639d8b423b8b5577cc25beee786211b4d0ce50f405ef2e07fddf6cc0a79f9?apiKey=8587097ed3a94b279b125430c3e068a6&"
                       className="shrink-0 w-8 aspect-square"
                     />
                     <img
+                      alt="rating"
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8f639d8b423b8b5577cc25beee786211b4d0ce50f405ef2e07fddf6cc0a79f9?apiKey=8587097ed3a94b279b125430c3e068a6&"
                       className="shrink-0 w-8 aspect-square"
                     />
                     <img
+                      alt="rating"
                       loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/eed5732c7afa620313d3806b2ba64c1302afa705682c7532cb06ce25b74bc804?apiKey=8587097ed3a94b279b125430c3e068a6&"
                       className="shrink-0 w-8 aspect-square"

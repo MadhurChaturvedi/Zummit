@@ -6,8 +6,12 @@ const therapistScheduleModel = mongoose.Schema(
             type: String,
             required: true
         },
-        ScheduleDate: {
+        TherapistName: {
             type: String,
+            required: true
+        },
+        ScheduleDates: {
+            type: [ String ],
             required: [true, "please add session date"]
         }
     },

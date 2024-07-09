@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const cloudinary = require("cloudinary").v2;
 const AdminLoginRegister = require("../../../models/Admin/AdminRegisterLogin/adminModel");
+const generateToken = require("../../../utils/generateToken")
 
 function isFileTypeSupported(type, supportedTypes) {
   return supportedTypes.includes(type);
@@ -14,11 +15,6 @@ async function uploadFileToCloudinary(file, folder) {
   return await cloudinary.uploader.upload(file.tempFilePath, options);
 }
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
-};
 
 const registerAdmin = asyncHandler(async (req, res) => {
   const { name, input, password, role } = req.body;

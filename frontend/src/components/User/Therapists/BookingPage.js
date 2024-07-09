@@ -1,6 +1,6 @@
 import * as React from "react";
 import UserSidebar from "../UserSidebar";
-import Our_Therapist from "./Our_Therapist";
+import Our_Therapist from "../../HomePage/Our_Therapist";
 
 function BookingPage() {
   return (

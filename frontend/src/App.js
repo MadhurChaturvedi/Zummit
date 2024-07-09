@@ -57,6 +57,12 @@ import UserSupport from "./components/User/Groups/UserSupport";
 import UserBillings from "./components/User/Billings/UserBillings";
 import UserProfile from "./components/User/Profile/UserProfile";
 
+
+
+
+
+import IntakeResponse from "./components/Booking/IntakeResponse";
+
 const WithHeaderAndFooter = ({ children }) => (
   <>
     <Navbar />
@@ -227,7 +233,18 @@ const routes = [
   { path: "/userdashboard-resources", element: <UserResources /> },
   { path: "/bookingPage", element: <BookingPage /> },
   { path: "/TherapistDetailsPage/:id", element: <TherapistDetailsPage /> },
-  { path: "/BookTherapistPage", element: <BookTherapistPage /> },
+  { path: "/BookTherapistPage", 
+    children: [
+      {
+        path: "",
+        element: <BookTherapistPage />
+      },
+      {
+        path: "IntakeForm",
+        element: <IntakeResponse />
+      }
+    ]
+  },
   { path: "/ShowBookingDetailsPage", element: <ShowBookingDetailsPage /> },
   { path: "/admin-dashboard", element: <AdminDashboard /> },
   { path: "/admin-appointments", element: <Admin_Appointments /> },

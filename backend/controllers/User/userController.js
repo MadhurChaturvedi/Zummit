@@ -2,11 +2,7 @@ const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User/userModel");
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "30d",
-  });
-};
+const generateToken = require("../../utils/generateToken")
 
 const registerUser = asyncHandler(async (req, res) => {
   // control variable hai bhai
@@ -160,7 +156,7 @@ const getUser = asyncHandler(async (req, res) => {
 
 const VerifyClient_ByToken = asyncHandler(async (req, res) => {
   try {
-    const authToken = req.cookies.token;
+    const authToken = req.headers['authorization'];
     if (!authToken) {
       return res.status(401).json({ error: "Unauthorized user" });
     }

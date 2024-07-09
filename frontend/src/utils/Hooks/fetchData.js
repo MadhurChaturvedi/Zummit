@@ -13,10 +13,10 @@ const useFetch = (url) => {
       try {
         const res = await axios.get(url);
         setData(res.data);
-        setStatus(res.status);
-        console.log(res)
+
+        //setStatus(res.status);
       } catch (err) {
-        setStatus(err.response.status);
+        //setStatus(err.response.status);
         setError(err);
       }
       setLoading(false);
