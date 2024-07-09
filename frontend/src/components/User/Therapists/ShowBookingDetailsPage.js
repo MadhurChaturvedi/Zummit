@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Link } from 'react-router-dom';
-import Side_Navbar from "../Side_Navbar";
+import UserSidebar from "../UserSidebar";
+
 function ShowBookingDetailsPage() {
     return (<>
     <div className="flex">
-        <Side_Navbar />
+        <UserSidebar />
         <div className="flex-col ">
         {/* search bar element */}
         <div className="flex justify-center ml-[18vw] mt-[4vh]">
@@ -129,7 +130,7 @@ function ShowBookingDetailsPage() {
         </div>
     </div>
        
-    </>)
+//     </>)
 }
 
 export default ShowBookingDetailsPage

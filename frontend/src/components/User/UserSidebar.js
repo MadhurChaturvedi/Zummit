@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Link, useLocation } from 'react-router-dom';
+import sidebarLogo from "../images/logo.png";
 
-function Side_Navbar() {
+function UserSidebar() {
   const location = useLocation();
 
   // Function to check if the given path matches the current location
@@ -13,7 +14,7 @@ function Side_Navbar() {
         <div className="sidebar w-[18vw] bg-[#00677F]">
           <Link to="/userdashboard">
           <img
-            src={require("./images/logo.png")}
+            src={sidebarLogo}
             alt=""
             className="pl-[16px] pt-[32px] w-[196px]"
           />
@@ -22,26 +23,26 @@ function Side_Navbar() {
           <button className={` pl-4  ${isActive('/userdashboard') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
                         <Link to="/userdashboard">Dashboard</Link>
           </button>
-          <button className={`pl-4 ${isActive('/appointments') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
-                        <Link to="/appointments">Appointments</Link>
+          <button className={`pl-4 ${isActive('/user-appointments') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
+                        <Link to="/user-appointments">Appointments</Link>
           </button>
           <button className={`pl-4 ${(isActive('/bookingPage' || isActive('/TherapistDetailsPage'))) ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
                         <Link to="/bookingPage">Therapists</Link>
           </button>
-          <button className={`pl-4 ${isActive('/services') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
-              <Link to="/services" >Groups</Link>
+          <button className={`pl-4 ${(isActive('/userdashboard-groups')) ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
+              <Link to="/userdashboard-groups" >Groups</Link>
           </button>
-            <button className={`pl-4 ${isActive('/') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
-              Billings
+            <button className={`pl-4 ${isActive('/user-billings') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
+              <Link to="/user-billings">Billings</Link>
             </button>
             <button className={`pl-4 ${isActive('/userdashboard-resources') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
               <Link to="/userdashboard-resources" >Resources</Link>
             </button>
-            <button className={`pl-4 ${isActive('/FAQs') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
-              <Link to="/FAQs" >FAQ</Link>
+            <button className={`pl-4 ${isActive('/userdashboard-FAQs') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
+              <Link to="/userdashboard-FAQs" >FAQ</Link>
             </button>
-            <button className={`pl-4 ${isActive('/') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
-              <Link to="/" >Profile</Link>
+            <button className={`pl-4 ${isActive('/user-profile') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
+              <Link to="/user-profile" >Profile</Link>
             </button>
             <button className={`pl-4 ${isActive('/') ? 'bg-[#FDFEF1] pl-4 text-black font-bold w-[227px] h-[49px] rounded-lg text-left' : ''}`}>
               Logout
@@ -52,4 +53,4 @@ function Side_Navbar() {
     </>)
 }
 
-export default Side_Navbar
+export default UserSidebar;

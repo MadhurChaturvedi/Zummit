@@ -55,7 +55,6 @@ const Hero = () => {
           </svg>
         </div>
       </div>
-      {console.log(imageUrl)}
     </div>
   );
 

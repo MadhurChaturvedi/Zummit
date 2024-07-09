@@ -1,17 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Frame from './images/Frame.png';
-import Frame609 from './images/Frame609.png';
-import Rectangle541 from './images/Rectangle541.png';
-import Rectangle544 from './images/Rectangle544.png';
-import Rectangle547 from './images/Rectangle547.png';
-import Rectangle534 from './images/Rectangle534.png';
-import Rectangle531 from './images/Rectangle531.png';
-import Rectangle535 from './images/Rectangle535.png';
-import whatsappIcon from './images/whatsappIcon.png';
-import instaIcon from './images/instaIcon.png';
-import snapIcon from './images/snapIcon.png';
-import facebookIcon from './images/facebookIcon.png';
-import videodataimg from './images/videodataimg.png';
+import React, { useEffect, useRef, useState } from 'react';
+import Rectangle541 from '../images/Rectangle541.png';
+import Rectangle544 from '../images/Rectangle544.png';
+import Rectangle547 from '../images/Rectangle547.png';
+import Rectangle534 from '../images/Rectangle534.png';
+import Rectangle531 from '../images/Rectangle531.png';
+import Rectangle535 from '../images/Rectangle535.png';
+import whatsappIcon from '../images/whatsappIcon.png';
+import instaIcon from '../images/instaIcon.png';
+import snapIcon from '../images/snapIcon.png';
+import facebookIcon from '../images/facebookIcon.png';
+import videodataimg from '../images/videodataimg.png';
+import SearchContainer from '../User/SearchContainer';
 
 const Resources = () => {
   const videoArr = [
@@ -130,25 +129,6 @@ const Resources = () => {
     } else {
       setAllArticles(allArticles.showItems >= articleArr.length ? allArticles.showItems : allArticles.showItems + 1);
     }
-  };
-
-  /* Search Bar */
-  const SearchContainer = () => {
-    return(
-      <div className='w-full h-auto flex justify-center'>
-        <div className='w-[70%] h-[3.56rem] flex justify-between items-center mt-8'>
-          <div className='flex items-center relative'>
-            <img className='w-[1.5rem] h-[1.5rem] absolute left-[0.93rem]' src={Frame} alt="searchIcon" />
-            <input 
-              className='w-[46rem] p-2.5 border border-[#B4F0FF] rounded-lg outline-none pl-12' 
-              type="text" 
-              placeholder='Search' 
-            />
-          </div>
-          <img className='w-[2.5rem] h-[2.5rem]' src={Frame609} alt="notificationsIcon" />
-        </div>
-      </div>
-    )
   };
   
   /* Static Component - To Be Updated */

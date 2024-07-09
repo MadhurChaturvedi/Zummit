@@ -69,10 +69,10 @@ const Appointment = () => {
     setSelectedSort(selected);
   };
   return (
-    <div className="w-full m-10 ">
+    <div className="w-full m-5 ">
       {/* Search Bar */}
       <div className="flex w-[95%] justify-end gap-10 items-center">
-        <div className="flex items-center bg-white w-[80%]   pl-4 rounded-lg -[#B4F0FF] ">
+        <div className="flex items-center bg-white w-[80%]  pl-4 rounded-lg -[#B4F0FF] ">
           <svg
             width="25"
             height="26"
@@ -106,7 +106,7 @@ const Appointment = () => {
         </div>
       </div>
       {/* heading */}
-      <div className="w-[95%] flex justify-between items-center text-2xl my-8">
+      <div className="w-[95%] flex justify-between items-center text-2xl my-5">
         <h1>Appointments</h1>
       </div>
 
@@ -147,12 +147,12 @@ const Appointment = () => {
                 </button>
               </div>
               <div>
-              <h1
-                style={{ color: getReasonColor(item.report) }}
-                className="w-[10rem]  "
-              >
-                {item.reason}
-              </h1>
+                <h1
+                  style={{ color: getReasonColor(item.report) }}
+                  className="w-[10rem]  "
+                >
+                  {item.reason}
+                </h1>
               </div>
             </div>
           ))}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { addUser } from "../../utils/Slices/userSlice";
+import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -277,7 +277,7 @@ const Register__Login = () => {
                   onClick={handleSubmission}
                   className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
                 >
-                  {signUp ? "Login" : "Send OTP"}
+                  {!signUp ? "Login" : "Send OTP"}
                 </button>
                 <p
                   onClick={handleClick}
@@ -328,7 +328,7 @@ const Register__Login = () => {
           <div className="bg-cyan-600 rounded-lg w-[306px] flex items-center mr">
             {showGif ? (
               <img
-                src={require(`../../../src/components/images/aroundwithin-speed.gif`)}
+                src={require(`../../../../src/components/images/aroundwithin-speed.gif`)}
                 alt=""
                 className="w-full rounded-md"
               />

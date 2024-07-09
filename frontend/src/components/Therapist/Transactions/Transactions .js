@@ -84,35 +84,34 @@ const Transactions = () => {
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl  my-8">Transactions</h1>
       </div>
-      <div className="p-4 w-[90%] rounded-lg bg-white ">
-        <tr className="bg-[#DCDCDD] text-lg mb-4  rounded-lg w-full p-2 text-black flex gap-2 items-center">
-          <td className="w-[10rem] ">Invoice Number</td>
-          <td className="w-[10rem] ">Session Date</td>
-          <td className="w-[10rem] ">Doctor Name</td>
-          <td className="w-[5rem] ">Amount</td>
-          <td className="w-[6rem] text-center">Status</td>
+      <div className="p-4  rounded-lg bg-white ">
+        <tr className="bg-[#DCDCDD] text-lg mb-2  rounded-lg w-full p-2 text-black flex gap-2 items-center">
+          <td className="w-[18%]">Invoice Number</td>
+          <td className="w-[18%]">Session Date</td>
+          <td className="w-[18%]">Client Name</td>
+          <td className="w-[18%]">Doctor Name</td>
+          <td className="w-[10%] ">Amount</td>
+          <td className="w-[14%] text-center">Status</td>
         </tr>
 
         {transactions.map((item) => (
-          <tr className="flex gap-2 w-full p-2 text-lg rounded-lg items-center">
-            <td className="w-[10rem] ">{item.invoiceNumber}</td>
-            <td className="w-[7rem] ">{item.sessionDate}</td>
-            <td className="w-[10rem] ">{item.clientName}</td>
-            <td className="w-[10rem] ">{item.doctorName}</td>
-            <td className="w-[10rem] ">{item.Amount}</td>
-            <td className="w-[10rem] ">{item.Status}</td>
+          <tr className="flex gap-2 text-lg p-2 rounded-lg items-center">
+            <td className="w-[18%]">{item.invoiceNumber}</td>
+            <td className="w-[18%]">{item.sessionDate}</td>
+            <td className="w-[18%]">{item.clientName}</td>
+            <td className="w-[18%]">{item.doctorName}</td>
             <td
               style={getStyle(item.report)}
-              className="w-[4rem]  text-end"
+              className="w-[10%]  text-end"
             >
-              {item.amount}
+              {item.Amount}
             </td>
-            <td className="flex w-[7rem] justify-end">
+            <td className="flex w-[14%] justify-end">
               <h1
                 style={{ backgroundColor: getButtonBgColor(item.report) }}
                 className="rounded-md   px-1 cursor-pointer w-[6.3rem] text-center "
               >
-                {item.report}
+                {item.Status}
               </h1>
             </td>
           </tr>

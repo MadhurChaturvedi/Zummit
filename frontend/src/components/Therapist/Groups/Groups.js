@@ -26,9 +26,9 @@ const Groups = () => {
   return (
     <>
       {feedbackToggler ? (
-        <div className="w-[80%] m-5 ">
+        <div className="w-[80%] p-5 ">
           <div className="flex  justify-end w-[90%] gap-10 items-center">
-            <div className="flex items-center bg-white w-[80%] border  pl-4 rounded-lg border-[#B4F0FF] ">
+            <div className="flex items-center bg-white w-[80%]  pl-4 rounded-lg-[#B4F0FF] ">
               <svg
                 width="25"
                 height="26"
@@ -77,28 +77,21 @@ const Groups = () => {
               </svg>
             </div>
           </div>
-          <div className="p-4 mt-2 w-[90%] rounded-lg bg-white ">
-            <div className="bg-[#DCDCDD] text-lg mb-4 rounded-lg w-full p-2 text-black flex gap-4 justify-between">
-              <h1 className="w-[10rem]">Group Name</h1>
-              <h1 className="w-[10rem]">Member</h1>
-              <h1 className="w-[12rem]">Sessions</h1>
-              <h1 className="w-[12rem]">Feedback</h1>
-              <h1 className="w-[12rem]">Last Session</h1>
+          <div className="p-4 mt-10 rounded-lg bg-white ">
+            <div className="bg-[#DCDCDD] text-lg mb-4 rounded-lg w-full p-2 text-black flex gap-4">
+              <h1 className="w-[20%]">Group Name</h1>
+              <h1 className="w-[15%]">Member</h1>
+              <h1 className="w-[15%]">Sessions</h1>
+              <h1 className="w-[25%]">Feedback</h1>
+              <h1 className="w-[20%]">Last Session</h1>
             </div>
             {data.map((item) => (
-              <div className="flex gap-4 w-full p-2 pr-20 text-lg rounded-lg">
-                <h1 className="w-[18rem]">{item.GroupName}</h1>
-                <h1 className="w-[10rem]">{item.Members}</h1>
-                <h1 className="w-[14rem]">{item.session}</h1>
-                <h1 className="w-[14rem]">{item.Feedback}</h1>
-                <h1 className="w-[14rem]">{item.lastSession}</h1>
-                <h1
-                  onClick={toggleHandler}
-                  className="cursor-pointer w-[14rem]"
-                >
-                  {item.Feedback}
-                </h1>
-                <h1>{item.date}</h1>
+              <div className="flex gap-4 w-full p-2 text-lg rounded-lg">
+                <h1 className="w-[20%]">{item.GroupName}</h1>
+                <h1 className="w-[15%]">{item.Members}</h1>
+                <h1 className="w-[15%]">{item.Sessions}</h1>
+                <h1 className="w-[25%]">{item.Feedback}</h1>
+                <h1 className="w-[20%]">{item.lastSession}</h1>
               </div>
             ))}
           </div>

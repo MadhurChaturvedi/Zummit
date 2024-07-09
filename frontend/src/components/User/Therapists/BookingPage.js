@@ -1,12 +1,13 @@
 import * as React from "react";
-import Therapists from "../HomePage/Our_Therapist";
-import Side_Navbar from "../Side_Navbar";
+import UserSidebar from "../UserSidebar";
+import Our_Therapist from "./Our_Therapist";
+
 function BookingPage() {
   return (
     <>
       <div className="flex">
-        <Side_Navbar />
-        <Therapists />
+        <UserSidebar />
+        <Our_Therapist />
       </div>
     </>
   );

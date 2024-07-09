@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Side_Navbar from "../Side_Navbar";
-import { addCouncellor } from "../../utils/Slices/bookingSlice";
-import { checkToken } from "../../utils/Hooks/checkToken";
-import LoginReq_pop from "../PopUps/LoginReq_pop";
+import { addCouncellor } from "../../../utils/Slices/bookingSlice";
+import { checkToken } from "../../../utils/Hooks/checkToken";
+import LoginReq_pop from "../../PopUps/LoginReq_pop";
 import axios from "axios";
+import UserSidebar from "../UserSidebar";
 
 function TherapistDetailsPage() {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -70,7 +70,7 @@ function TherapistDetailsPage() {
     }
     <div className={user._id ? "flex" : "flex justify-center"}>
       {
-        (user._id && user.role === "client") && <Side_Navbar />
+        (user._id && user.role === "client") && <UserSidebar />
       }
       <div className="flex-col ml-[2vw] ">
         {/* search bar element */}

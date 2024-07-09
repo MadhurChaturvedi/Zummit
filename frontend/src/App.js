@@ -7,19 +7,19 @@ import Home from "./components/HomePage/Home";
 
 import Services from "./components/HomePage/Services";
 import Our_Therapist from "./components/HomePage/Our_Therapist";
-import Resources from "./components/Resources";
+import Resources from "./components/HomePage/Resources";
 import FAQ from "./components/HomePage/FAQ";
 import IndividualTherapy from "./components/HomePage/IndividualThearapy";
 import GroupTherapy from "./components/HomePage/GroupTherapy";
 import SupportTherapy from "./components/HomePage/SupportTherapy";
 import ContactSection from "./components/HomePage/ContactSection";
 import GroupTherapyDetail from "./components/HomePage/GroupTherapyDetail";
-import RegisterLogin from "./components/User/RegisterLogin";
-import BookingPage from "./components/User/BookingPage";
-import ForgotPassword from "./components/ForgotPassword";
-import TherapistDetailsPage from "./components/User/TherapistDetailsPage";
-import BookTherapistPage from "./components/User/BookTherapistPage";
-import ShowBookingDetailsPage from "./components/User/ShowBookingDetailsPage";
+import RegisterLogin from "./components/User/Register/RegisterLogin";
+import BookingPage from "./components/User/Therapists/BookingPage";
+import ForgotPassword from "./components/User/Forget Password/ForgotPassword";
+import TherapistDetailsPage from "./components/User/Therapists/TherapistDetailsPage";
+import BookTherapistPage from "./components/User/Therapists/BookTherapistPage";
+import ShowBookingDetailsPage from "./components/User/Therapists/ShowBookingDetailsPage";
 import AdminDashboard from "./components/Admin/Dashboard/AdminDashboard";
 import Admin_Appointments from "./components/Admin/Appointment/Admin_Appointments";
 import Admin_Groups from "./components/Admin/Groups/Admin_Groups";
@@ -42,14 +42,20 @@ import Therapist_Profile from "./components/Therapist/Profile/Therapist_Profile"
 import Therapist_Groups from "./components/Therapist/Groups/Therapist_Groups";
 import Therapist_Login from "./components/Therapist/Register_Loigin/Therapist_Login";
 import Therapist_SignUp from "./components/Therapist/Register_Loigin/Therapist_Signup";
-import UserDashboard from "./components/UserDashboard";
-import UserResources from "./components/User/UserResources";
-
+import UserDashboard from "./components/User/Dashboard/UserDashboard";
+import UserGroups from "./components/User/Groups/UserGroups";
+import UserResources from "./components/User/Resources/UserResources";
+import UserFAQ from "./components/User/FAQ/UserFAQ";
 import { useDispatch } from "react-redux";
 import { addUser } from "./utils/Slices/userSlice";
 import { addTherapist } from "./utils/Slices/therapistSlice";
 import { addAdmin } from "./utils/Slices/adminSlice";
 import About from "./components/HomePage/About";
+import UserAppointments from "./components/User/Appointments/UserAppointments";
+import UserGroupTherapy from "./components/User/Groups/UserGroupTherapy";
+import UserSupport from "./components/User/Groups/UserSupport";
+import UserBillings from "./components/User/Billings/UserBillings";
+import UserProfile from "./components/User/Profile/UserProfile";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -245,6 +251,13 @@ const routes = [
   { path: "/therapist-register", element: <Therapist_SignUp /> },
   { path: "/admin-login", element: <Login /> },
   { path: "/admin-register", element: <SignUp /> },
+  { path: "/userdashboard-groups", element: <UserGroups /> },
+  { path: "/userdashboard-FAQs", element: <UserFAQ /> },
+  { path: "/user-appointments", element: <UserAppointments /> },
+  { path: "/user-billings", element: <UserBillings /> },
+  { path: "/user-group/:id", element: <UserGroupTherapy /> },
+  { path: "/user-support/:id", element: <UserSupport /> },
+  { path: "/user-profile", element: <UserProfile /> }
 ];
 
 function renderRoutes(routes) {

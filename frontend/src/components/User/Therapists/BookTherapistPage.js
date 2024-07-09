@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Side_Navbar from "../Side_Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from 'react-router-dom';
 
-import { addUser } from "../../utils/Slices/userSlice";
-import VerifyClient from "../../utils/Hooks/verifyClient";
+import { addUser } from "../../../utils/Slices/userSlice";
+import VerifyClient from "../../../utils/Hooks/verifyClient";
+import UserSidebar from "../UserSidebar";
 
 function BookTherapistPage() {
   const [IsAuthorized, setIsAuthorized] = useState(true);
@@ -108,7 +108,7 @@ function BookTherapistPage() {
 
   return (<>
     <div className="flex gap-[50px] bg-[#F2FCFF]">
-      <Side_Navbar />
+      <UserSidebar />
       <div className="flex-col flex-1">
         {/* search bar element */}
         <div className="flex justify-center mt-[4vh]">
