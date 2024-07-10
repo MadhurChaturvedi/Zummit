@@ -81,7 +81,7 @@ const Register__Login = () => {
 
       const data = await response.json();
 
-      dispatch(addUser({_id: data.newUser._id }));
+      dispatch(addUser( data.newUser ));
       navigate("/userdashboard");
 
       const token = data.Authorization;
