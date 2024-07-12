@@ -8,7 +8,8 @@ const paymentSchema = new mongoose.Schema(
         required: [true, "Order ID is required"]
       },
       paymentId: { 
-        type: String 
+        type: String,
+        default:null
       },
       amount: { 
         type: Number,
@@ -16,7 +17,7 @@ const paymentSchema = new mongoose.Schema(
       },
       status: {
         type: String,
-        enum: ["completed", "pending", "cancelled"],
+        enum: ["completed", "pending", "cancelled","failed"],
         default: "pending",
       },
       clientName: { 

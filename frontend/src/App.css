@@ -169,7 +169,7 @@ input[type="number"] {
 }
 
 .privacy-popup {
-  @apply fixed inset-0 flex items-center justify-center z-50 m-60 mt-8;
+  @apply fixed inset-0 flex items-center justify-center z-50 mt-8 mx-auto;
   background-color: #ffffff; /* White background */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Padding inside the popup */

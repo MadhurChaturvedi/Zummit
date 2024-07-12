@@ -4,7 +4,7 @@ import Profile from './Profile';
 
 const UserProfile = () => {
   return (
-    <div className='flex'>
+    <div className='flex bg-[#F2FCFF]'>
         <UserSidebar />
         <Profile />
     </div>

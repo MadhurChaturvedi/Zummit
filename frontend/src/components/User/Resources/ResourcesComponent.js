@@ -294,12 +294,12 @@ const Resources = () => {
   /* ARTICLES TAB */
   const ArticlesTab = () => {
     return(
-      <div className='w-full h-auto flex gap-x-12 mt-8'>
+      <div className='flex gap-12 mt-5'>
         {/* Recently Added Articles */}
-        <div className='w-[72%]'>
+        <div className='w-[65%]'>
           <p className='text-2xl font-semibold text-[#00677F] mb-3'>Recently Added</p>
           <div className='w-full h-[44rem] overflow-auto'>
-            <div className='w-inherit h-inherit grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-2 gap-5'>
               {articleData.map((item) => (
                 <VideoOrArticleCardComponent key={item.id} item={item} type='article' />
               ))}
@@ -330,10 +330,10 @@ const Resources = () => {
   /* ALL TAB */
   const AllTab = () => {
     return (
-      <div className='w-full h-auto mt-8'>
+      <div className='mt-8'>
         {/* Videos Container */}
-        <div className='w-[90%] mt-5 flex gap-x-14'>
-          <div className='w-[55%] flex flex-col gap-y-5'>
+        <div className='flex gap-8'>
+          <div className='w-[55%] flex flex-col gap-5'>
             <h2 className='text-[1.75rem] leading-[2.62rem] font-medium text-black'>
               Our latest Videos to keep you Engaged
             </h2>
@@ -349,13 +349,13 @@ const Resources = () => {
             </div>
           </div>
           {/* Video Cards */}
-          <div className='w-[41%] h-[26.6rem] flex flex-col gap-y-3 overflow-y-auto'>
+          <div className='w-[45%] h-[26.5rem] flex flex-col gap-4 overflow-y-auto'>
             {videoArr.slice(0, allVideos.showItems).map((video) => (
               <VideoCard video={video} />
             ))}
             {videoArr.length > allVideos.showItems 
               ? <button 
-                  className='w-[5.75rem] h-[2.75rem] border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
+                  className='w-[25%] p-1 border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
                   onClick={() => handleShowMore('videos')}
                 >See All</button> 
               : null
@@ -364,7 +364,7 @@ const Resources = () => {
         </div>
 
         {/* Articles Container */}
-        <div className='w-[90%] h-auto mt-20 flex gap-x-10'>
+        <div className='mt-20 flex gap-10'>
           <div className='w-[54%] flex flex-col gap-y-10'>
             <h2 className='text-[1.75rem] leading-[2.62rem] font-medium text-black'>
               Our latest Articles to keep you Engaged
@@ -380,13 +380,13 @@ const Resources = () => {
             </div>
           </div>
           {/* Article Cards */}
-          <div className='w-[55%] h-[25rem] flex flex-col gap-y-3 overflow-y-auto'>
+          <div className='w-[55%] h-[23.5rem] flex flex-col gap-y-3 overflow-y-auto'>
             {articleArr.slice(0, allArticles.showItems).map((article) => (
               <ArticleCard article={article} />
             ))}
             {articleArr.length > allArticles.showItems 
               ? <button 
-                  className='w-[5.75rem] h-[2.75rem] border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
+                  className='w-[25%] p-1 border border-[#00677F] rounded text-2xl font-medium text-[#00677F]'
                   onClick={() => handleShowMore('articles')}
                 >See All</button> 
               : null
@@ -413,7 +413,7 @@ const Resources = () => {
       }
     ];
     return (
-      <div className='w-full h-auto flex flex-col mt-[24px]'>
+      <div className='flex flex-col'>
         <div className='w-[25%] h-[2.7rem] flex justify-between items-center text-2xl font-medium text-gray-900 cursor-pointer'>
           {tabs.map((tab, index) => (
             <button 
@@ -438,10 +438,10 @@ const Resources = () => {
   }
 
   return (
-    <div className='w-full h-auto flex flex-col bg-[#F2FCFF] pb-5'>
+    <div className='w-full flex flex-col p-10'>
       <SearchContainer />
-      <div className='w-[94%] h-auto flex flex-col ml-11 mt-8'>
-        <h2 className='text-[1.75rem] leading-[2.5rem] font-medium text-gray-900'>Resources</h2>
+      <div className='flex flex-col'>
+        <h2 className='text-[1.75rem] leading-[2.5rem] font-medium text-gray-900 py-6'>Resources</h2>
         <TabsContainer />
       </div>
     </div>

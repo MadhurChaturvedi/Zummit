@@ -1,16 +1,12 @@
 import React from "react";
 import FAQs from "./FAQs";
 import Side_Navbar from "../UserSidebar";
-import SearchContainer from "../SearchContainer";
 
 const UserFAQ = () => {
     return(
-        <div className="flex">
+        <div className="flex bg-[#F2FCFF] h-[60rem] overflow-hidden">
             <Side_Navbar />
-            <div className="w-full flex flex-col items-center bg-[#F2FCFF] pb-5">
-                <SearchContainer />
-                <FAQs />
-            </div>
+            <FAQs />
         </div>
     )
 }

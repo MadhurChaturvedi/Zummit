@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchContainer from "../SearchContainer";
 
 const Billings = () => {
@@ -46,7 +45,7 @@ const Billings = () => {
     }
   };
   return (
-    <div className="w-[90%] px-10 bg-[#F2FCFF]">
+    <div className="w-[90%] p-10">
       <SearchContainer />
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="font-medium text-3xl leading-10 my-6">Billings</h1>

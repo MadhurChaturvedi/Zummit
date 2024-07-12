@@ -31,7 +31,7 @@ const Profile = () => {
     setToggleAbout(false);
   };
   return (
-    <div className="w-full flex flex-col items-center text-[#001519] bg-[#F2FCFF]">
+    <div className="w-full flex flex-col items-center text-[#001519]">
       <div className="flex w-[90%] justify-between items-center my-6">
         <h1 className="text-3xl leading-10 font-medium text-[#001519]">Profile</h1>
         <div className="p-2 rounded-full ">

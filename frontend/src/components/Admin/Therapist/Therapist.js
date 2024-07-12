@@ -6,16 +6,26 @@ const Therapist = () => {
   const [therapistsDetails, setTherapistsDetails] = useState([]);
   useEffect(() => {
     const fetchTherapistsDetails = async () => {
+      const token = localStorage.getItem("adminToken");
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
       try {
         const response = await axios.post(
           "https://zummit-chandan.onrender.com/api/admin/therapistsdetails",
           {
-            input: "akib@gmail.com",
-            token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwNGRiMTk3Mzk4MTgwNzAwZDZjNCIsImlhdCI6MTcxNzE3NTUxNiwiZXhwIjoxNzE5NzY3NTE2fQ.nT9mK7G3tCQlHfhpFBC-iefz4XkGdBIP8BUNN9tOoUQ",
-          }
+            input: "akib@gmail.com"
+          },
+          config
         );
-
 
         if (response.data.success) {
           setTherapistsDetails(response.data.therapists);
@@ -23,7 +33,7 @@ const Therapist = () => {
           console.error("Failed to fetch therapists details");
         }
       } catch (error) {
-        console.error("Error fetching therapists details:", error);
+        console.error("Error fetching therapists details:", error.response ? error.response.data : error.message);
       }
     };
 

@@ -45,16 +45,15 @@ const verifyPayment = async (req, res) => {
             .digest('hex');
         
         const isAuthentic = expectedSignature === signature;
-        
+        const payment = await Payment.findOneAndUpdate(
+            { orderId: order_id },
+            { paymentId: payment_id, status: isAuthentic ? 'completed' : 'failed'},
+            { new: true }
+        );
+        if (!payment) {
+            return res.status(404).json({ success: false, message: 'Payment not found' });
+        }
         if (isAuthentic) {
-            const payment = await Payment.findOneAndUpdate(
-                { orderId: order_id },
-                { paymentId: payment_id, status: 'completed' },
-                { new: true }
-            );
-            if (!payment) {
-                return res.status(404).json({ success: false, message: 'Payment not found' });
-            }
             res.json({ success: true, payment ,message: 'Payment verified successfully' });
         } else {
             res.status(400).json({ success: false, message: 'Payment verification failed' });
@@ -66,7 +65,35 @@ const verifyPayment = async (req, res) => {
 };
 
 
+const updatePaymentStatus = async (req, res) => {
+
+    const { order_Id, payment_Id } = req.body;
+    if (!order_Id || !payment_Id) {
+        return res.status(400).json({ success: false, message: 'Missing required fields: order_Id, payment_Id' });
+    }
+    try {
+        const payment = await razorpay.payments.fetch(payment_Id);
+        if (payment.order_id!==order_Id){
+            return res.status(400).json({ success: false, message:'Invalid Request'});
+        }
+        const update = await Payment.findOneAndUpdate(
+            { orderId: order_Id },
+            { paymentId: payment_Id, status: (payment.status ==="captured")?'completed':payment.status },
+            { new: true }
+        );
+
+      if (!update) {
+        return res.status(404).json({ success: false, message: 'Payment not found' });
+      }
+      res.json({ success: true, message: 'Payment details saved successfully'});
+    } catch (error) {
+      res.status(500).json({ success: false, message: 'Internal server error',error: error.message  });
+    }
+  };
+
+
 module.exports = {
     newOrder,
-    verifyPayment
+    verifyPayment,
+    updatePaymentStatus
 }

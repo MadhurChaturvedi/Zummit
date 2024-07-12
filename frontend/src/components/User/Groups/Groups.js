@@ -68,24 +68,16 @@ const Groups = () => {
                     <Link
                         to={`/user-support/${index}`} 
                         key={index} 
-                        className="w-[348px] my-2 h-[485px] p-[10px] rounded-lg hover:shadow-lg cursor-pointer bg-[#FDFEF1]"
+                        className="w-[32%] my-2 p-3 rounded-lg hover:shadow-lg cursor-pointer bg-[#FDFEF1]"
                     >
                         <div className="relative">
-                            <div className="relative group overflow-hidden">
-                            <img
-                                src={flowerImg}
-                                alt=""
-                                className="w-[316px] m-auto"
-                            />
-                            </div>
-                            <div className="bg-[#F7F131] absolute rounded-lg pl-2 pr-[8px,] py-[4px,] w-[129px] h-[28px] top-3 right-5">
-                            <p>Starts: 16 March</p>
-                            </div>
+                            <img src={flowerImg} alt="flowerImg" />
+                            <p className='bg-[#F7F131] absolute rounded-lg px-2 py-1 top-3 right-5'>Starts: 16 March</p>
                         </div>
                         <p className="text-xl w-full text-center font-semibold text-[#121014] pb-2 hover:underline">
                             Lacus amet egestas ullamcorper fermentum
                         </p>
-                        <p className="leading-[20px] text-[#272529]">
+                        <p className="leading-5 text-[#272529]">
                             Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty,
                             Relationship Challenges, Quarter-Life Crisis, Couples Therapy
                         </p>
@@ -103,24 +95,16 @@ const Groups = () => {
                     <Link
                         to={`/user-group/${index}`} 
                         key={index} 
-                        className="w-[32%] my-2 h-[485px] p-[10px] rounded-lg hover:shadow-lg cursor-pointer bg-[#FDFEF1]"
+                        className="w-[32%] my-2 p-3 rounded-lg hover:shadow-lg cursor-pointer bg-[#FDFEF1]"
                     >
                         <div className="relative">
-                            <div className="relative group overflow-hidden">
-                            <img
-                                src={flowerImg}
-                                alt=""
-                                className="w-[316px] m-auto"
-                            />
-                            </div>
-                            <div className="bg-[#F7F131] absolute rounded-lg pl-2 pr-[8px,] py-[4px,] w-[129px] h-[28px] top-3 right-5">
-                            <p>Starts: 16 March</p>
-                            </div>
+                            <img src={flowerImg} alt="flowerImg" />
+                            <p className='bg-[#F7F131] absolute rounded-lg px-2 py-1 top-3 right-5'>Starts: 16 March</p>
                         </div>
                         <p className="text-xl w-full text-center font-semibold text-[#121014] pb-2 hover:underline">
                             Lacus amet egestas ullamcorper fermentum
                         </p>
-                        <p className="leading-[20px] text-[#272529]">
+                        <p className="leading-5 text-[#272529]">
                             Trauma, Anxiety, Depression, Life Transitions, Career Uncertainty,
                             Relationship Challenges, Quarter-Life Crisis, Couples Therapy
                         </p>
@@ -130,7 +114,7 @@ const Groups = () => {
         )
     };
     return (
-        <div className="w-full bg-[#F2FCFF] px-10 pb-5">
+        <div className="w-full p-10 pb-5">
             <SearchContainer />
             <TabsContainer />
         </div>

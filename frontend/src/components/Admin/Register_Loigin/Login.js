@@ -81,6 +81,7 @@ const Login = () => {
       const data = await response.json();
       console.log(data);
       dispatch(addUser(data.newUser));
+      localStorage.setItem("adminToken", data.token);
       navigate("/admin-dashboard");
       console.log(response);
 

@@ -4,7 +4,7 @@ import Billings from './Billings';
 
 const UserBillings = () => {
   return (
-    <div className='flex'>
+    <div className='flex bg-[#F2FCFF]'>
         <UserSidebar />
         <Billings />
     </div>

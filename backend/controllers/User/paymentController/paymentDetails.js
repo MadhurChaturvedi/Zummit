@@ -1,5 +1,5 @@
 const { Payment , mongoose }= require('../../../models/User/paymentModel')
-
+const razorpay = require('../../../config/razorpay');
 
 // Get all Payment records
 
@@ -37,17 +37,35 @@ const getPaymentById = async (req, res) => {
     }
 };
 
+//Get Payment Status / Details from Razorpay by Payment ID
+
+const checkPaymentStatus = async (req, res) => {
+    const { paymentId } = req.params;
+    try {
+        const payment = await razorpay.payments.fetch(paymentId);
+        if (payment.status === 'failed' || payment.status === 'cancelled') {
+            return res.json({ success: true, status: payment.status, message:  payment.error_reason, payment });
+        }
+        return res.json({ success: true, status: payment.status, payment });
+    } catch (error) {
+        return res.status(500).json({ success: false,  message: 'Internal server error', error: error.error.description});
+    }
+};
+
+
 //Get Order Details by ID
 
 const getOrderById = async (req, res) => {
     try {
-        const payment = await Payment.findOne({ orderId: req.params.orderId });
+        const { orderId }= req.params;  
+        const order = await razorpay.orders.fetch(orderId)
+        const payment = await Payment.findOne({ orderId: orderId });
         if(!payment){
-            return res.status(404).json({ message: 'Payment record not found for this Order ID' });
+            return res.status(404).json({ success: false, message: 'Payment record not found for this Order ID' });
         }
-        res.json(payment);
+        res.json({ success: true, payment,order});
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ success: false, message: 'Internal server error', error: error.error.description});
     }
 };
 
@@ -87,24 +105,11 @@ const getByTherapistId = async (req, res) => {
     }
 };
 
-//Delete Payment Records by Order ID
-
-// const deleteOrder = async (req, res) => {
-//     try {
-//         const payment = await Payment.findOneAndDelete({ orderId: req.params.orderId });
-//         if (payment) {
-//             res.json({ success: true, message: 'Payment record deleted successfully', payment });
-//         } else {
-//             res.status(404).json({ success: false, message: 'Payment record not found' });
-//         }
-//     } catch (error) {
-//         res.status(500).json({ success: false, message: 'Error deleting payment record', error: error.message });
-//     }
-// };
 
 module.exports = {
     getAllPayments,
     getPaymentById,
+    checkPaymentStatus,
     getOrderById,
     getbyClientId,
     getByTherapistId

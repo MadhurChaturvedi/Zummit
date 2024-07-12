@@ -4,7 +4,7 @@ import Groups from "./Groups";
 
 const UserGroups = () => {
     return (
-        <div className="flex">
+        <div className="flex bg-[#F2FCFF]">
             <Side_Navbar />
             <Groups />
         </div>

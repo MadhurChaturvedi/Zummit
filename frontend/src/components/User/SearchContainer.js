@@ -4,8 +4,8 @@ import Frame609 from '../images/Frame609.png';
 
 const SearchContainer = () => {
     return(
-      <div className='w-full h-auto flex justify-center'>
-        <div className='w-[70%] h-[3.56rem] flex justify-between items-center mt-8 gap-5'>
+      <div className='w-full flex justify-center'>
+        <div className='w-[70%] h-[3.56rem] flex justify-between items-center gap-5'>
           <div className='flex items-center relative'>
             <img className='w-[1.5rem] h-[1.5rem] absolute left-[0.93rem]' src={Frame} alt="searchIcon" />
             <input 

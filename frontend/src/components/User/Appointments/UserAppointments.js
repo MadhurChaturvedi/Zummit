@@ -4,7 +4,7 @@ import Appointment from './Appointment ';
 
 const UserAppointments = () => {
   return (
-    <div className='flex'>
+    <div className='flex bg-[#F2FCFF]'>
         <UserSidebar />
         <Appointment/>
     </div>

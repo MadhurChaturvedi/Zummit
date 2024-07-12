@@ -35,10 +35,12 @@ const {
 const {
   newOrder,
   verifyPayment,
+  updatePaymentStatus,
 } = require("../controllers/User/paymentController/orders");
 const {
   getAllPayments,
   getPaymentById,
+  checkPaymentStatus,
   getOrderById,
   getbyClientId,
   getByTherapistId,
@@ -70,14 +72,16 @@ router.post("/booking/appointment", HandleAppointments);
 
 router.post("/newOrder", newOrder);
 router.post("/verifyPayment", verifyPayment);
+router.post("/updatePaymentStatus",updatePaymentStatus)
+
 
 router.get("/getAllPayments", getAllPayments);
 router.get("/getPaymentById/:id", getPaymentById);
+router.get("/checkPaymentStatus/:paymentId", checkPaymentStatus);
 router.get("/getOrderById/:orderId", getOrderById);
 router.get("/getbyClientId/:clientId", getbyClientId);
 router.get("/getByTherapistId/:therapistId", getByTherapistId);
-//Delete Payment Records by Order ID
-// router.delete('/deleteOrder/:orderId', deleteOrder)
+
 
 router.get("/appointmentList", appointmentList);
 router.route("/adminvideos").get(getAllAdminVideos);
