@@ -6,6 +6,7 @@ import LoginReq_pop from "../PopUps/LoginReq_pop.js";
 import { addCouncellor } from "../../utils/Slices/bookingSlice.js";
 import useFetch from "../../utils/Hooks/fetchData.js";
 import SearchContainer from "../User/SearchContainer.js"
+import { BASE_USER } from "../../utils/constants.js";
 
 const Our_Therapist = () => {
   const [allTherapists, setAllTherapists] = useState([]);
@@ -16,8 +17,8 @@ const Our_Therapist = () => {
   const dispatch = useDispatch();
 
   const url = searchInput
-    ? `https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails?name=${searchInput}`
-    : "https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails";
+    ? BASE_USER+`/booking/getTherapistDetails?name=${searchInput}`
+    : BASE_USER+"/booking/getTherapistDetails";
 
   const { data, loading, error } = useFetch(url);
 

@@ -14,7 +14,6 @@ const Therapist_Appointment = () => {
     <div className="flex bg-[#F2FCFF]">
       <Therapist_SideBar />
       {toggleshimmer ? <Shimmer/> : <Appointment />}
-
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchContainer from "../SearchContainer";
+import { BASE_THERAPIST } from "../../../utils/constants";
 
 const Billings = () => {
   const [transactions, setTransactions] = useState([])
   useEffect(() => {
-    axios.get('https://zummit-chandan.onrender.com/api/therapist/gettherapistTransactionLists')
+    axios.get(BASE_THERAPIST+'/gettherapistTransactionLists')
       .then((response) => {
         if (response.data.success) {
           setTransactions(response.data.therapistTransaction);

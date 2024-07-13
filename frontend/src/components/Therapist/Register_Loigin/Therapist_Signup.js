@@ -3,6 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { BASE_THERAPIST, BASE_USER } from "../../../utils/constants";
 
 //main component toh yaha hey
 const Therapist_SignUp = () => {
@@ -31,7 +32,7 @@ const Therapist_SignUp = () => {
 
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/users/register",
+        BASE_USER+"/register",
         {
           method: "POST",
           headers: {
@@ -54,7 +55,7 @@ const Therapist_SignUp = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("token", data.token);
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -63,7 +64,7 @@ const Therapist_SignUp = () => {
   const loginUser = async (loginData) => {
     try {
       const response = await fetch(
-        "https://zummit-kefo.onrender.com/api/users/login",
+        BASE_USER+"/login",
         {
           method: "POST",
           headers: {
@@ -82,7 +83,7 @@ const Therapist_SignUp = () => {
       const data = await response.json();
       console.log(data);
       dispatch(addUser(data.newUser));
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
       console.log(response);
 
       //jaao token leke aao
@@ -100,7 +101,7 @@ const Therapist_SignUp = () => {
   const TherapistLogin = async (loginData) => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/therapist/loginTherapist",
+        BASE_THERAPIST+"/loginTherapist",
         {
           method: "POST",
           headers: {

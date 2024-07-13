@@ -5,6 +5,7 @@ import VerifyClient from "../../../utils/Hooks/verifyClient";
 import { addUser } from "../../../utils/Slices/userSlice";
 import axios from "axios";
 import UserSidebar from "../UserSidebar";
+import {  BASE_USER } from "../../../utils/constants";
 
 function BookTherapistPage() {
   const Client = {}
@@ -64,7 +65,7 @@ function BookTherapistPage() {
 
     try {
       //Here slots data will be fetched instead of therapist data
-      const res = await axios.get(`https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails/find/${therapistID}`);
+      const res = await axios.get(BASE_USER+`/booking/getTherapistDetails/find/${therapistID}`);
       if (res.data.name) {
         setCouncellor(res.data);
         setLoading(false);

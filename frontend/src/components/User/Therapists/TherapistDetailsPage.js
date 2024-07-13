@@ -7,6 +7,7 @@ import { checkToken } from "../../../utils/Hooks/checkToken";
 import LoginReq_pop from "../../PopUps/LoginReq_pop";
 import axios from "axios";
 import UserSidebar from "../UserSidebar";
+import {  BASE_USER } from "../../../utils/constants";
 
 function TherapistDetailsPage() {
 
@@ -26,7 +27,7 @@ function TherapistDetailsPage() {
         setLoading(true); //start displaying loader
 
         // Fetch therapist details
-        await axios.get(`https://zummit-chandan.onrender.com/api/users/booking/getTherapistDetails/find/${id}`).then((res) => {
+        await axios.get(BASE_USER+`/booking/getTherapistDetails/find/${id}`).then((res) => {
           if(res.data.name){
             dispatch(addCouncellor({ _id: id }))
             setCouncellorData(res.data);

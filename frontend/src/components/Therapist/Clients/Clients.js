@@ -116,12 +116,12 @@ const Clients = () => {
               </svg>
             </div>
           </div>
-          <div className="flex my-5 w-[95%] gap-5 text-lg items-center">
+          <div className="flex  my-5 w-[95%] gap-5 text-lg items-center">
             <h1 className="cursor-pointer text-[#00677F] bg-white p-1 rounded-md rounded-b-none border-b-2 border-[#00677F]">All</h1>
             <h1 className="cursor-pointer">New Client</h1>
             <h1 className="cursor-pointer">Existing Client</h1>
           </div>
-          <div className="p-4 w-[90%] rounded-lg bg-white ">
+          <div className="p-4 shadow-lg w-[90%] rounded-lg bg-white ">
             <div className="bg-[#DCDCDD] text-lg mb-4 pr-20 rounded-lg w-full p-2 text-black flex gap-4 justify-between  items-center">
               <h1 className="w-[13rem]">Client ID</h1>
               <h1 className="w-[14rem]">Sessions</h1>

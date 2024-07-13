@@ -1,4 +1,5 @@
 import axios from "axios";
+import {BASE_USER } from "../constants";
 
 async function VerifyClient() {
   let error = false;
@@ -6,7 +7,7 @@ async function VerifyClient() {
   const token = localStorage.getItem("token");
 
 await axios
-.get("https://zummit-chandan.onrender.com/api/users/verifyClient", {
+.get(BASE_USER+"/verifyClient", {
   headers: {
     authorization: token,
   },

@@ -3,6 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";  
+import { BASE_ADMIN} from "../../../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminLogin",
+        BASE_ADMIN+"/adminLogin",
         {
           method: "POST",
           headers: {
@@ -62,7 +63,7 @@ const Login = () => {
   const loginUser = async (loginData) => {
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminLogin",
+        BASE_ADMIN+"/adminLogin",
         {
           method: "POST",
           headers: {

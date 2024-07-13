@@ -15,7 +15,7 @@ const Therapist_Dashboard = () => {
     <div className="flex bg-[#F2FCFF]"> 
       <Therapist_SideBar />
       {toggleshimmer?<Shimmer/> : <Dashboard/>}
-      <TherapistPop/>
+      {/* <TherapistPop/> */}
     </div>
   );
 };

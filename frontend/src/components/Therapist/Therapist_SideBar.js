@@ -6,6 +6,9 @@ const Therapist_SideBar = () => {
   const isActive = (path) => {
     return location.pathname === path;
   };
+  const smoothScroll = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   const navigationItems = [
     { path: "/therapist-dashboard", label: "Dashboard" },
     { path: "/therapist-appointments", label: "Appointments" },
@@ -18,26 +21,25 @@ const Therapist_SideBar = () => {
     { path: "/therapist-profile", label: "Profile" },
   ];
   return (
-    <div className="leftCont flex ">
-      <div className="sidebar w-[18vw] bg-[#00677F]">
+    <div>
+      <div className="px-4 py-6 h-full w-[18vw] bg-[#00677F]">
         <Link to="/therapist-dashboard">
-          <img
-            src={require("../images/logo.png")}
-            alt=""
-            className="pl-[16px] pt-[32px] w-[196px]"
-          />
+          <img src={require("../images/logo.png")} alt="" />
         </Link>
-        <div className="h-[850px] w-[227px]  flex flex-col  items-start  text-white text-[20px] gap-10 mt-8">
+        <div className="flex flex-col  text-white text-[1.3rem] gap-10 mt-8">
           {navigationItems.map((data) => (
-            <button
-              className={` pl-10  ${
-                isActive(data.path)
-                  ? "bg-[#FDFEF1]  text-black font-bold w-[227px] h-[49px] rounded-lg text-left"
-                  : ""
-              }`}
-            >
-              <Link to={data.path}>{data.label}</Link>
-            </button>
+            <Link to={data.path}>
+              <button
+                onClick={smoothScroll}
+                className={` pl-5 w-full text-left py-2 ${
+                  isActive(data.path)
+                    ? "bg-[#FDFEF1]  text-black font-bold  rounded-lg "
+                    : "font-medium hover:text-black"
+                }`}
+              >
+                {data.label}
+              </button>
+            </Link>
           ))}
         </div>
       </div>

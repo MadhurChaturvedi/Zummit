@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Client_Feedback from "./Client_Feedback";
+import { BASE_THERAPIST } from "../../../utils/constants";
 
 const Groups = () => {
   const [feedbackToggler, setFeedbackToggler] = useState(true);
@@ -10,7 +11,7 @@ const Groups = () => {
   useEffect(() => {
     axios
       .get(
-        "https://zummit-chandan.onrender.com/api/therapist/gettherapistGroupLists"
+        BASE_THERAPIST+"/gettherapistGroupLists"
       )
       .then((response) => {
         setData(response.data.therapistGroupData);
@@ -77,7 +78,7 @@ const Groups = () => {
               </svg>
             </div>
           </div>
-          <div className="p-4 mt-10 rounded-lg bg-white ">
+          <div className="p-4 shadow-lg mt-10 rounded-lg bg-white ">
             <div className="bg-[#DCDCDD] text-lg mb-4 rounded-lg w-full p-2 text-black flex gap-4">
               <h1 className="w-[20%]">Group Name</h1>
               <h1 className="w-[15%]">Member</h1>

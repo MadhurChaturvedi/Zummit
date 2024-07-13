@@ -30,21 +30,21 @@ function Dashboard() {
       title: "Individual Therapy",
       imageUrl: IndividualThearapy,
       altText: "An icon representing individual therapy",
-      linkTo: "/userdashboard",
+      linkTo: "/user-dashboard",
       handleClick: handleIndividualToggle
     },
     {
       title: "Group Therapy",
       imageUrl: GroupTherapyImg,
       altText: "An icon representing group therapy",
-      linkTo: "/userdashboard",
+      linkTo: "/user-dashboard",
       handleClick: handleToggleGroupTherapy
     },
     {
       title: "Support Group",
       imageUrl: SupportGroupImg,
       altText: "An icon representing support group",
-      linkTo: "/userdashboard",
+      linkTo: "/user-dashboard",
       handleClick: handleSupportGroupToggle
     },
   ];

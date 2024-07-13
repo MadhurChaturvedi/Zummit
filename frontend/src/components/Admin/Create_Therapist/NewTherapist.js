@@ -3,6 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { BASE_ADMIN } from "../../../utils/constants";
 
 //main component toh yaha hey
 const NewTherapist = () => {
@@ -37,7 +38,7 @@ const NewTherapist = () => {
 
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
+        BASE_ADMIN+"/adminRegister",
         {
           method: "POST",
           headers: {
@@ -60,7 +61,7 @@ const NewTherapist = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("token", data.token);
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -69,7 +70,7 @@ const NewTherapist = () => {
   const loginUser = async (loginData) => {
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/admin/adminRegister",
+        BASE_ADMIN+"/adminRegister",
         {
           method: "POST",
           headers: {
@@ -88,7 +89,7 @@ const NewTherapist = () => {
       const data = await response.json();
       console.log(data);
       dispatch(addUser(data.newUser));
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
       console.log(response);
 
       //jaao token leke aao
@@ -103,44 +104,7 @@ const NewTherapist = () => {
     }
   };
 
-  const TherapistLogin = async (loginData) => {
-    try {
-      const response = await fetch(
-        "http://localhost:4000/api/therapist/loginTherapist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-
-      const data = await response.json();
-
-      dispatch(addUser(data));
-      navigate("/therapist-home");
-      console.log(response);
-
-      //reload kee baad bhi data remain constant
-      localStorage.setItem("token", data.token);
-
-      //jaao token leke aao
-      const token = response["Authorization"];
-      if (!token) {
-        throw new Error("Token not found in response headers");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
-
+ 
   //token check karo reload kee baad
   const checkForToken = () => {
     const token = localStorage.getItem("token");

@@ -38,7 +38,7 @@ const Proflie = () => {
            <img src={BellIcon} alt=" BellIcon " />
         </div>
       </div>
-      <div className="w-[90%] text-lg mb-4 rounded-md bg-white px-10 py-3">
+      <div className="w-[90%] shadow-lg text-lg mb-4 rounded-md bg-white px-10 py-3">
         <div className="flex items-end gap-8">
           <img className="h-36" src={profile_img} alt="" />
           <div>
@@ -74,7 +74,7 @@ const Proflie = () => {
           </button>
         </div>
       </div>
-      <div className="p-4 w-[90%] rounded-md bg-white ">
+      <div className="p-4 shadow-lg w-[90%] rounded-md bg-white ">
         {toggleAbout ? (
             <>
             <div className="flex mb-2 justify-end items-center">

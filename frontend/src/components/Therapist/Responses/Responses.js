@@ -1,5 +1,6 @@
 import React from 'react';
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
+import SearchBar from "../../images/SVG_files/SearchBar.svg"
 
 const Responses = () => {
   const data = [
@@ -36,28 +37,8 @@ const Responses = () => {
     <div className="w-[90%] m-5">
       <div className="flex  justify-end w-[90%] gap-10 items-center">
         <div className="flex items-center bg-white w-[80%] border  pl-4 rounded-lg border-[#B4F0FF] ">
-          <svg
-            width="25"
-            height="26"
-            viewBox="0 0 24 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 19.5C15.4183 19.5 19 15.9183 19 11.5C19 7.08172 15.4183 3.5 11 3.5C6.58172 3.5 3 7.08172 3 11.5C3 15.9183 6.58172 19.5 11 19.5Z"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M21.0004 21.5004L16.6504 17.1504"
-              stroke="#787579"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+         <img src={SearchBar} alt="SearchBar"/>
+
           <input
             type="text"
             placeholder="Search"
@@ -83,7 +64,7 @@ const Responses = () => {
         </div>
         <div>
           {data.map((item) => (
-            <div className="flex rounded-md my-2 justify-between items-center px-4 py-2 bg-[#EFF7FF]">
+            <div className="flex shadow-md rounded-md my-3 justify-between items-center px-4 py-2 bg-[#EFF7FF]">
                 <h1>{item.name}</h1>
               <h1>{item.feedback}</h1>
             </div>

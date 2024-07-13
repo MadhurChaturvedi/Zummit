@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import {  BASE_THERAPIST } from "../../../utils/constants";
 
 const Therapist_Login = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Therapist_Login = () => {
   const loginUser = async (loginData) => {
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/therapist/therapistLogin",
+        BASE_THERAPIST+"/therapistLogin",
         {
           method: "POST",
           headers: {

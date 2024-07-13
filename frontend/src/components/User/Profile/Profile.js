@@ -38,14 +38,14 @@ const Profile = () => {
            <img src={BellIcon} alt=" BellIcon " />
         </div>
       </div>
-      <div className="w-[90%] text-lg mb-4 rounded-md bg-white px-10 py-3">
+      <div className="w-[90%] text-lg mb-4 shadow-md rounded-md bg-white px-10 py-3">
         <div className="flex items-end gap-8">
           <div className="flex flex-col gap-4">
             <h1 className="text-3xl leading-10 font-medium">Sanjay</h1>
             <p className="text-[#272529] text-xl leading-6 font-medium">0987425163</p>
           </div>
         </div>
-        <div className="flex mt-10 gap-10 items-center text-xl leading-6 font-medium">
+        <div className="flex mt-10 gap-10  items-center text-xl leading-6 font-medium">
           <button
             onClick={handleToggleAbout}
             className={`px-4 py-2 rounded-md ${
@@ -72,7 +72,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
-      <div className="p-4 w-[90%] rounded-md bg-white ">
+      <div className="p-4 w-[90%] shadow-md rounded-md bg-white ">
         {toggleAbout ? (
             <>
             <div className="flex mb-2 justify-end items-center">

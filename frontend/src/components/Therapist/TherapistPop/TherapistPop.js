@@ -6,7 +6,7 @@ const TherapistPop = () => {
   const [fileName, setFileName] = useState();
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [showTherapistPop, setShowTherapistPop] = useState(false);
-  const [therapistCount, setTherapistCount] = useState(0);
+  const [therapistCount, setTherapistCount] = useState(3);
   const [name, setName] = useState("");
   const [charges, setCharges] = useState("");
   const [expertise, setExpertise] = useState("");

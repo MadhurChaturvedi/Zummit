@@ -3,6 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { BASE_USER } from "../../../utils/constants";
 
 //main component toh yaha hey
 const Register__Login = () => {
@@ -31,7 +32,7 @@ const Register__Login = () => {
 
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/users/register",
+        BASE_USER+"/register",
         {
           method: "POST",
           headers: {
@@ -54,7 +55,7 @@ const Register__Login = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("token", data.Authorization);
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -63,7 +64,7 @@ const Register__Login = () => {
   const loginUser = async (loginData) => {
     try {
       const response = await fetch(
-        "https://zummit-chandan.onrender.com/api/users/login",
+        BASE_USER+"/login",
         {
           method: "POST",
           headers: {
@@ -82,13 +83,13 @@ const Register__Login = () => {
       const data = await response.json();
 
       dispatch(addUser( data.newUser ));
-      navigate("/userdashboard");
+      navigate("/user-dashboard");
 
       const token = data.Authorization;
       if (!token) {
         throw new Error("Token not found in response headers");
       } else if (token) {
-        localStorage.setItem("token", token);
+        localStorage.setItem("userToken", token);
         localStorage.setItem("userID", data.newUser._id);
       }
     } catch (error) {
@@ -276,7 +277,7 @@ const Register__Login = () => {
                   onClick={handleSubmission}
                   className="w-[40%] rounded-lg bg-yellow p-2 text-green-500 "
                 >
-                  {!signUp ? "Login" : "Send OTP"}
+                  {signUp ? "Login" : "Send OTP"}
                 </button>
                 <p
                   onClick={handleClick}
