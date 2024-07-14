@@ -1,6 +1,6 @@
-import * as React from "react";
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { removeUser } from "../../utils/Slices/userSlice";
 import { BASE_USER } from "../../utils/constants";
 
@@ -14,6 +14,7 @@ function NavigationLink({ children, href = "#" }) {
 
 function Navbar() {
   const location = useLocation();
+  const [validate,setValidate]=useState(false);
 
   const navLinks = [
     { name: "About Us", to: "/about" },
@@ -23,7 +24,28 @@ function Navbar() {
     { name: "FAQ", to: "/FAQs" },
   ];
   const user = useSelector((store) => store.user);
+  const admin=useSelector((store)=>store.admin);
+  const therapist=useSelector((store)=>store.therapist);
+  const navigate=useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(user){
+      setValidate(true);
+      navigate("/user-dashboard");
+    } else if(admin){
+      setValidate(true);
+      navigate("/admin-dashboard");
+    }else if(therapist){
+      setValidate(true);
+      navigate("/therapist-dashboard");
+    }
+    else{
+      setValidate(false);
+      navigate("/login");
+    }
+  },[])
+
   const logout = async () => {
     //data hatane ka ninja technique
     localStorage.removeItem("token");
@@ -67,7 +89,7 @@ function Navbar() {
               <h1 className="text-[22px] font-semibold">{link.name}</h1>
             </Link>
           ))}
-          {user.data._id == undefined && (
+          {validate && (
               <div className="group inline-block">
                 <button
                   aria-haspopup="true"
@@ -110,7 +132,7 @@ function Navbar() {
                 </ul>
               </div>
           )}
-          {user.data._id != undefined && (
+          {validate && (
             <button
               onClick={async () => {
                 await logout();

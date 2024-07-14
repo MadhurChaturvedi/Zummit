@@ -306,7 +306,7 @@ function App() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${userToken}`,
+              "Authorization": `Bearer ${userToken}`,
             },
 
             credentials: "include",
@@ -315,7 +315,7 @@ function App() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${therapistToken}`,
+              "Authorization": `Bearer ${therapistToken}`,
             },
 
             credentials: "include",
@@ -324,7 +324,7 @@ function App() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${adminToken}`,
+              "Authorization": `Bearer ${adminToken}`,
             },
 
             credentials: "include",
