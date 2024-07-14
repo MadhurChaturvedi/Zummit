@@ -1,6 +1,7 @@
 import React from "react";
 import admin_lady from "../../images/admin_lady.png";
 import BellIcon from "../../images/SVG_files/BellIcon.svg"
+import { useNavigate } from "react-router-dom";
 const Proflie = () => {
   const profile = {
     name: "Ragini Meyer",
@@ -9,6 +10,13 @@ const Proflie = () => {
     dateofBirth: "5 May 2024",
     address: "Tortor fames amet lectus morbi aliquam.",
   };
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.clear("adminToken");
+    navigate('/admin-login')
+
+  }
   return (
     <div className="w-full m-10 ">
       <div className="flex w-[90%] justify-between items-center my-2">
@@ -18,7 +26,7 @@ const Proflie = () => {
             <img src={BellIcon} alt=" BellIcon " />
           </div>
         </div>
-        <button className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
+        <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
       </div>
       <div className="w-[90%] text-lg mb-4 rounded-md bg-white px-10 py-3">
         <div className="flex items-end gap-8">

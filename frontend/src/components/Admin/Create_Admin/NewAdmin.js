@@ -24,6 +24,8 @@ const NewAdmin = () => {
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+
+  
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };

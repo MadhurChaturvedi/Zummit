@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Main_Dashboard_img from "../../images/Main_Dashboard_img.png";
+import { useNavigate } from "react-router-dom";
 const Main_Dashboard = () => {
   const data = [
     {
@@ -131,11 +132,18 @@ const Main_Dashboard = () => {
     </svg>
   );
 
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.clear("adminToken");
+    navigate('/admin-login')
+
+  }
   return (
     <>
       <div className="mx-10 my-5">
         <div className="flex justify-end">
-          <button className="bg-[#0190B1] px-4 py-2 rounded-md text-white text-lg font-medium">Logout</button>
+          <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white text-lg font-medium">Logout</button>
         </div>
         <div className="flex gap-5 mt-10">
           <div className="w-[55%]">
