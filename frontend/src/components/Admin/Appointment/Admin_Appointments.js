@@ -13,7 +13,7 @@ const Admin_Appointments = () => {
   return (
     <div className="flex bg-[#F2FCFF]">
       <Admin_SideBar/>
-      {toggleShimmer ?<Shimmer/> : <Appointment/>}
+      {toggleShimmer ? <Shimmer/> : <Appointment/>}
       
     </div>
   );

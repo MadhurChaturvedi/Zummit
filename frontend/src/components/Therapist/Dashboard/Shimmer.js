@@ -5,8 +5,11 @@ const Shimmer = () => {
     <div className="w-full p-5">
       {/* search bar */}
       <div className="w-[90%]">
-        <div className="flex gap-5 w-[65%] ml-40 p-2 rounded-md">
-          <a className="relative w-[100%] h-14 block overflow-hidden">
+        <div className="flex justify-between gap-5 mb-10 mx-5 w-full  rounded-md">
+          <a className="relative w-[70%] h-12 block overflow-hidden">
+            <span id="loader-element"></span>
+          </a>
+          <a className="relative w-[10%] h-12 block overflow-hidden">
             <span id="loader-element"></span>
           </a>
         </div>
@@ -17,9 +20,6 @@ const Shimmer = () => {
         <div className="flex gap-10 justify-between rounded-md ">
           <div className="flex justify-between w-[60%]">
             <a className="relative w-[60%] h-40 block overflow-hidden">
-              <span id="loader-element"></span>
-            </a>
-            <a className="relative w-[35%] h-40 block overflow-hidden">
               <span id="loader-element"></span>
             </a>
           </div>

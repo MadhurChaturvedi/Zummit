@@ -4,11 +4,16 @@ const Shimmer = () => {
   return (
     <div className="w-full m-5">
       {/* search bar */}
-      <div className="w-[90%] ml-20 flex justify-around items-center">
-        <a className="relative w-[70%] h-12 block overflow-hidden">
-          <span id="loader-element"></span>
-        </a>
-        <a className="relative w-12 rounded-full h-12 block overflow-hidden">
+      <div className="w-[90%] mx-5 flex justify-around items-center">
+        <div className="w-full flex gap-10 items-center">
+          <a className="relative w-[70%] h-12 block overflow-hidden">
+            <span id="loader-element"></span>
+          </a>
+          <a className="relative w-12 rounded-full h-12 block overflow-hidden">
+            <span id="loader-element"></span>
+          </a>
+        </div>
+        <a className="relative w-24 rounded-md h-12 block overflow-hidden">
           <span id="loader-element"></span>
         </a>
       </div>
@@ -50,9 +55,9 @@ const Shimmer = () => {
             .fill("")
             .map(() => (
               <div className="flex justify-between mt-2 px-2">
-                  <a className="relative w-[30%] h-10 block overflow-hidden">
-                    <span id="loader-element"></span>
-                  </a>
+                <a className="relative w-[30%] h-10 block overflow-hidden">
+                  <span id="loader-element"></span>
+                </a>
                 <a className="relative w-[20%] h-10 block overflow-hidden">
                   <span id="loader-element"></span>
                 </a>

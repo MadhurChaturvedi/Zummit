@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ClientImg from "../../images/Therapist-Client-img.png";
-import SearchBar from "../../images/SVG_files/SearchBar.svg"
+import SearchBar from "../../images/SVG_files/SearchBar.svg";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -102,28 +102,31 @@ const Dashboard = () => {
   return (
     <div className="w-full m-5 ">
       {/* Search Bar */}
-      <div className="w-[90%] ml-5 justify-center gap-10 items-center ">
-        <div className="flex items-center ml-24 bg-white w-[70%] pl-4 rounded-lg shadow-sm border border-[#B4F0FF] ">
-         <img src={SearchBar} alt="SearchBar"/>
-
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
+      <div className="w-[90%] ml-5 mt-2 justify-center gap-10 items-center ">
+        <div className="flex justify-between mb-10 items-center">
+          <div className="flex items-center bg-white w-[70%] pl-4 rounded-lg shadow-sm border border-[#B4F0FF] ">
+            <img src={SearchBar} alt="SearchBar" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="h-12 ml-5 rounded-lg outline-none w-[100%]"
+            />
+          </div>
+          <div>
+            <button className="px-4 py-2 rounded-md text-white bg-[#0190b1]">
+              Logout
+            </button>
+          </div>
         </div>
 
         {/* section-1 */}
 
         <div className="flex justify-between my-5">
-          <div className="w-[20rem] font-semibold p-2 flex flex-col gap-4 justify-end ">
+          <div className="w-[20rem] font-semibold p-2 flex flex-col gap-4 justify-center ">
             <h1 className="text-2xl">Hello Jordan Patel</h1>
             <p className="text-lg">
               Welcome to building a Supportive Mental Community.
             </p>
-          </div>
-          <div className="flex justify-center items-center">
-            <img src={ClientImg} className="h-40 rounded-md" alt="" />
           </div>
           <div className="w-[22.5rem] shadow-md  p-5 rounded-md bg-[#FDFEF1]">
             <div className="flex mb-5 justify-between">
@@ -159,19 +162,19 @@ const Dashboard = () => {
           {/* Left Side */}
           <div className="w-[62%] bg-white shadow-md  rounded-md p-4">
             {/* Heading */}
-            <div className="flex gap-2 p-2 text-lg font-medium">
+            <div className="flex gap-5 p-2 text-lg font-medium">
               <h1
                 onClick={groupToggleHandler}
-                className={`px-14 p-2 ${
-                  groupToggle ? "bg-[#0190B1]" : "bg-white"
+                className={`px-14 p-2 shadow-sm font-semibold text-lg ${
+                  groupToggle ? "bg-[#0190B1]" : "bg-[#FDFEE6]"
                 } rounded-md cursor-pointer`}
               >
                 Group
               </h1>
               <h1
                 onClick={individualToggleHandler}
-                className={`px-14 p-2 ${
-                  individualToggle ? "bg-[#0190b1]" : "bg-white"
+                className={`px-14 p-2 shadow-sm font-semibold text-lg ${
+                  individualToggle ? "bg-[#0190b1]" : "bg-[#FDFEE6]"
                 } rounded-md cursor-pointer`}
               >
                 Individual
@@ -179,7 +182,7 @@ const Dashboard = () => {
             </div>
             {/* Info */}
             <div>
-              <div className="flex bg-[#FDFEE6] rounded-md mt-4 mb-6 p-2 text-xl font-medium justify-between">
+              <div className="flex bg-[#FDFEE6] shadow-sm rounded-md mt-4 mb-6 p-2 text-xl font-medium justify-between">
                 <h1>
                   {groupToggle ? "Group Name" : ""}
                   {individualToggle ? "Client Name" : ""}
@@ -192,7 +195,11 @@ const Dashboard = () => {
                     <div
                       onClick={() => selectedGroup(index)}
                       key={index}
-                      className={`flex justify-between rounded-md p-2 pr-10 font-medium text-lg ${selectedGroupIndex === index ? "bg-[#B4F0FF]" : "bg-white"}`}
+                      className={`flex justify-between rounded-md p-2 pr-10 font-medium text-lg ${
+                        selectedGroupIndex === index
+                          ? "bg-[#B4F0FF]"
+                          : "bg-white"
+                      }`}
                     >
                       <h1>{item.name}</h1>
                       <div>
@@ -208,10 +215,15 @@ const Dashboard = () => {
               {individualToggle ? (
                 <>
                   {ClientData.map((item, index) => (
-                    <div 
-                    onClick={() => selectedGroup(index)}
+                    <div
+                      onClick={() => selectedGroup(index)}
                       key={index}
-                      className={`flex justify-between rounded-md p-2 pr-10 font-medium text-lg ${selectedGroupIndex === index ? "bg-[#B4F0FF]" : "bg-white"}`}>
+                      className={`flex justify-between rounded-md p-2 pr-10 font-medium text-lg ${
+                        selectedGroupIndex === index
+                          ? "bg-[#B4F0FF]"
+                          : "bg-white"
+                      }`}
+                    >
                       <h1>{item.name}</h1>
                       <div>
                         <h1>{item.date}</h1>

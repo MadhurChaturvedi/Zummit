@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
-import { BASE_ADMIN} from "../../../utils/constants";
+import { BASE_ADMIN } from "../../../utils/constants";
 
 const Therapist = () => {
   const [therapistsDetails, setTherapistsDetails] = useState([]);
@@ -22,7 +22,7 @@ const Therapist = () => {
 
       try {
         const response = await axios.post(
-          BASE_ADMIN+"/therapistsdetails",
+          BASE_ADMIN + "/therapistsdetails",
           {
             input: "akib@gmail.com"
           },
@@ -49,8 +49,10 @@ const Therapist = () => {
 
   return (
     <div className="w-full m-10 ">
-      <div className="flex  justify-end w-[95%] gap-10 items-center">
+      <div className="flex justify-between w-[95%] gap-10 items-center">
         <div className="flex items-center bg-white w-[80%] border  pl-4 rounded-lg border-[#B4F0FF] ">
+          <img src={SearchBar} alt="SearchBar" />
+
          <img src={SearchBar} alt="SearchBar"/>
 
           <input
@@ -60,8 +62,9 @@ const Therapist = () => {
           />
         </div>
         <div className="p-2 cursor-pointer rounded-full ">
-           <img src={BellIcon} alt=" BellIcon " />
+          <img src={BellIcon} alt=" BellIcon " />
         </div>
+        <button className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
       </div>
       <div className="flex w-[95%] justify-between items-center">
         <h1 className="text-2xl  my-8">Therapists</h1>

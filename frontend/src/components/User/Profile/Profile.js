@@ -35,7 +35,7 @@ const Profile = () => {
       <div className="flex w-[90%] justify-between items-center my-6">
         <h1 className="text-3xl leading-10 font-medium text-[#001519]">Profile</h1>
         <div className="p-2 rounded-full ">
-           <img src={BellIcon} alt=" BellIcon " />
+          <img src={BellIcon} alt=" BellIcon " />
         </div>
       </div>
       <div className="w-[90%] text-lg mb-4 shadow-md rounded-md bg-white px-10 py-3">
@@ -48,33 +48,23 @@ const Profile = () => {
         <div className="flex mt-10 gap-10  items-center text-xl leading-6 font-medium">
           <button
             onClick={handleToggleAbout}
-            className={`px-4 py-2 rounded-md ${
-              toggleAbout ? "text-white bg-[#00677F]" : "text-black bg-white"
-            }`}
+            className={`px-4 py-2 rounded-md ${toggleAbout ? "text-white bg-[#00677F]" : "text-black bg-white"
+              }`}
           >
             About
           </button>
           <button
             onClick={handleTogglePassword}
-            className={`px-4 py-2 rounded-md ${
-              togglePassword ? "text-white bg-[#00677F]" : "text-black bg-white"
-            }`}
+            className={`px-4 py-2 rounded-md ${togglePassword ? "text-white bg-[#00677F]" : "text-black bg-white"
+              }`}
           >
             Password
-          </button>
-          <button
-            onClick={handleToggleExpertise}
-            className={`px-4 py-2 rounded-md ${
-              toggleExpertise ? "text-white bg-[#00677F]" : "text-black bg-white"
-            }`}
-          >
-            Expertise
           </button>
         </div>
       </div>
       <div className="p-4 w-[90%] shadow-md rounded-md bg-white ">
         {toggleAbout ? (
-            <>
+          <>
             <div className="flex mb-2 justify-end items-center">
               <button className="px-2 rounded-md text-white text-lg  bg-[#00677F]">
                 Edit
@@ -129,42 +119,42 @@ const Profile = () => {
           <></>
         )}
         {togglePassword ? (
-         <>
-         {" "}
-         <div className="flex mb-2 justify-end items-center">
-           <button className="px-2 rounded-md text-white text-lg  bg-[#00677F]">
-             save
-           </button>
-         </div>
-         <div className="bg-[#ffffff] text-sm flex  justify-between rounded-lg w-full p-2 ">
-           <div className="flex flex-col gap-5 w-full">
-             <div className="flex gap-20">
-               <h1 className="w-[20%]">Current Passowrd</h1>
-               <input
-                 className="p-1 w-[80%] rounded-md outline-none border bg-[#FBFCFD]"
-                 type="Password"
-                 value={profile.name}
-               />
-             </div>
-             <div className="flex gap-20">
-               <h1 className="w-[20%]">New Password</h1>
-               <input
-                 className="p-1 w-[80%] rounded-md outline-none border bg-[#FBFCFD]"
-                 type="password"
-                 value={profile.email}
-               />
-             </div>
-             <div className="flex gap-20">
-               <h1 className="w-[20%]">Retype Password</h1>
-               <input
-                 className="p-1 w-[80%] rounded-md outline-none border bg-[#FBFCFD]"
-                 type="password"
-                 value={profile.phone}
-               />
-             </div>
-           </div>
-         </div>
-       </>
+          <>
+            {" "}
+            <div className="flex mb-2 justify-end items-center">
+              <button className="px-2 rounded-md text-white text-lg  bg-[#00677F]">
+                save
+              </button>
+            </div>
+            <div className="bg-[#ffffff] text-sm flex  justify-between rounded-lg w-full p-2 ">
+              <div className="flex flex-col gap-5 w-full">
+                <div className="flex gap-20">
+                  <h1 className="w-[20%]">Current Passowrd</h1>
+                  <input
+                    className="p-1 w-[80%] rounded-md outline-none border bg-[#FBFCFD]"
+                    type="Password"
+                    value={profile.name}
+                  />
+                </div>
+                <div className="flex gap-20">
+                  <h1 className="w-[20%]">New Password</h1>
+                  <input
+                    className="p-1 w-[80%] rounded-md outline-none border bg-[#FBFCFD]"
+                    type="password"
+                    value={profile.email}
+                  />
+                </div>
+                <div className="flex gap-20">
+                  <h1 className="w-[20%]">Retype Password</h1>
+                  <input
+                    className="p-1 w-[80%] rounded-md outline-none border bg-[#FBFCFD]"
+                    type="password"
+                    value={profile.phone}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
         ) : (
           <></>
         )}

@@ -5,9 +5,10 @@ import SearchBar from "../../images/SVG_files/SearchBar.svg";
 import { BASE_THERAPIST } from "../../../utils/constants";
 
 const Transactions = () => {
-  const [transactions, setTransactions] = useState([])
+  const [transactions, setTransactions] = useState([]);
   useEffect(() => {
-    axios.get(BASE_THERAPIST+'/gettherapistTransactionLists')
+    axios
+      .get(BASE_THERAPIST + "/gettherapistTransactionLists")
       .then((response) => {
         if (response.data.success) {
           setTransactions(response.data.therapistTransaction);
@@ -49,18 +50,22 @@ const Transactions = () => {
   return (
     <div className="w-full my-5 mx-10">
       {/* Search Bar */}
-      <div className="flex justify-center gap-10 items-center">
-        <div className="flex items-center bg-white w-[70%]  pl-4 rounded-lg-[#B4F0FF] ">
-         <img src={SearchBar} alt="SearchBar"/>
-
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
+      <div className="flex w-full justify-between my-5 items-center">
+        <div className="flex w-[90%] gap-5">
+          <div className="flex items-center bg-white w-[70%] pl-4 rounded-lg border border-[#B4F0FF] ">
+            <img src={SearchBar} alt="SearchBar" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="h-12 ml-5 rounded-lg outline-none w-[100%]"
+            />
+          </div>
+          <img src={BellIcon} alt=" BellIcon " />
         </div>
-        <div className="p-2 rounded-full ">
-           <img src={BellIcon} alt=" BellIcon " />
+        <div>
+          <button className="px-4 font-medium text-lg py-2 rounded-md text-white bg-[#0190b1]">
+            Logout
+          </button>
         </div>
       </div>
       <div className="flex w-[90%] justify-between items-center">
@@ -82,10 +87,7 @@ const Transactions = () => {
             <td className="w-[18%]">{item.sessionDate}</td>
             <td className="w-[18%]">{item.clientName}</td>
             <td className="w-[18%]">{item.doctorName}</td>
-            <td
-              style={getStyle(item.report)}
-              className="w-[10%]  text-end"
-            >
+            <td style={getStyle(item.report)} className="w-[10%]  text-end">
               {item.Amount}
             </td>
             <td className="flex w-[14%] justify-end">

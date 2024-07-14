@@ -11,11 +11,14 @@ const Proflie = () => {
   };
   return (
     <div className="w-full m-10 ">
-      <div className="flex w-[90%] justify-between items-center">
-        <h1 className="text-2xl ">Profile</h1>
-        <div className="p-2 rounded-full ">
-           <img src={BellIcon} alt=" BellIcon " />
+      <div className="flex w-[90%] justify-between items-center my-2">
+        <div className="flex w-[90%] justify-between items-center">
+          <h1 className="text-2xl ">Profile</h1>
+          <div className="p-2 rounded-full ">
+            <img src={BellIcon} alt=" BellIcon " />
+          </div>
         </div>
+        <button className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
       </div>
       <div className="w-[90%] text-lg mb-4 rounded-md bg-white px-10 py-3">
         <div className="flex items-end gap-8">

@@ -34,21 +34,26 @@ const Responses = () => {
     },
   ];
   return (
-    <div className="w-[90%] m-5">
-      <div className="flex  justify-end w-[90%] gap-10 items-center">
-        <div className="flex items-center bg-white w-[80%] border  pl-4 rounded-lg border-[#B4F0FF] ">
-         <img src={SearchBar} alt="SearchBar"/>
-
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
+    <div className="w-[90%] m-5 mx-10">
+        <div className="flex w-[90%] justify-between mb-5 items-center">
+          <div className="flex w-full gap-5">
+            <div className="flex items-center bg-white w-[70%] pl-4 rounded-lg border border-[#B4F0FF] ">
+              <img src={SearchBar} alt="SearchBar" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="h-12 ml-5 rounded-lg outline-none w-[100%]"
+              />
+            </div>
+            
+            <img src={BellIcon} alt=" BellIcon " />
+          </div>
+          <div>
+            <button className="px-4 font-medium text-lg py-2 rounded-md text-white bg-[#0190b1]">
+              Logout
+            </button>
+          </div>
         </div>
-        <div className="p-2 cursor-pointer rounded-full ">
-           <img src={BellIcon} alt=" BellIcon " />
-        </div>
-      </div>
       <div className="flex w-[90%] m-5  font-medium">
         <h1 className="text-2xl">Responses</h1>
       </div>
