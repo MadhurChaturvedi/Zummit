@@ -29,22 +29,31 @@ function Navbar() {
   const navigate=useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(()=>{
-    if(user){
-      setValidate(true);
-      navigate("/user-dashboard");
-    } else if(admin){
-      setValidate(true);
-      navigate("/admin-dashboard");
-    }else if(therapist){
-      setValidate(true);
-      navigate("/therapist-dashboard");
-    }
-    else{
-      setValidate(false);
-      navigate("/login");
-    }
-  },[])
+  // useEffect(()=>{
+  //   if(user){
+  //     // setValidate(true);
+  //     navigate("/user-dashboard");
+  //   } else{
+  //     // setValidate(false);
+  //     navigate("/login");
+  //   }
+  //   if(admin){
+  //     // setValidate(true);
+  //     navigate("/admin-dashboard");
+  //   } else{
+  //     // setValidate(false);
+  //     navigate("/login");
+  //   }
+  //   if(therapist){
+  //     // setValidate(true);
+  //     console.log(therapist);
+  //     navigate("/therapist-dashboard");
+  //   }
+  //   else{
+  //     // setValidate(false);
+  //     navigate("/login");
+  //   }
+  // },[])
 
   const logout = async () => {
     //data hatane ka ninja technique
@@ -57,8 +66,8 @@ function Navbar() {
         "Content-Type": "application/json",
       },
 
-      credentials: "include", // Changed from 'true' to 'include' for clarity
-      withCredentials: true,
+      credentials: "include",
+     
     });
 
     dispatch(removeUser());

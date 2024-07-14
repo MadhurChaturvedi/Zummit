@@ -123,6 +123,7 @@ const loginUser = async (req, res) => {
 const logout = asyncHandler(async (req, res) => {
   res.clearCookie("token");
   res.status(200).json({
+    success:true,
     message: "successfully logout",
   });
 });
