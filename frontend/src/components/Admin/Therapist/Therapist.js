@@ -3,6 +3,7 @@ import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg";
 import { BASE_ADMIN } from "../../../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const Therapist = () => {
   const [therapistsDetails, setTherapistsDetails] = useState([]);
@@ -42,6 +43,14 @@ const Therapist = () => {
     fetchTherapistsDetails();
   }, []);
 
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.clear("adminToken");
+    navigate('/admin-login')
+
+  }
+
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
     return new Date(dateString).toLocaleDateString("en-GB", options);
@@ -64,7 +73,7 @@ const Therapist = () => {
         <div className="p-2 cursor-pointer rounded-full ">
           <img src={BellIcon} alt=" BellIcon " />
         </div>
-        <button className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
+        <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
       </div>
       <div className="flex w-[95%] justify-between items-center">
         <h1 className="text-2xl  my-8">Therapists</h1>

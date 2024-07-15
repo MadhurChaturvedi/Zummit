@@ -3,6 +3,8 @@ import axios from "axios";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
 import SearchBar from "../../images/SVG_files/SearchBar.svg"
 import { BASE_ADMIN } from "../../../utils/constants";
+import { useNavigate } from 'react-router-dom'
+
 const Client = () => {
   const [clientList, setClientList] = useState([])
   useEffect(() => {
@@ -24,6 +26,12 @@ const Client = () => {
       });
   }, []);
 
+  const navigate = useNavigate()
+  const logout = () => {
+    localStorage.clear("adminToken");
+    navigate('/admin-login')
+
+  }
   return (
     <div className="w-full m-10 ">
       <div className="flex justify-between gap-10 items-center">
@@ -41,7 +49,7 @@ const Client = () => {
         <div className="p-2 rounded-full ">
           <img src={BellIcon} alt=" BellIcon " />
         </div>
-        <button className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
+        <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
       </div>
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl  my-8">Clients</h1>
