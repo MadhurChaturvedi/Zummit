@@ -10,22 +10,7 @@ const reviewsList = asyncHandler(async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { input, token } = req.body;
-  if (!input || !token ) {
-    return res.status(402).json({ message: "Please fill all fileds" });
-  }
-
   try {
-    const admin = await AdminLoginRegister.findOne({ input }).select("-password")
-    if (!admin) {
-      return res.status(404).json({ message: "Review Lists not found" });
-    }
-
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    if (JSON.stringify(decodedToken.id) !== JSON.stringify(admin._id)) {
-      return res.status(401).json({ message: "Unauthorized" });
-    }
-
     const review = await AdminReview.find({});
 
     res.status(200).json({

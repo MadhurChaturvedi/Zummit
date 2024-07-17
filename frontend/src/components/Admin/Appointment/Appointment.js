@@ -9,12 +9,21 @@ const Appointment = () => {
   const [selectedSort, setSelectedSort] = useState("");
 
   useEffect(() => {
+
+    const token = localStorage.getItem("adminToken");
+      if (!token) {
+        console.error("No token found");
+        return;
+      }
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+    
     axios
-      .post(BASE_ADMIN + "/appointmentslist", {
-        input: "akib@gmail.com",
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWEwNGRiMTk3Mzk4MTgwNzAwZDZjNCIsImlhdCI6MTcxNzE3NTUxNiwiZXhwIjoxNzE5NzY3NTE2fQ.nT9mK7G3tCQlHfhpFBC-iefz4XkGdBIP8BUNN9tOoUQ",
-      })
+      .get(BASE_ADMIN + "/appointmentslist", config)
       .then((response) => {
         if (response.data.success) {
           setAppointmentsList(response.data.adminAppointmentList);

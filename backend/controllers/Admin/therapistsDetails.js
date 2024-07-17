@@ -11,19 +11,7 @@ const therapistsDetails = asyncHandler(async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { input } = req.body;
-  if (!input) {
-    return res.status(402).json({ message: "Please fill all fileds" });
-  }
-
   try {
-    const admin = await AdminLoginRegister.findOne({ input }).select(
-      "-password"
-    )
-    if (!admin) {
-      return res.status(404).json({ message: "Therapists Details  not found" });
-    }
-
 
     const therapists = await AdminTherapists.find({});
 

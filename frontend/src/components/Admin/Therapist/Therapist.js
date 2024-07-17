@@ -20,13 +20,7 @@ const Therapist = () => {
       };
 
       try {
-        const response = await axios.post(
-          BASE_ADMIN + "/therapistsdetails",
-          {
-            input: "akib@gmail.com"
-          },
-          config
-        );
+        const response = await axios.get(BASE_ADMIN + "/therapistsdetails",config);
 
         if (response.data.success) {
           setTherapistsDetails(response.data.therapists);

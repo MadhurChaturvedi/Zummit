@@ -45,16 +45,16 @@ router.route("/deleteReview").post(deleteReview);
 
 //get API's
 router.route("/getAdmin").get(getAdmin);
-router.route("/adminDashboard").get(adminDashboard);
-router.route("/appointmentslist").post(appointmentsList);
-router.route("/clienlist").post(clientsList);
-router.route("/profile").get(profiles);
-router.route("/groupsdetails").post(groupsDetails);
-router.route("/addedreview").get(reviewsList);
-router.route("/reviews").post(reviewsList);
-router.route("/therapistsdetails").post(protect, admin, therapistsDetails);
-router.route("/transactions").post(transactions);
-router.route("/resources").post(resources);
+router.route("/adminDashboard").get(protect, admin, adminDashboard);
+router.route("/appointmentslist").get(protect, admin, appointmentsList);
+router.route("/clienlist").get(protect, admin, clientsList);
+router.route("/profile").get(protect, admin, profiles);
+router.route("/groupsdetails").get(protect, admin, groupsDetails);
+router.route("/addedreview").get(protect,admin,reviewsList);
+router.route("/reviews").get(protect, admin, reviewsList);
+router.route("/therapistsdetails").get(protect, admin, therapistsDetails);
+router.route("/transactions").get(protect, admin, transactions);
+router.route("/resources").get(protect, admin, resources);
 
 
 module.exports = router;

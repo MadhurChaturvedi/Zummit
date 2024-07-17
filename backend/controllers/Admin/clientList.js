@@ -12,21 +12,7 @@ const clientsList = asyncHandler(async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { input, token } = req.body;
-
     try {
-      const admin = await AdminLoginRegister.findOne({ input }).select(
-        "-password"
-      )
-      if (!admin) {
-        return res.status(404).json({ message: "Client List not found" });
-      }
-
-  
-      const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-      if (JSON.stringify(decodedToken.id)!== JSON.stringify(admin._id)) {
-        return res.status(401).json({ message: "Unauthorized" });
-      }
 
       const clientsLists=await Client.find({});
 

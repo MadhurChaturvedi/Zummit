@@ -53,7 +53,7 @@ const Login = () => {
       console.log(data);
 
       //reload kee baad bhi data remain constant
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("adminToken", data.token);
       navigate("/admin-dashboard");
     } catch (error) {
       console.error("Error:", error);
