@@ -21,7 +21,6 @@ function UserSidebar() {
     { path: "/user-resources", label: "Resources" },
     { path: "/user-FAQs", label: "FAQ" },
     { path: "/user-profile", label: "Profile" },
-    { path: "/", label: "Logout" },
   ];
   return (
     <div>
@@ -34,11 +33,10 @@ function UserSidebar() {
             <Link to={data.path}>
               <button
                 onClick={smoothScroll}
-                className={` pl-5 text-left py-2 ${
-                  isActive(data.path)
+                className={` pl-5 text-left py-2 ${isActive(data.path)
                     ? "bg-[#FDFEF1]  text-black font-bold w-full  rounded-lg "
                     : "font-medium hover:text-black"
-                }`}
+                  }`}
               >
                 {data.label}
               </button>

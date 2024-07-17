@@ -1,0 +1,16 @@
+      <svg
+          width="32"
+          height="32"
+          viewBox="0 0 32 32"
+          className="cursor-pointer"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 19.9997V25.333C4 26.7997 5.2 27.9997 6.66667 27.9997H25.3333C26.0406 27.9997 26.7189 27.7187 27.219 27.2186C27.719 26.7185 28 26.0403 28 25.333V19.9997M22.6667 11.9997L16 18.6663L9.33333 11.9997M16 17.0663V3.33301"
+            stroke="#00677F"
+            stroke-width="2.66667"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>

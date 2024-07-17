@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import profile_img from "../../images/Therapist-Profile-img.png";
 import BellIcon from "../../images/SVG_files/BellIcon.svg";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [profile, setProfile] = useState({
@@ -10,6 +11,13 @@ const Profile = () => {
     dateofBirth: "5 May 2024",
     address: "Tortor fames amet lectus morbi aliquam.",
   });
+
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear("userToken");
+    localStorage.clear("userID");
+    navigate('/login');
+  };
 
   const [toggleAbout, setToggleAbout] = useState(true);
   const [togglePassword, setTogglePassword] = useState(false);
@@ -87,6 +95,7 @@ const Profile = () => {
           >
             Password
           </button>
+          <button onClick={logout} className="px-4 py-2 text-xl font-medium">Logout</button>
         </div>
       </div>
       <div className="p-4 w-[90%] shadow-md rounded-md bg-white ">

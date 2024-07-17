@@ -5,6 +5,7 @@ const Existing_Client = ({toggleHandler}) => {
   return (
     <div className="w-[90%] p-5">
       <div className="flex gap-5 items-center">
+        {/* Left Arrow */}
         <svg
           width="14"
           height="14"
@@ -49,6 +50,7 @@ const Existing_Client = ({toggleHandler}) => {
         <div className="bg-[#B4F0FF] p-2 rounded-md shadow-md w-[60%]">
           <div className="flex justify-between items-center px-4 py-2 rounded-md bg-[#EFF7FF]">
             <h1>What are you trying to accomplish through counselling?</h1>
+            {/* Down Angle Icon */}
             <svg
               width="14"
               height="10"
@@ -67,6 +69,7 @@ const Existing_Client = ({toggleHandler}) => {
           </div>
           <div className="flex justify-end p-2">
             <div className="flex  items-center gap-2">
+              {/* Left Angle Icon */}
               <svg
                 width="10"
                 height="16"
@@ -83,6 +86,7 @@ const Existing_Client = ({toggleHandler}) => {
                 />
               </svg>
               <h1>1 to 5</h1>
+              {/* Right Angle Icon */}
               <svg
                 width="10"
                 height="16"

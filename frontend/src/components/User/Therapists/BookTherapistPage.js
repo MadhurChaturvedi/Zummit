@@ -6,6 +6,8 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import axios from "axios";
 import UserSidebar from "../UserSidebar";
 import {  BASE_USER } from "../../../utils/constants";
+import Left_Arrow_Icon from '../../images/SVG_files/Left_Angle.svg'
+import Right_Arrow_Icon from '../../images/SVG_files/Right_Angle_Icon.svg'
 
 function BookTherapistPage() {
   const Client = {}
@@ -300,8 +302,8 @@ function BookTherapistPage() {
                   <img
                     loading="lazy"
                     alt="move slots backward"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/dbe922afa8f28ad6e0e909b4e5ee12c30a33d9c9e3843442c012faf84e2cdf90?apiKey=8587097ed3a94b279b125430c3e068a6&"
-                    className={`shrink-0 self-stretch my-auto w-8 aspect-square ${CurrentFirstSlot <= CurrentDate ? `hidden` : `block`
+                    src={Left_Arrow_Icon}
+                    className={`shrink-0 self-stretch my-auto w-5 fill-black aspect-square ${CurrentFirstSlot <= CurrentDate ? `hidden` : `block`
                       }`}
                   />
                 </button>
@@ -345,8 +347,8 @@ function BookTherapistPage() {
                   <img
                     loading="lazy"
                     alt="move slots forward"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/f56796728be6404f086fe8f6474bf54542cf5b1095ffb1e699b497945b9a19bd?apiKey=8587097ed3a94b279b125430c3e068a6&"
-                    className="shrink-0 self-stretch my-auto w-8 aspect-square"
+                    src={Right_Arrow_Icon}
+                    className="shrink-0 self-stretch my-auto w-5 aspect-square"
                   />
                 </button>
               </div>

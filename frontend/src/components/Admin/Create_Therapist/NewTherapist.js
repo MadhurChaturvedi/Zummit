@@ -3,7 +3,7 @@ import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { BASE_ADMIN } from "../../../utils/constants";
+import { AROUND_WITH_US_GIF, BASE_ADMIN } from "../../../utils/constants";
 
 //main component toh yaha hey
 const NewTherapist = () => {
@@ -37,18 +37,15 @@ const NewTherapist = () => {
     }
 
     try {
-      const response = await fetch(
-        BASE_ADMIN+"/adminRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Registration failed");
@@ -69,18 +66,15 @@ const NewTherapist = () => {
 
   const loginUser = async (loginData) => {
     try {
-      const response = await fetch(
-        BASE_ADMIN+"/adminRegister",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminRegister", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Login failed");
@@ -104,7 +98,6 @@ const NewTherapist = () => {
     }
   };
 
- 
   //token check karo reload kee baad
   const checkForToken = () => {
     const token = localStorage.getItem("token");
@@ -241,7 +234,9 @@ const NewTherapist = () => {
             </div>
           )}
           <div className="flex flex-col gap-5 shadow-lg rounded-lg  bg-white p-5">
-            <p className="text-center text-2xl mb-6 font-medium">Create Therapist Account</p>
+            <p className="text-center text-2xl mb-6 font-medium">
+              Create Therapist Account
+            </p>
             {/* <div className="font-semibold text-2xl">
               <p>Admin</p>
             </div> */}

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
-import SearchBar from "../../images/SVG_files/SearchBar.svg";
 import { BASE_THERAPIST } from "../../../utils/constants";
+import SearchBar from "../Searchbar";
 
 const Appointment = () => {
   const [appointmentsList, setAppointmentsList] = useState([]);
@@ -69,31 +68,8 @@ const Appointment = () => {
     setSelectedSort(selected);
   };
   return (
-    <div className="w-full m-10 ">
-      {/* Search Bar */}
-      <div className="flex w-[95%] justify-end gap-10 items-center">
-        {/* search bar */}
-        <div className="flex w-full justify-between mb-5 items-center">
-          <div className="flex w-full gap-5">
-            <div className="flex items-center bg-white w-[80%] pl-4 rounded-lg border border-[#B4F0FF] ">
-              <img src={SearchBar} alt="SearchBar" />
-              <input
-                type="text"
-                placeholder="Search"
-                className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-              />
-            </div>
-        </div>
-        <div className="p-2 cursor-pointer rounded-full ">
-          <img src={BellIcon} alt=" BellIcon " />
-          </div>
-          <div>
-            <button className="px-4 font-medium text-lg py-2 rounded-md text-white bg-[#0190b1]">
-              Logout
-            </button>
-          </div>
-        </div>
-      </div>
+    <div className="w-full m-10">
+      <SearchBar />
       {/* heading */}
       <div className="w-[95%] flex justify-between items-center text-2xl my-8">
         <h1>Appointments</h1>

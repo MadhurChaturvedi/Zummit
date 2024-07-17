@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Existing_Client from "./Existing_Client";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
-import SearchBar from "../../images/SVG_files/SearchBar.svg";
+import Searchbar from "../Searchbar";
 
 const Clients = () => {
   const [feedbackToggler, setFeedbackToggler] = useState(true);
@@ -68,25 +67,7 @@ const Clients = () => {
     <>
       {feedbackToggler ? (
         <div className="w-full my-5 mx-10 ">
-          <div className="flex w-[90%] justify-between mb-10 items-center">
-            <div className="flex w-full gap-5">
-              <div className="flex items-center bg-white w-[70%] pl-4 rounded-lg border border-[#B4F0FF] ">
-                <img src={SearchBar} alt="SearchBar" />
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-                />
-              </div>
-
-              <img src={BellIcon} alt=" BellIcon " />
-            </div>
-            <div>
-              <button className="px-4 font-medium text-lg py-2 rounded-md text-white bg-[#0190b1]">
-                Logout
-              </button>
-            </div>
-          </div>
+          <Searchbar />
           <div className="flex  my-5 w-[95%] gap-5 text-lg items-center">
             <h1 className="cursor-pointer text-[#00677F] bg-white p-1 rounded-md rounded-b-none border-b-2 border-[#00677F]">
               All

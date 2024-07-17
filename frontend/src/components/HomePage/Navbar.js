@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { removeUser } from "../../utils/Slices/userSlice";
 import { BASE_USER } from "../../utils/constants";
+import Logo from "../images/Navbar-logo.png"
 
 function NavigationLink({ children, href = "#" }) {
   return (
@@ -82,7 +83,7 @@ function Navbar() {
         >
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/6fb58034307f07517c9e0c497e461fc4e31eb7bf01576cfcb2c328b28bd1eb1d?apiKey=cf8fdc45d1bf4d769195b26a1a492d1c&"
+          src={Logo}
             alt="Company Logo"
           />
         </a>

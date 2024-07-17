@@ -1,4 +1,5 @@
 import React from "react";
+import UserSidebar from "../UserSidebar";
 
 const NotificationPage = () => {
   const data = [
@@ -21,10 +22,12 @@ const NotificationPage = () => {
     },
   ];
   return (
-    <div className="w-full flex justify-center">
+    <div className="flex">
+      <UserSidebar/>
+      <div className="w-full m-5 flex justify-center">
       <div className=" w-[70%]">
         <h1 className="text-2xl mb-10 font-semibold">All Notification</h1>
-        <div className="bg-white border rounded-md p-10">
+        <div className="bg-white shadow-md border rounded-md p-10">
           {data.map((item, idx) => (
             <div key={idx} className="flex gap-5 mb-10 items-center">
               <p className="font-semibold text-lg">{item.nofication}</p>
@@ -35,6 +38,7 @@ const NotificationPage = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -57,9 +57,12 @@ import UserBillings from "./components/User/Billings/UserBillings";
 import UserProfile from "./components/User/Profile/UserProfile";
 import Create_Therapist_Credentail from "./components/Admin/Create_Therapist/Create_Therapist_Credentail";
 import Create_Another_Admin from "./components/Admin/Create_Admin/Create_Another_Admin";
+import GroupIntakeResponse from "./components/User/Groups/IntakeResponse";
+import NotificationPage from "./components/User/Dashboard/NotificationPage";
 
 import IntakeResponse from "./components/Booking/IntakeResponse";
 import { BASE_ADMIN, BASE_THERAPIST, BASE_USER } from "./utils/constants";
+import GroupBooking from "./components/User/Dashboard/GroupBooking";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -274,6 +277,9 @@ const routes = [
   { path: "/user-group/:id", element: <UserGroupTherapy /> },
   { path: "/user-support/:id", element: <UserSupport /> },
   { path: "/user-profile", element: <UserProfile /> },
+  { path: "/user-notification", element: <NotificationPage /> },
+  { path: "/group-intake-response", element: <GroupIntakeResponse /> },
+  { path: "/group-booking", element: <GroupBooking /> },
   {
     path: "/admin-create-therapist-credentail",
     element: <Create_Therapist_Credentail />,
@@ -306,7 +312,7 @@ function App() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${userToken}`,
+              Authorization: `Bearer ${userToken}`,
             },
 
             credentials: "include",
@@ -315,7 +321,7 @@ function App() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${therapistToken}`,
+              Authorization: `Bearer ${therapistToken}`,
             },
 
             credentials: "include",
@@ -324,7 +330,7 @@ function App() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${adminToken}`,
+              Authorization: `Bearer ${adminToken}`,
             },
 
             credentials: "include",

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
-import SearchBar from "../../images/SVG_files/SearchBar.svg";
 import { BASE_ADMIN } from "../../../utils/constants";
-import { useNavigate } from 'react-router-dom'
+import SearchBar from "../SearchBar";
 
 const Appointment = () => {
   const [appointmentsList, setAppointmentsList] = useState([]);
@@ -28,14 +26,6 @@ const Appointment = () => {
         console.error("Error fetching appointments:", error);
       });
   }, []);
-
-  const navigate = useNavigate()
-
-  const logout = () => {
-    localStorage.clear("adminToken");
-    navigate('/admin-login')
-
-  }
 
   const cancelledStyle = { color: "#B00202" };
   const completedStyle = { color: "#02B04A" };
@@ -84,33 +74,21 @@ const Appointment = () => {
   return (
     <div className="w-full m-10 ">
       {/* Search Bar */}
-      <div className="flex w-[95%] justify-between gap-10 items-center">
-        <div className="flex items-center bg-white w-[80%]   pl-4 rounded-lg -[#B4F0FF] ">
-          <img src={SearchBar} alt="SearchBar" />
 
-          <img src={SearchBar} alt="SearchBar" />
+      <SearchBar />
 
-          <input
-            type="text"
-            placeholder="Search"
-            className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-          />
-        </div>
-        <div className="p-2 cursor-pointer rounded-full ">
-          <img src={BellIcon} alt=" BellIcon " />
-        </div>
-        <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white">Logout</button>
-      </div>
       {/* heading */}
       <div className="w-[95%] flex justify-between items-center text-2xl my-8">
         <h1>Appointments</h1>
         <div className="relative text-white cursor-pointer bg-[#0190B1] w-[7rem] p-1 text-center  rounded-md text-base ">
           <div
-            className={`flex ${showSort && "border-b"
-              } border-white justify-center items-center gap-2 py-1 text-center`}
+            className={`flex ${
+              showSort && "border-b"
+            } border-white justify-center items-center gap-2 py-1 text-center`}
           >
             <h1>Sort</h1>
             {showSort ? (
+              // sort icon
               <svg
                 width="23"
                 height="23"
@@ -128,6 +106,7 @@ const Appointment = () => {
                 />
               </svg>
             ) : (
+              // down arrow
               <svg
                 width="20"
                 height="17"
@@ -197,29 +176,33 @@ const Appointment = () => {
             <div className="absolute left-0 rounded-b-md px-1 text-sm  w-full  bg-[#0190b1]">
               <h1
                 onClick={handleSortClick("All")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } border-b rounde-md border-white text-center  py-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } border-b rounde-md border-white text-center  py-1`}
               >
                 All
               </h1>
               <h1
                 onClick={handleSortClick("Pending")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } border-b rounde-md border-white text-center p-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } border-b rounde-md border-white text-center p-1`}
               >
                 Pending
               </h1>
               <h1
                 onClick={handleSortClick("Cancelled")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } border-b rounde-md border-white text-center p-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } border-b rounde-md border-white text-center p-1`}
               >
                 Cancelled
               </h1>
               <h1
                 onClick={handleSortClick("Completed")}
-                className={`${selectedSort === "All" ? "#F7F131" : ""
-                  } rounde-md border-white text-center p-1`}
+                className={`${
+                  selectedSort === "All" ? "#F7F131" : ""
+                } rounde-md border-white text-center p-1`}
               >
                 Completed
               </h1>

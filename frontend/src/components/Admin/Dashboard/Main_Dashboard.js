@@ -82,6 +82,7 @@ const Main_Dashboard = () => {
   const pendingStyle = { color: "#FED365" };
   const publishedStyle = { color: "#02B04A" };
 
+  // Clock Icon
   const PendingIcon = (
     <svg
       width="14"
@@ -107,6 +108,7 @@ const Main_Dashboard = () => {
     </svg>
   );
 
+  // Check Icon
   const PublishedIcon = (
     <svg
       width="14"
@@ -137,24 +139,25 @@ const Main_Dashboard = () => {
   const logout = () => {
     localStorage.clear("adminToken");
     navigate('/admin-login')
-
   }
   return (
     <>
       <div className="mx-10 my-5">
-        <div className="flex justify-end">
-          <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white text-lg font-medium">Logout</button>
+        <div className="flex justify-between items-center">
+          <div className="flex justify-between my-4">
+            <div>
+              <h1 className="text-2xl font-medium">Hello Ragini</h1>
+              <p className="text-lg font-medium">
+                Welcome to building a Supportive Mental Community.
+              </p>
+            </div>
+          </div>
+          <div>
+            <button onClick={logout} className="bg-[#0190B1] px-4 py-2 rounded-md text-white text-lg font-medium">Logout</button>
+          </div>
         </div>
         <div className="flex gap-5 mt-10">
           <div className="w-[55%]">
-            <div className="flex justify-between mb-10">
-              <div>
-                <h1 className="text-2xl font-medium  my-4">Hello Ragini</h1>
-                <p className="text-lg font-medium my-4">
-                  Welcome to building a Supportive Mental Community.
-                </p>
-              </div>
-            </div>
             <div className=" p-4 rounded-lg text-lg shadow-xl bg-white ">
               <div className="flex font-medium justify-between rounded-lg p-2 mb-4 bg-[#FDFEE6]">
                 <h1>Therapists Name</h1>
@@ -168,6 +171,7 @@ const Main_Dashboard = () => {
               ))}
               <div className="flex justify-end items-center mt-3 mb-8">
                 <div className="cursor-pointer bg-[#0190B1] flex justify-center items-center h-14 w-14 text-center rounded-full">
+                  {/* Plus Icon */}
                   <svg
                     width="14"
                     height="14"
@@ -227,6 +231,7 @@ const Main_Dashboard = () => {
 
                   <h1 className="flex justify-center items-center text-[#0190b1] gap-2 cursor-pointer">
                     Edit
+                    {/* Edit Icon */}
                     <svg
                       width="14"
                       height="14"

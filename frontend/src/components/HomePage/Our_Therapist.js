@@ -127,7 +127,7 @@ const Our_Therapist = () => {
     <React.Fragment>
     {ShowPopUp && <LoginReq_pop setShowPopUp={setShowPopUp} />}
     <div>
-      <div className="px-10">
+      <div className="p-10 ">
         <SearchContainer />
         <div className="text-2xl mb-5 font-medium">
           Therapists

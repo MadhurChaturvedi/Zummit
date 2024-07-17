@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const NotificationPopUp = () => {
   const data = [
     {
@@ -26,10 +26,12 @@ const NotificationPopUp = () => {
     },
   ];
   return (
-    <div className="absolute shadow-lg rounded-md bg-white w-[30%] right-28 top-20">
+    <div className="absolute shadow-lg rounded-md bg-white w-[30%] right-32 top-28">
       <div className="flex justify-between items-center pl-6 p-4 border-b-2 border-gray-600">
         <h1 className="text-2xl font-semibold">Notification</h1>
+        <Link to={"/user-notification"}>
         <button className="text-[#0190B1]">See All</button>
+        </Link>
       </div>
       <div className="p-6">
         {data.map((item, index) => (

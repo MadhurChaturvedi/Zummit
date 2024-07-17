@@ -54,6 +54,7 @@ const Add_Observation = ({toggleHandler}) => {
             />
           </div>
           <div className="flex justify-between px-2 py-4 ">
+            {/* Add File Icon  */}
             <svg
               width="23"
               height="28"

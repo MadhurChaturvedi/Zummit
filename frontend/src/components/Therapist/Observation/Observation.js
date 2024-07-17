@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Add_Observation from "./Add_Observation";
 import { BASE_BACKEND } from "../../../utils/constants";
-import BellIcon from "../../images/SVG_files/BellIcon.svg";
-import SearchBar from "../../images/SVG_files/SearchBar.svg";
+import Searchbar from "../Searchbar";
 
 const Observation = () => {
   const [addNew, setAddNew] = useState(true);
@@ -39,25 +38,7 @@ const Observation = () => {
       {addNew ? (
         <>
           <div className="w-[90%] m-5">
-            <div className="flex w-[90%] mx-5 justify-between mb-10 items-center">
-              <div className="flex w-full gap-5">
-                <div className="flex items-center bg-white w-[70%] pl-4 rounded-lg border border-[#B4F0FF] ">
-                  <img src={SearchBar} alt="SearchBar" />
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="h-12 ml-5 rounded-lg outline-none w-[100%]"
-                  />
-                </div>
-
-                <img src={BellIcon} alt=" BellIcon " />
-              </div>
-              <div>
-                <button className="px-4 font-medium text-lg py-2 rounded-md text-white bg-[#0190b1]">
-                  Logout
-                </button>
-              </div>
-            </div>
+            <Searchbar />
             <div className="flex justify-between items-center w-[90%] m-5  font-medium">
               <h1 className="text-xl">Observation</h1>
               <button
@@ -77,11 +58,10 @@ const Observation = () => {
                   <div
                     onClick={() => selectedGroup(index)}
                     key={index}
-                    className={`flex rounded-md shadow-md my-2 justify-between items-center px-4 py-2 ${
-                      selectedGroupIndex === index
+                    className={`flex rounded-md shadow-md my-2 justify-between items-center px-4 py-2 ${selectedGroupIndex === index
                         ? "bg-[#FDFEE6]"
                         : "bg-[#EFF7FF]"
-                    }`}
+                      }`}
                   >
                     <div className="flex gap-2 items-center">
                       <svg
