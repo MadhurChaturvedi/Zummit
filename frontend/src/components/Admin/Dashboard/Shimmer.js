@@ -2,7 +2,7 @@ import React from "react";
 
 const Shimmer = () => {
   return (
-    <div className="w-full mt-5  flex">
+    <div className="w-full mt-5 flex">
       {/* left */}
       <div className="w-[60%]  p-4 rounded-md">
         <div className="flex items-center">

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/HomePage/Navbar";
 import "./App.css";
@@ -55,14 +55,18 @@ import UserGroupTherapy from "./components/User/Groups/UserGroupTherapy";
 import UserSupport from "./components/User/Groups/UserSupport";
 import UserBillings from "./components/User/Billings/UserBillings";
 import UserProfile from "./components/User/Profile/UserProfile";
-import Create_Therapist_Credentail from "./components/Admin/Create_Therapist/Create_Therapist_Credentail";
 import Create_Another_Admin from "./components/Admin/Create_Admin/Create_Another_Admin";
 import GroupIntakeResponse from "./components/User/Groups/IntakeResponse";
 import NotificationPage from "./components/User/Dashboard/NotificationPage";
-
+import ResourcesEdit from "./components/Admin/Dashboard/Resources_Edit";
 import IntakeResponse from "./components/Booking/IntakeResponse";
 import { BASE_ADMIN, BASE_THERAPIST, BASE_USER } from "./utils/constants";
 import GroupBooking from "./components/User/Dashboard/GroupBooking";
+import Add_New_Articles from "./components/Admin/Dashboard/Add_New_Articles";
+import Admin_SideBar from "./components/Admin/Admin_SideBar";
+import NewAdmin from "./components/Admin/Create_Admin/NewAdmin";
+import AddTherapist from "./components/Admin/Therapist/AddTherapist";
+import Create_New_Group from "./components/Admin/Groups/Create_New_Group";
 
 const WithHeaderAndFooter = ({ children }) => (
   <>
@@ -71,6 +75,13 @@ const WithHeaderAndFooter = ({ children }) => (
     <ContactSection />
     <Footer />
   </>
+);
+
+const AdminSection = ({ children }) => (
+  <div className="flex bg-[#F2FCFF] ">
+    <Admin_SideBar />
+    <div className="m-5 w-full">{children}</div>
+  </div>
 );
 
 const routes = [
@@ -248,15 +259,126 @@ const routes = [
     ],
   },
   { path: "/ShowBookingDetailsPage", element: <ShowBookingDetailsPage /> },
-  { path: "/admin-dashboard", element: <AdminDashboard /> },
-  { path: "/admin-appointments", element: <Admin_Appointments /> },
-  { path: "/admin-profile", element: <Admin_Profile /> },
-  { path: "/admin-clients", element: <Admin_Clients /> },
-  { path: "/admin-reviews", element: <Admin_Reviews /> },
-  { path: "/admin-groups", element: <Admin_Groups /> },
-  { path: "/admin-therapists", element: <Admin_Therapists /> },
-  { path: "/admin-transactions", element: <Admin_Transactions /> },
-  { path: "/admin-resources", element: <Admin_Resources /> },
+
+  // Admin Section All Routes
+
+  {
+    path: "/admin",
+    children: [
+      {
+        path: "dashboard",
+        element: (
+          <AdminSection>
+            <AdminDashboard />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "appointments",
+        element: (
+          <AdminSection>
+            <Admin_Appointments />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "therapists",
+        element: (
+          <AdminSection>
+            <Admin_Therapists />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "groups",
+        element: (
+          <AdminSection>
+            <Admin_Groups />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "clients",
+        element: (
+          <AdminSection>
+            <Admin_Clients />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "resources",
+        element: (
+          <AdminSection>
+            <Admin_Resources />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "reviews",
+        element: (
+          <AdminSection>
+            <Admin_Reviews />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "transactions",
+        element: (
+          <AdminSection>
+            <Admin_Transactions />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "create-another-admin",
+        element: (
+          <AdminSection>
+            <NewAdmin />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <AdminSection>
+            <Admin_Profile />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "add-new-articles",
+        element: (
+          <AdminSection>
+            <Add_New_Articles />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "articles-edit",
+        element: (
+          <AdminSection>
+            <ResourcesEdit />
+          </AdminSection>
+        ),
+      },
+      {
+        path: "create-therapist-account",
+        element: (
+          <AdminSection>
+            <AddTherapist/>
+          </AdminSection>
+        ),
+      },
+      {
+        path: "create-group-therapy",
+        element: (
+          <AdminSection>
+            <Create_New_Group/>
+          </AdminSection>
+        ),
+      },
+    ],
+  },
   { path: "/therapist-dashboard", element: <Therapist_Dashboard /> },
   { path: "/therapist-appointments", element: <Therapist_Appointment /> },
   { path: "/therapist-schedules", element: <Therapist_Schedules /> },
@@ -268,8 +390,6 @@ const routes = [
   { path: "/therapist-profile", element: <Therapist_Profile /> },
   { path: "/therapist-login", element: <Therapist_Login /> },
   { path: "/therapist-register", element: <Therapist_SignUp /> },
-  { path: "/admin-login", element: <Login /> },
-  { path: "/admin-register", element: <SignUp /> },
   { path: "/user-groups", element: <UserGroups /> },
   { path: "/user-FAQs", element: <UserFAQ /> },
   { path: "/user-appointments", element: <UserAppointments /> },
@@ -280,11 +400,6 @@ const routes = [
   { path: "/user-notification", element: <NotificationPage /> },
   { path: "/group-intake-response", element: <GroupIntakeResponse /> },
   { path: "/group-booking", element: <GroupBooking /> },
-  {
-    path: "/admin-create-therapist-credentail",
-    element: <Create_Therapist_Credentail />,
-  },
-  { path: "/admin-create-another-admin", element: <Create_Another_Admin /> },
 ];
 
 function renderRoutes(routes) {

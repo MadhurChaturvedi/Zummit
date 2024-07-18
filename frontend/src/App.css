@@ -300,3 +300,8 @@ input[type="number"] {
   0%{left: -100%;}
   100%{left: 100%;}
 }
+
+.admin-dashboard-article-img {
+  object-fit: cover;
+  object-position: 100% 10%;
+}

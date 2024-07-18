@@ -67,7 +67,6 @@ const Clients = () => {
     <>
       {feedbackToggler ? (
         <div className="w-full my-5 mx-10 ">
-          <Searchbar />
           <div className="flex  my-5 w-[95%] gap-5 text-lg items-center">
             <h1 className="cursor-pointer text-[#00677F] bg-white p-1 rounded-md rounded-b-none border-b-2 border-[#00677F]">
               All

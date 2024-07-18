@@ -3,14 +3,14 @@ import BellIcon from "../images/SVG_files/BellIcon.svg";
 import SearchBarIcon from "../images/SVG_files/SearchBar.svg";
 import { useNavigate } from 'react-router-dom';
 
-const SearchBar = () => {
+const AdminSearchBar = () => {
     const navigate = useNavigate();
     const logout = () => {
         localStorage.clear("adminToken");
         navigate('/admin-login')
     }
     return (
-        <div className="flex w-[95%] justify-between gap-10 items-center">
+        <div className="flex w-[95%] mb-5 justify-between gap-10 items-center">
             <div className="flex items-center bg-white w-[80%]   pl-4 rounded-lg -[#B4F0FF] ">
                 <img src={SearchBarIcon} alt="SearchBar" />
                 <input
@@ -27,4 +27,4 @@ const SearchBar = () => {
     )
 }
 
-export default SearchBar
+export default AdminSearchBar

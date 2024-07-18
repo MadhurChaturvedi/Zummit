@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { addUser } from "../../../utils/Slices/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";  
-import { AROUND_WITH_US_GIF, BASE_ADMIN} from "../../../utils/constants";
+import { Link } from "react-router-dom";
+import { AROUND_WITH_US_GIF, BASE_ADMIN } from "../../../utils/constants";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -30,18 +30,15 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch(
-        BASE_ADMIN+"/adminLogin",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminLogin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Registration failed");
@@ -54,7 +51,7 @@ const Login = () => {
 
       //reload kee baad bhi data remain constant
       localStorage.setItem("adminToken", data.token);
-      navigate("/admin-dashboard");
+      navigate("/admin/dashboard");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -62,18 +59,15 @@ const Login = () => {
 
   const loginUser = async (loginData) => {
     try {
-      const response = await fetch(
-        BASE_ADMIN+"/adminLogin",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-          credentials: "include", // Changed from 'true' to 'include' for clarity
-          withCredentials: true,
-        }
-      );
+      const response = await fetch(BASE_ADMIN + "/adminLogin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+        credentials: "include", // Changed from 'true' to 'include' for clarity
+        withCredentials: true,
+      });
 
       if (!response.ok) {
         throw new Error("Login failed");
@@ -83,7 +77,7 @@ const Login = () => {
       console.log(data);
       dispatch(addUser(data.newUser));
       localStorage.setItem("adminToken", data.token);
-      navigate("/admin-dashboard");
+      navigate("/admin/dashboard");
       console.log(response);
 
       //jaao token leke aao
@@ -98,8 +92,6 @@ const Login = () => {
     }
   };
 
-
-
   //token check karo reload kee baad
   const checkForToken = () => {
     const token = localStorage.getItem("token");
@@ -108,8 +100,6 @@ const Login = () => {
       dispatch(addUser({ token }));
     }
   };
-
-
 
   const handleClick = () => {
     setSignUp(!signUp);
@@ -300,7 +290,9 @@ const Login = () => {
                   {signUp ? "Login" : "Send OTP"}
                 </button>
                 <Link to={"/admin-register"}>
-                  <p className="text-cyan-500 text-base cursor-pointer">SignUp</p>
+                  <p className="text-cyan-500 text-base cursor-pointer">
+                    SignUp
+                  </p>
                 </Link>
                 {signUp ? (
                   <Link to="/forgot-password">

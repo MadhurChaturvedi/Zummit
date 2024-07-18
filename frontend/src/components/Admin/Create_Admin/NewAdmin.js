@@ -226,10 +226,10 @@ const NewAdmin = () => {
         onSubmit={async (e) => {
           await handleSubmit(e);
         }}
-        className="flex justify-center m-10 mt-20 w-full"
+        className="flex justify-center m-10 mt-14 w-[90%]"
       >
         {/* Left Container */}
-        <div className="w-[35%]">
+        <div className="w-[40%]">
           {showOTP && (
             <div className="bg-cyan-600 text-white text-center font-semibold p-4 animate-bounce rounded-xl">
               <h1>Your OTP is {OTP} </h1>

@@ -24,9 +24,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="w-full m-10 ">
+    <div>
       <div className="flex w-[90%] justify-between items-center my-2">
-        <div className="flex w-[90%] justify-between items-center">
+        <div className="flex w-[85%] justify-between items-center">
           <h1 className="text-2xl ">Profile</h1>
           <div className="p-2 rounded-full ">
             <img src={BellIcon} alt="Bell Icon" />

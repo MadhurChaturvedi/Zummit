@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_ADMIN } from "../../../utils/constants";
-import SearchBar from "../SearchBar";
+import AdminSearchBar from "../AdminSearchBar";
 
 const Transactions = () => {
-  const [transactions, setTransactions] = useState([])
+  const [transactions, setTransactions] = useState([]);
   useEffect(() => {
 
    const token = localStorage.getItem("adminToken");
@@ -60,9 +60,8 @@ const Transactions = () => {
     }
   };
   return (
-    <div className="w-full m-10 ">
-      {/* Search Bar */}
-      <SearchBar />
+    <div>
+      <AdminSearchBar/>
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl  my-8">Transactions</h1>
       </div>
@@ -82,10 +81,7 @@ const Transactions = () => {
             <td className="w-[7rem] ">{item.clientId}</td>
             <td className="w-[10rem] ">{item.clientName}</td>
             <td className="w-[10rem] ">{item.doctorName}</td>
-            <td
-              style={getStyle(item.report)}
-              className="w-[4rem]  text-end "
-            >
+            <td style={getStyle(item.report)} className="w-[4rem]  text-end ">
               {item.amount}
             </td>
             <td className="flex w-[7rem] justify-end">

@@ -11,8 +11,7 @@ const Admin_Resources = () => {
     }, 2000);
   },[])
   return (
-    <div className='flex bg-[#F2FCFF]'>
-    <Admin_SideBar/>
+    <div className='w-full'>
     {toggleShimmer ?<Shimmer/> :<Resources/>}
   </div>
   )

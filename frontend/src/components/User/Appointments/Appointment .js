@@ -6,9 +6,6 @@ import { BASE_THERAPIST } from "../../../utils/constants";
 
 import SearchBar from "../../Therapist/Searchbar";
 
-
-
-
 const Appointment = () => {
   const [appointmentsList, setAppointmentsList] = useState([]);
   const [showSort, setShowSort] = useState(false);
@@ -17,9 +14,7 @@ const Appointment = () => {
   useEffect(() => {
     axios
 
-      .get(
-        BASE_THERAPIST + "/gettherapistAppointmentLists"
-      )
+      .get(BASE_THERAPIST + "/gettherapistAppointmentLists")
 
       .then((response) => {
         if (response.data.success) {
@@ -81,10 +76,10 @@ const Appointment = () => {
   const AppointmentDetails = () => {
     return (
       <div className="absolute w-[96%] top-52 left-5 bg-[#FDFEF1] rounded-md shadow-md p-2">
+        <h1 className="text-center p-4 font-semibold text-2xl border-b-8 border-[#B4F0FF]">
+          Appointment Details
+        </h1>
 
-        <h1 className="text-center p-4 font-semibold text-2xl border-b-8 border-[#B4F0FF]">Appointment Details</h1>
-
-    
         <div className="flex border-b-2 border-gray-400  justify-between px-20 font-medium text-lg py-5">
           <div className="flex  gap-5">
             <div className="flex flex-col gap-3">
@@ -112,11 +107,12 @@ const Appointment = () => {
           </div>
         </div>
         <div className="flex justify-end my-2 gap-5">
-
-          <button className="px-5 p-1 bg-[#0190B1] rounded-md font-semibold">Join</button>
-          <button className="px-5 p-1 bg-[#B00202] rounded-md  text-white">Cancel</button>
-
-   
+          <button className="px-5 p-1 bg-[#0190B1] rounded-md font-semibold">
+            Join
+          </button>
+          <button className="px-5 p-1 bg-[#B00202] rounded-md  text-white">
+            Cancel
+          </button>
         </div>
       </div>
     );
@@ -125,8 +121,6 @@ const Appointment = () => {
   return (
     <div className="relative w-full m-5 ">
       {/* Search Bar */}
-
-      <SearchBar />
 
       {/* heading */}
       <div className="w-[95%] flex justify-between items-center text-2xl my-5">

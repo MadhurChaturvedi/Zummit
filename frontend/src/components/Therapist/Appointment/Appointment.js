@@ -69,7 +69,6 @@ const Appointment = () => {
   };
   return (
     <div className="w-full m-10">
-      <SearchBar />
       {/* heading */}
       <div className="w-[95%] flex justify-between items-center text-2xl my-8">
         <h1>Appointments</h1>

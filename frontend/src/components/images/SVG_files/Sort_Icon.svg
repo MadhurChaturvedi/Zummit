@@ -1,16 +1,11 @@
-       <svg
-                width="23"
-                height="23"
-                viewBox="0 0 23 23"
-                onClick={BtnHandler}
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5.75 8.625L11.5 14.375L17.25 8.625"
-                  stroke="#FDFEF1"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+<svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3.43945 16.4996V10.2773" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.43945 6.72222V0.5" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.94141 16.5V8.5" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.94141 4.94444V0.5" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.4434 16.4991V12.0547" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.4434 8.5V0.5" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1 10.2773H5.87722" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.50195 4.94434H12.3792" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.0059 12.0547H18.8831" stroke="#FDFEF1" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

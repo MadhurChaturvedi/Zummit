@@ -4,9 +4,8 @@ import NewAdmin from "./NewAdmin";
 
 const Create_Another_Admin = () => {
   return (
-    <div className="flex bg-[#F2FCFF]">
-      <Admin_SideBar />
-      <NewAdmin/>
+    <div className="w-full">
+      <NewAdmin />
     </div>
   );
 };

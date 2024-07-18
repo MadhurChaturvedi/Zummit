@@ -38,7 +38,6 @@ const Observation = () => {
       {addNew ? (
         <>
           <div className="w-[90%] m-5">
-            <Searchbar />
             <div className="flex justify-between items-center w-[90%] m-5  font-medium">
               <h1 className="text-xl">Observation</h1>
               <button
@@ -58,10 +57,11 @@ const Observation = () => {
                   <div
                     onClick={() => selectedGroup(index)}
                     key={index}
-                    className={`flex rounded-md shadow-md my-2 justify-between items-center px-4 py-2 ${selectedGroupIndex === index
+                    className={`flex rounded-md shadow-md my-2 justify-between items-center px-4 py-2 ${
+                      selectedGroupIndex === index
                         ? "bg-[#FDFEE6]"
                         : "bg-[#EFF7FF]"
-                      }`}
+                    }`}
                   >
                     <div className="flex gap-2 items-center">
                       <svg

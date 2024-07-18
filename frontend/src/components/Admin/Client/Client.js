@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_ADMIN } from "../../../utils/constants";
-import SearchBar from "../SearchBar";
+import AdminSearchBar from "../AdminSearchBar";
 
 const Client = () => {
   const [clientList, setClientList] = useState([])
@@ -36,10 +36,8 @@ const Client = () => {
   }, []);
 
   return (
-    <div className="w-full m-10 ">
-
-      <SearchBar />
-
+    <div>
+      <AdminSearchBar/>
       <div className="flex w-[90%] justify-between items-center">
         <h1 className="text-2xl  my-8">Clients</h1>
       </div>

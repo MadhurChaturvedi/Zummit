@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Searchbar from "../Searchbar";
 
 const Responses = () => {
@@ -17,29 +17,30 @@ const Responses = () => {
     },
     {
       name: "Group - Substance Recovery",
-      feedback: "Feedback"
+      feedback: "Feedback",
     },
     {
       name: "Group - Substance Recovery",
-      feedback: "Feedback"
+      feedback: "Feedback",
     },
     {
       name: "Group - Substance Recovery",
-      feedback: "Feedback"
+      feedback: "Feedback",
     },
     {
       name: "Group - Substance Recovery",
-      feedback: "Feedback"
+      feedback: "Feedback",
     },
   ];
   return (
     <div className="w-[90%] m-5 mx-10">
-      <Searchbar />
       <div className="flex w-[90%] m-5  font-medium">
         <h1 className="text-2xl">Responses</h1>
       </div>
-      <div className='flex text-lg items-center gap-5 m-5'>
-        <h1 className='p-2 bg-white rounded-md rounded-b-none border-b-2 border-[#00677F] text-[#00677F]'>All</h1>
+      <div className="flex text-lg items-center gap-5 m-5">
+        <h1 className="p-2 bg-white rounded-md rounded-b-none border-b-2 border-[#00677F] text-[#00677F]">
+          All
+        </h1>
         <h1>Group</h1>
         <h1>Individual</h1>
       </div>
@@ -59,6 +60,6 @@ const Responses = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Responses
+export default Responses;

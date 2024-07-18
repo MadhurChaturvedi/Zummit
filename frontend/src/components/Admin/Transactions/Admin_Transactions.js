@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Admin_SideBar from "../Admin_SideBar";
-import Transactions from './Transactions';
-import Shimmer from './Shimmer';
+import React, { useEffect, useState } from "react";
+import Transactions from "./Transactions";
+import Shimmer from "./Shimmer";
 
 const Admin_Transactions = () => {
-  const [toggleShimmer, setToggleShimmer] = useState(true)
-  useEffect(()=>{
+  const [toggleShimmer, setToggleShimmer] = useState(true);
+  useEffect(() => {
     setInterval(() => {
-      setToggleShimmer(false)
+      setToggleShimmer(false);
     }, 2000);
-  },[]) 
+  }, []);
   return (
-    <div className='flex bg-[#F2FCFF]'>
-      <Admin_SideBar/>
-      {toggleShimmer ? <Shimmer/>: <Transactions/>}
+    <div className="w-full">
+      {toggleShimmer ? <Shimmer /> : <Transactions />}
     </div>
-  )
-}
+  );
+};
 
-export default Admin_Transactions
+export default Admin_Transactions;

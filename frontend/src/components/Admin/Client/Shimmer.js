@@ -2,7 +2,7 @@ import React from "react";
 
 const Shimmer = () => {
   return (
-    <div className="w-full m-5 mt-10">
+    <div className="w-full">
       {/* search bar */}
       <div className="w-[90%] mx-5 flex items-center">
         <div className="w-full flex justify-between items-center">
